@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Store, Users, Lightbulb, BarChart, Settings, GraduationCap } from 'lucide-react'
+import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Users, Lightbulb, BarChart, Settings, GraduationCap } from 'lucide-react'
 import logoMatricx from '../images/matricxlogo.png'
 import leadershipImage from '../images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg'
 import innovationImage from '../images/blog/vert1.jpg'
@@ -91,14 +91,6 @@ const Header: React.FC = () => {
                             <div>
                               <div className="font-bold text-black">{currentLanguage === 'fr' ? 'Médias' : 'Media'}</div>
                               <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'MatriCx dans les médias' : 'MatriCx as presented in media'}</div>
-                            </div>
-                          </Link>
-                          
-                          <Link to="/about/franchise" className="flex items-center p-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-md group">
-                            <Store size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                            <div>
-                              <div className="font-bold text-black">{currentLanguage === 'fr' ? 'Franchise' : 'Franchise'}</div>
-                              <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'Créez votre propre cabinet de conseil' : 'Build your own consultancy'}</div>
                             </div>
                           </Link>
                           
@@ -403,13 +395,6 @@ const Header: React.FC = () => {
                       <div>
                         <div className="font-medium">{currentLanguage === 'fr' ? 'Médias' : 'Media'}</div>
                         <div className="text-xs text-gray-500">{currentLanguage === 'fr' ? 'MatriCx dans les médias' : 'MatriCx as presented in media'}</div>
-                      </div>
-                    </Link>
-                    <Link to="/about/franchise" className="flex items-center py-2 px-4 text-sm text-secondary-600 hover:text-primary-600 hover:bg-primary-25 rounded-lg transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
-                      <Store size={16} className="mr-3 text-gray-400" />
-                      <div>
-                        <div className="font-medium">{currentLanguage === 'fr' ? 'Franchise' : 'Franchise'}</div>
-                        <div className="text-xs text-gray-500">{currentLanguage === 'fr' ? 'Créez votre propre cabinet de conseil' : 'Build your own consultancy'}</div>
                       </div>
                     </Link>
                     <Link to="/about/partners" className="flex items-center py-2 px-4 text-sm text-secondary-600 hover:text-primary-600 hover:bg-primary-25 rounded-lg transition-all duration-300" onClick={() => setIsMenuOpen(false)}>

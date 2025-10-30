@@ -14,7 +14,6 @@ import Company from './pages/about/Company'
 import Careers from './pages/about/Careers'
 import Experience from './pages/about/Experience'
 import Media from './pages/about/Media'
-import Franchise from './pages/about/Franchise'
 import Partners from './pages/about/Partners'
 import Sustainability from './pages/about/Sustainability'
 
@@ -30,7 +29,6 @@ function App() {
           <Route path="/about/careers" element={<Careers />} />
           <Route path="/about/experience" element={<Experience />} />
           <Route path="/about/media" element={<Media />} />
-          <Route path="/about/franchise" element={<Franchise />} />
           <Route path="/about/partners" element={<Partners />} />
           <Route path="/about/sustainability" element={<Sustainability />} />
           <Route path="/services" element={<Services />} />
