@@ -5,17 +5,7 @@ import { ArrowRight, Target, Headphones, Monitor, GraduationCap } from 'lucide-r
 const MatrixSection = () => {
   const { t } = useTranslation()
   const [isVisible, setIsVisible] = useState(false)
-  const [activeIcons, setActiveIcons] = useState<number[]>([])
   const sectionRef = useRef<HTMLDivElement>(null)
-  
-  useEffect(() => {
-    if (isVisible) {
-      // Activer tous les éléments en même temps
-      setActiveIcons([0, 1, 2, 3])
-    } else {
-      setActiveIcons([])
-    }
-  }, [isVisible])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,106 +31,76 @@ const MatrixSection = () => {
 
   const services = [
     {
-      title: t('matrixSection.services.strategy.title'),
-      description: t('matrixSection.services.strategy.description'),
-      icon: <Target className="w-8 h-8" />,
-      iconPosition: 'top'
+      title: "Stratégie Client",
+      description: "Définir votre vision expérience client",
+      icon: <Target className="w-8 h-8" />
     },
     {
       title: "Écoute client",
       description: "Capturer et analyser la voix du client",
-      icon: <Headphones className="w-8 h-8" />,
-      iconPosition: 'bottom'
+      icon: <Headphones className="w-8 h-8" />
     },
     {
-      title: t('matrixSection.services.digital.title'),
-      description: t('matrixSection.services.digital.description'),
-      icon: <Monitor className="w-8 h-8" />,
-      iconPosition: 'top'
+      title: "Solutions digitales",
+      description: "Outils CRM et transformation numérique",
+      icon: <Monitor className="w-8 h-8" />
     },
     {
       title: "Formation CX",
       description: "Développer la culture client de vos équipes",
-      icon: <GraduationCap className="w-8 h-8" />,
-      iconPosition: 'bottom'
+      icon: <GraduationCap className="w-8 h-8" />
     }
   ]
 
   return (
-    <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-blue-50 relative overflow-hidden">
-      <div className="container-custom">
+    <section className="py-16 bg-gradient-to-br from-yellow-50 via-white to-blue-50 relative overflow-hidden" ref={sectionRef}>
+      <div className="container mx-auto px-4">
         {/* En-tête dynamique avec badge */}
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center bg-primary-100 text-primary-700 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm">
             <Target size={18} className="mr-2" />
-            {t('services.header')}
+            Nos Services
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
-            {t('matrixSection.title')}
+            Votre succès, notre mission
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            {t('matrixSection.description')}
+            Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full mt-6"></div>
         </div>
 
-
-
-        {/* Timeline horizontale animée */}
-        <div className="relative max-w-5xl mx-auto px-4 mb-16" ref={sectionRef}>
-          {/* Barre de progression fluide */}
-          <div className="absolute h-1 bg-gray-200 top-1/2 left-0 right-0 transform -translate-y-1/2">
-            <div 
-              className={`h-full bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 progress-line ${
-                isVisible ? 'active' : ''
-              }`}
-              style={{
-                filter: 'drop-shadow(0 0 10px rgba(253, 195, 0, 0.5))'
-              }}
-            />
-          </div>
-
-          {/* Points de la timeline */}
-          <div className="relative grid grid-cols-4 gap-4">
+        {/* Services en cercles */}
+        <div className="max-w-6xl mx-auto px-4 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
             {services.map((service, index) => (
               <div 
                 key={index}
-                className="timeline-segment"
+                className={`transform transition-all duration-500 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 200}ms` }}
               >
-                {/* Point avec icône et contenu */}
-                <div className={`flex flex-col ${service.iconPosition === 'top' ? '' : 'flex-col-reverse'}`}>
-                  <div className={`flex justify-center ${service.iconPosition === 'top' ? 'mb-8' : 'mt-8'}`}>
-                    <div 
-                      className={`service-icon rounded-full bg-white border-4 border-primary-500 flex items-center justify-center shadow-lg
-                        icon-bounce ${activeIcons.includes(index) ? 'active' : ''}`}
-                    >
-                      <div className="text-primary-600 transform transition-transform group-hover:scale-110 icon-wrapper">
-                        {service.icon}
-                      </div>
-                    </div>
+                <div className="w-48 h-48 rounded-full bg-white shadow-lg border-2 border-yellow-400 flex flex-col items-center justify-center p-6 hover:border-yellow-500 hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                  {/* Icône */}
+                  <div className="text-yellow-500 mb-3 transform transition-transform duration-300 group-hover:scale-110">
+                    {service.icon}
                   </div>
 
-                  {/* Contenu */}
-                  <div className={`text-center content-fade ${activeIcons.includes(index) ? 'active' : ''}`}>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 service-title">
-                      <span className="full-text">{service.title}</span>
-                      <span className="mobile-text">
-                        {index === 0 && "Stratégie"}
-                        {index === 1 && "Écoute"}
-                        {index === 2 && "Digital"}
-                        {index === 3 && "Formation"}
-                      </span>
-                    </h3>
-                    <p className="text-sm text-gray-600 service-description">
-                      {service.description}
-                    </p>
-                    <p className="text-xs text-gray-600 mobile-description">
-                      {index === 0 && "Vision client"}
-                      {index === 1 && "Voix du client"}
-                      {index === 2 && "Outils CRM"}
-                      {index === 3 && "Culture CX"}
-                    </p>
-                  </div>
+                  {/* Titre */}
+                  <h3 className="text-base font-bold text-gray-900 mb-1 text-center">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs text-gray-600 text-center">
+                    {service.description}
+                  </p>
+
+                  {/* Description courte */}
+                  <p className="text-xs text-gray-600 text-center line-clamp-2">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             ))}

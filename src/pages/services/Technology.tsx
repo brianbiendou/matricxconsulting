@@ -85,12 +85,12 @@ const Technology: React.FC = () => {
                   <span className="block text-primary-400">Technology</span>
                 </h1>
                 <p className="text-xl text-white/90 max-w-lg leading-relaxed animation-delay-200 animate-fade-in">
-                  Outils de la relation client, innovation, CRM transformation
-                  digitale
+                  Solutions technologiques innovantes pour l'excellence opérationnelle
+                  et la performance client
                 </p>
                 <p className="text-lg text-white/80 max-w-xl animation-delay-400 animate-fade-in">
-                  Accélérez votre transformation digitale avec nos solutions CRM
-                  sur mesure et notre expertise en intégration technologique.
+                  Optimisez votre efficacité opérationnelle avec nos solutions technologiques
+                  avancées et notre expertise en intégration de systèmes d'entreprise.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 animation-delay-600 animate-fade-in">
                   <button className="btn-primary group flex items-center justify-center">
@@ -125,11 +125,11 @@ const Technology: React.FC = () => {
             <div className="flex items-center justify-between mb-12">
               <div>
                 <h2 className="text-4xl font-bold text-gray-900">
-                  Ressources technologiques
+                  Solutions technologiques
                 </h2>
                 <p className="text-gray-600 mt-2">
-                  Notre sélection d'outils et rapports sur les technologies CRM
-                  et l'innovation digitale.
+                  Notre expertise en solutions d'entreprise et transformation digitale
+                  pour votre excellence opérationnelle.
                 </p>
               </div>
               <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300">
@@ -145,14 +145,14 @@ const Technology: React.FC = () => {
                       <Database className="w-6 h-6 text-yellow-600" />
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-3">
-                      Solutions CRM Enterprise
+                      Solutions d'entreprise intégrées
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">
-                      Notre sélection d'études et rapports sur les CRM en France
-                      et à l'international.
+                      Optimisation des processus métiers avec des solutions
+                      technologiques sur mesure et évolutives.
                     </p>
                     <div className="text-xs text-gray-500">
-                      Salesforce • Microsoft • HubSpot
+                      ERP • CRM • SIRH • BI
                     </div>
                   </div>
 
@@ -256,13 +256,13 @@ const Technology: React.FC = () => {
                     </div>
                   </div>
                   <h4 className="text-xl font-bold mb-4">
-                    CRM 2026 : une révolution technologique annoncée à 37 500 €
+                    Innovation 2026 : Nouvelles solutions d'excellence opérationnelle
                   </h4>
                   <p className="text-gray-800 mb-6">
-                    Publié hier, le projet de solutions CRM pour 2026 annonce un
-                    seuil de base en intégration à 37 500 € et à 25 000 € pour
-                    les prestations de services personnalisés. Pour rappel,
-                    l'intégration CRM est un dispositif de...
+                    Notre cabinet dévoile sa nouvelle gamme de solutions technologiques
+                    intégrées pour l'optimisation des processus d'entreprise. Une approche
+                    innovante qui combine expertise métier et technologies de pointe pour
+                    une transformation digitale réussie...
                   </p>
                   <button className="text-black font-semibold hover:underline">
                     Lire plus →
@@ -278,14 +278,13 @@ const Technology: React.FC = () => {
 
                   <div className="border-l-4 border-yellow-400 pl-6">
                     <h4 className="font-bold text-gray-900 mb-2">
-                      Comment optimiser votre CRM grâce aux nouvelles
-                      technologies
+                      L'excellence opérationnelle par la technologie : Guide 2025
                     </h4>
                     <p className="text-sm text-gray-600 mb-2">14/10/2025</p>
                     <p className="text-gray-700 text-sm mb-3">
-                      Ce guide, publié par la CMA Tech, explique aux entreprises
-                      comment développer leur performance CRM et attirer une
-                      nouvelle clientèle...
+                      Découvrez notre guide complet sur l'optimisation des processus
+                      d'entreprise grâce aux nouvelles technologies et à notre
+                      expertise en transformation digitale...
                     </p>
                     <button className="text-yellow-600 font-semibold text-sm hover:underline">
                       Lire plus...
@@ -511,8 +510,8 @@ const Technology: React.FC = () => {
               Prêt à accélérer votre transformation digitale ?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Découvrez nos solutions CRM sur mesure et notre expertise en
-              intégration technologique pour optimiser votre expérience client.
+              Découvrez nos solutions technologiques sur mesure et notre expertise en
+              transformation digitale pour optimiser vos processus d'entreprise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300">

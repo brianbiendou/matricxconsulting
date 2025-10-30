@@ -8,26 +8,22 @@ import {
   ArrowRight,
   Briefcase,
   Target,
-  TrendingUp,
   Users,
   BarChart3,
   Shield,
-  Lightbulb,
-  ChevronDown,
-  Settings,
   MessageSquare,
   Zap,
-  AlertTriangle,
+  Settings,
+  Lightbulb,
+  TrendingUp,
+  ChevronDown,
 } from "lucide-react";
 
 const Advisory: React.FC = () => {
   const { currentLanguage } = useTranslation();
 
   return (
-    <div
-      key={currentLanguage}
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
-    >
+    <div key={currentLanguage} className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
       <main className="pt-8">
         {/* Hero Section */}
@@ -261,168 +257,265 @@ const Advisory: React.FC = () => {
         </section>
 
         {/* Section Modèle d'implémentation */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                MatriCx <span className="text-yellow-400">advisory</span>
+        <section className="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Notre Méthodologie d'Excellence
+                <span className="block text-xl text-blue-600 mt-3">Programme Expérience Client MatriCx</span>
               </h2>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Modèle d'implémentation d'un programme Expérience Client de{" "}
-                <span className="text-yellow-400">MatriCx (Engage more)</span>
-              </h3>
+              <div className="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
+              <p className="text-xl text-gray-600">
+                Une approche structurée et éprouvée pour transformer durablement l'expérience client
+              </p>
             </div>
 
-            {/* Processus avec cercles connectés */}
-            <div className="relative max-w-6xl mx-auto mb-12">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative">
+            {/* Timeline d'implémentation */}
+            <div className="relative max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                 {/* Étape 1 */}
-                <div className="text-center">
-                  <div className="relative">
-                    <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="w-8 h-8 text-white" />
+                <div className="group">
+                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                        <Users className="w-8 h-8 text-white" />
+                      </div>
                     </div>
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-blue-500"></div>
+                    <div className="mt-12">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4">Compréhension & Analyse</h4>
+                      <ul className="space-y-3 text-gray-600">
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Analyse du contexte</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Identification des besoins</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Évaluation de l'environnement</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">
-                    Compréhension de votre besoin & environnement
-                  </h4>
                 </div>
 
                 {/* Étape 2 */}
-                <div className="text-center">
-                  <div className="relative">
-                    <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <BarChart3 className="w-8 h-8 text-white" />
+                <div className="group">
+                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                        <BarChart3 className="w-8 h-8 text-white" />
+                      </div>
                     </div>
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-blue-500"></div>
+                    <div className="mt-12">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4">Diagnostic & Maturité</h4>
+                      <ul className="space-y-3 text-gray-600">
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>État des lieux</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Analyse comparative</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Axes d'amélioration</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">
-                    Diagnostic & évaluation de maturité
-                  </h4>
                 </div>
 
                 {/* Étape 3 */}
-                <div className="text-center">
-                  <div className="relative">
-                    <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Settings className="w-8 h-8 text-white" />
+                <div className="group">
+                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-800 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                        <Settings className="w-8 h-8 text-white" />
+                      </div>
                     </div>
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-blue-500"></div>
+                    <div className="mt-12">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4">Design & Implémentation</h4>
+                      <ul className="space-y-3 text-gray-600">
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Co-construction des solutions</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Plan d'action détaillé</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Accompagnement au changement</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">
-                    Design & implémentation
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Collaboration & co-construction
-                  </p>
                 </div>
 
                 {/* Étape 4 */}
-                <div className="text-center">
-                  <div className="relative">
-                    <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <TrendingUp className="w-8 h-8 text-white" />
+                <div className="group">
+                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-900 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                        <BarChart3 className="w-8 h-8 text-white" />
+                      </div>
                     </div>
-                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-blue-500"></div>
+                    <div className="mt-12">
+                      <h4 className="text-xl font-bold text-gray-900 mb-4">Mesure & Impact ROI</h4>
+                      <ul className="space-y-3 text-gray-600">
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Suivi des indicateurs</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Analyse des résultats</span>
+                        </li>
+                        <li className="flex items-start">
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span>Optimisation continue</span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">
-                    Mesure et impact ROI
-                  </h4>
-                </div>
-
-                {/* Ligne de connexion */}
-                <div className="absolute top-12 left-0 right-0 h-1 bg-yellow-400 -z-10 hidden md:block"></div>
-              </div>
-
-              {/* Icône utilisateur à gauche */}
-              <div className="absolute -left-16 top-8 hidden lg:block">
-                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Users className="w-8 h-8 text-black" />
                 </div>
               </div>
 
-              {/* Icône ampoule à droite */}
-              <div className="absolute -right-16 top-8 hidden lg:block">
-                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
-                  <Lightbulb className="w-8 h-8 text-black" />
-                </div>
+              {/* Ligne de connexion avec dégradé */}
+              <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600 -z-10 hidden lg:block"></div>
+              
+              {/* Points de connexion */}
+              <div className="hidden lg:flex justify-between absolute top-8 left-[10%] right-[10%] -z-10">
+                <div className="w-3 h-3 rounded-full bg-blue-500 shadow-lg"></div>
+                <div className="w-3 h-3 rounded-full bg-blue-600 shadow-lg"></div>
+                <div className="w-3 h-3 rounded-full bg-blue-700 shadow-lg"></div>
+                <div className="w-3 h-3 rounded-full bg-blue-800 shadow-lg"></div>
               </div>
             </div>
-
-            <div className="text-center max-w-4xl mx-auto">
-              <p className="text-xl font-bold text-gray-900 mb-4">
-                Pour bâtir un programme Expérience Client innovant et réaliste, vous avez besoin d'une approche différente et adaptée à votre contexte.
-              </p>
+            
+            {/* Message de conclusion avec style inspirant */}
+            <div className="max-w-3xl mx-auto text-center mt-16">
+              <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8 shadow-lg">
+                <p className="text-lg text-gray-700 italic leading-relaxed">
+                  "Pour bâtir un programme Expérience Client innovant et réaliste, notre approche s'adapte à votre contexte unique en gardant toujours à l'esprit vos objectifs business."
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Section 5 Leviers */}
-        <section className="section-padding bg-gray-50">
-          <div className="container-custom">
-            <div className="mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                MatriCx <span className="text-yellow-400">advisory</span>
+        <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Les Fondamentaux de l'Excellence
+                <span className="block text-xl text-blue-600 mt-3">Les 5 Leviers de Transformation</span>
               </h2>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                L'amélioration de l'expérience client repose sur 5 leviers complémentaires
-              </h3>
+              <div className="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
+              <p className="text-xl text-gray-600">
+                Une approche holistique pour transformer durablement l'expérience client
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-5 gap-4">
-              {/* Levier 1 */}
-              <div className="bg-yellow-400 rounded-t-2xl p-6 text-center">
-                <h4 className="text-lg font-bold text-black mb-4">
-                  Organisation
-                </h4>
-                <div className="bg-white rounded-xl p-4 text-left">
-                  <p className="text-sm text-gray-700 mb-2">
-                    Il faut tendre vers une organisation qui va permettre :
-                  </p>
-                  <ul className="text-xs text-gray-700 space-y-1">
-                    <li>1. de décloisonner les silos et favoriser le travail collaboratif (co-construction)</li>
-                    <li>2. de mettre au centre des attentions <strong>le client</strong>.</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Levier 2 */}
-              <div className="bg-yellow-400 rounded-t-2xl p-6 text-center">
-                <h4 className="text-lg font-bold text-black mb-4">
-                  Gouvernance & culture client
-                </h4>
-                <div className="bg-white rounded-xl p-4 text-left">
-                  <p className="text-xs text-gray-700 mb-2">
-                    L'expérience client est une affaire de tous, transverse à l'organisation, cela nécessite la mise en place d'une gouvernance spécifique portée au niveau Top Management
-                  </p>
-                  <div className="flex justify-center mt-2">
-                    <AlertTriangle className="w-6 h-6 text-red-500" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+              {/* Levier 1 - Organisation */}
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
+                <div className="relative p-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">Organisation</h4>
+                  <div className="space-y-4">
+                    <p className="text-gray-700">Structure optimisée pour :</p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Décloisonnement des silos</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Collaboration transverse</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Centralité client</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
 
-              {/* Levier 3 */}
-              <div className="bg-yellow-400 rounded-t-2xl p-6 text-center">
-                <h4 className="text-lg font-bold text-black mb-4">
-                  Voix du Client
-                </h4>
-                <div className="bg-white rounded-xl p-4 text-left">
-                  <p className="text-xs text-gray-700 mb-2">
-                    La gouvernance de l'expérience client ne pourra se faire sans dispositif qui sera décliné à tous les niveaux hiérarchiques.
-                  </p>
-                  <p className="text-xs text-gray-700">
-                    Ce dispositif sera un input important pour le design de l'expérience via de nouveaux parcours
-                  </p>
+              {/* Levier 2 - Gouvernance */}
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
+                <div className="relative p-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <Shield className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">Gouvernance</h4>
+                  <div className="space-y-4">
+                    <p className="text-gray-700">Pilotage stratégique :</p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Vision transverse</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Implication du management</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Culture client partagée</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              {/* Levier 4 */}
-              <div className="bg-yellow-400 rounded-t-2xl p-6 text-center">
-                <h4 className="text-lg font-bold text-black mb-4">
-                  Parcours clients
-                </h4>
-                <div className="bg-white rounded-xl p-4 text-left">
+              {/* Levier 3 - Voix du Client */}
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
+                <div className="relative p-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <MessageSquare className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">Voix du Client</h4>
+                  <div className="space-y-4">
+                    <p className="text-gray-700">Écoute active :</p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Dispositif multi-niveaux</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Retours directs</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Amélioration continue</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Levier 4 - Parcours Clients */}
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
+                <div className="relative p-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">Parcours Clients</h4>
                   <p className="text-xs text-gray-700 mb-2">
                     Apporter de nouvelles approches pour designer les parcours clients, de ces derniers découleront ensuite :
                   </p>
@@ -442,20 +535,31 @@ const Advisory: React.FC = () => {
                 </div>
               </div>
 
-              {/* Levier 5 */}
-              <div className="bg-yellow-400 rounded-t-2xl p-6 text-center">
-                <h4 className="text-lg font-bold text-black mb-4">
-                  Mesure et Analyse
-                </h4>
-                <div className="bg-white rounded-xl p-4 text-left">
-                  <p className="text-xs text-gray-700 mb-2">
-                    Disposer des KPI's et des outils d'analyse nécessaires à l'amélioration continue des parcours
-                  </p>
-                  <ul className="text-xs text-gray-700 space-y-1">
-                    <li>1. Indicateurs d'expérience vécue</li>
-                    <li>2. Indicateurs d'expérience délivrée</li>
-                    <li>3. Efficacité des parcours / processus clients</li>
-                  </ul>
+              {/* Levier 5 - Mesure et Analyse */}
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
+                <div className="relative p-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <BarChart3 className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">Mesure & Analyse</h4>
+                  <div className="space-y-4">
+                    <p className="text-gray-700">Pilotage performant :</p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">KPIs stratégiques</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Analyse d'impact</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">Optimisation continue</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
