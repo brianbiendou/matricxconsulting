@@ -7,35 +7,27 @@ import {
   ArrowRight,
   GraduationCap,
   Users,
-  CheckCircle2,
   Award,
-  BookOpen,
   Target,
   TrendingUp,
   ChevronDown,
-  Clock,
-  Star,
-  FileText,
-  MessageCircle,
-  BarChart3,
-  Lightbulb,
 } from "lucide-react";
 
 const Training: React.FC = () => {
   const { currentLanguage } = useTranslation();
 
   const trainingPrograms = [
-    "Les fondamentaux de la relation client",
-    "Comprendre l'Expérience client et ses enjeux",
-    "Développer la culture client dans son entreprise",
-    "Piloter la performance de l'Expérience client",
-    "Bâtir sa stratégie digitale",
-    "Management de la Qualité",
-    "Mettre en place et piloter la Voix du Client",
-    "Définir et bâtir sa stratégie de canal",
-    "Plan marketing / commercial",
-    "Communication digitale",
-    "Stratégie de marque",
+    "Excellence en Expérience Client (CX)",
+    "Conception et optimisation des parcours clients",
+    "Leadership et culture centrée client",
+    "Mesure et analyse de la satisfaction client (VOC)",
+    "Transformation digitale de l'expérience client",
+    "Management de la qualité de service",
+    "Techniques d'écoute et analyse de la voix du client",
+    "Stratégie omnicanale et expérience client",
+    "CX dans la stratégie d'entreprise",
+    "Innovation et design thinking en CX",
+    "Gestion de la relation client 360°",
   ];
 
   const evaluationCriteria = [
@@ -123,7 +115,7 @@ const Training: React.FC = () => {
 
         {/* Section Formation - Inspiration "Espace enseignant" */}
         <section className="section-padding bg-gray-50">
-          <div className="container-custom">
+          <div className="container mx-auto px-4 max-w-7xl">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Espace formation
@@ -145,7 +137,7 @@ const Training: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Des ressources expertes et accessibles pour vos équipes
+                  Programmes de certification CX reconnus internationalement
                 </p>
               </div>
 
@@ -160,7 +152,7 @@ const Training: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Les formations utiles pour accompagner votre projet CX
+                  Formations adaptées à vos défis spécifiques en CX
                 </p>
               </div>
 
@@ -175,7 +167,7 @@ const Training: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Découvrez l'écosystème local de certification CX
+                  Labels d'excellence en expérience client
                 </p>
               </div>
 
@@ -190,29 +182,70 @@ const Training: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Métriques d'évaluation et de progression
+                  Indicateurs de performance CX (NPS, CSAT, CES)
                 </p>
               </div>
             </div>
 
-            <div className="lg:flex lg:items-center lg:gap-12">
-              <div className="lg:w-2/3">
-                <div className="bg-gray-800 rounded-2xl p-8 text-white">
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              <div className="w-full lg:w-1/2">
+                <div className="bg-gray-800 rounded-2xl p-8 text-white h-full">
                   <h3 className="text-2xl font-bold mb-4">
                     Qu'est-ce que la Formation CX ?
                   </h3>
                   <p className="text-gray-200 mb-6">
-                    Cette approche vise à rassembler l'offre de formation des
-                    acteurs qui œuvrent au développement de l'excellence CX.
-                    L'objectif n'est pas de faire de tous vos collaborateurs des
-                    experts, mais de développer en eux une culture centrée
-                    client exceptionnelle.
+                    Notre programme de Formation CX est conçu pour transformer votre organisation 
+                    en plaçant l'expérience client au cœur de vos opérations. 
+                    Nous formons vos équipes aux meilleures pratiques CX, aux outils 
+                    de mesure et d'analyse, et développons une culture d'excellence centrée sur le client à tous les niveaux de votre entreprise.
                   </p>
                   <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-xl transition-all duration-300">
                     Je découvre
                   </button>
                 </div>
               </div>
+              
+              <div className="w-full lg:w-1/2">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                  <h4 className="font-bold text-lg mb-4">Nos programmes de formation</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {trainingPrograms.map((program, index) => (
+                      <div 
+                        key={index} 
+                        className="group bg-gray-50 hover:bg-yellow-50 rounded-lg p-3 transition-all duration-300"
+                      >
+                        <div className="flex items-start">
+                          <Target className="w-4 h-4 text-yellow-500 mt-1 mr-2 shrink-0 group-hover:scale-110 transition-transform" />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">{program}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Évaluation */}
+        <section className="section-padding">
+          <div className="container-custom">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Évaluation de nos formations
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Nous évaluons la qualité de nos formations selon 4 critères principaux
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {evaluationCriteria.map((criteria, index) => (
+                <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                  <h3 className="font-bold text-xl mb-2 text-gray-900">{criteria.title}</h3>
+                  <p className="text-gray-600">{criteria.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -242,14 +275,13 @@ const Training: React.FC = () => {
                     </div>
                   </div>
                   <h4 className="text-xl font-bold mb-4">
-                    Formation CX 2026 : un programme certifiant annoncé à 3 700
-                    €
+                    Nouveau Programme de Certification CX Manager 2026
                   </h4>
                   <p className="text-gray-800 mb-6">
-                    Publié hier, le projet de certification CX pour 2026 annonce
-                    un seuil de base en formation à 3 700 € et à 2 500 € pour
-                    les prestations de conseil personnalisées. Pour rappel, la
-                    certification CX est un dispositif de...
+                    MatriCx Training lance son programme phare de certification CX Manager, 
+                    conçu pour former les leaders de demain en expérience client. 
+                    Cette certification complète couvre l'ensemble des compétences 
+                    nécessaires pour piloter une stratégie CX performante...
                   </p>
                   <button className="text-black font-semibold hover:underline">
                     Lire plus →
@@ -265,14 +297,13 @@ const Training: React.FC = () => {
 
                   <div className="border-l-4 border-yellow-400 pl-6">
                     <h4 className="font-bold text-gray-900 mb-2">
-                      Comment développer vos compétences CX grâce aux nouvelles
-                      méthodes
+                      Innovation en Mesure de l'Expérience Client
                     </h4>
                     <p className="text-sm text-gray-600 mb-2">14/10/2025</p>
                     <p className="text-gray-700 text-sm mb-3">
-                      Ce guide, publié par MatriCx Training, explique aux
-                      entreprises comment développer leur performance CX et
-                      former une nouvelle génération...
+                      Découvrez les nouvelles méthodes de mesure et d'analyse de 
+                      l'expérience client avec notre formation avancée en Voice of 
+                      Customer (VoC) et analyse prédictive...
                     </p>
                     <button className="text-yellow-600 font-semibold text-sm hover:underline">
                       Lire plus...
@@ -281,13 +312,13 @@ const Training: React.FC = () => {
 
                   <div className="border-l-4 border-yellow-400 pl-6">
                     <h4 className="font-bold text-gray-900 mb-2">
-                      Un projet de formation pour augmenter les compétences CX
+                      Leadership CX : Former les Leaders de Demain
                     </h4>
                     <p className="text-sm text-gray-600 mb-2">14/10/2025</p>
                     <p className="text-gray-700 text-sm mb-3">
-                      MatriCx Training propose des formations certifiantes pour
-                      améliorer la performance de vos équipes et de certaines
-                      personnes en situation de...
+                      Notre nouveau programme de leadership CX forme les dirigeants 
+                      aux compétences essentielles pour piloter la transformation 
+                      de l'expérience client dans leur organisation...
                     </p>
                     <button className="text-yellow-600 font-semibold text-sm hover:underline">
                       Lire plus...
@@ -296,13 +327,13 @@ const Training: React.FC = () => {
 
                   <div className="border-l-4 border-yellow-400 pl-6">
                     <h4 className="font-bold text-gray-900 mb-2">
-                      Le mois de la formation CX en Nouvelle-Excellence
+                      Semaine de l'Excellence CX en Afrique
                     </h4>
                     <p className="text-sm text-gray-600 mb-2">14/10/2025</p>
                     <p className="text-gray-700 text-sm mb-3">
-                      Durant tout le mois de novembre, la Région et ses
-                      partenaires organisent différents événements pour
-                      sensibiliser et former les chefs d'entreprise...
+                      MatriCx Training organise une semaine dédiée à l'excellence 
+                      de l'expérience client, avec des masterclass, des ateliers 
+                      pratiques et des certifications...
                     </p>
                     <button className="text-yellow-600 font-semibold text-sm hover:underline">
                       Lire plus...
@@ -344,12 +375,12 @@ const Training: React.FC = () => {
                       Certification CX Manager
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">
-                      Cette formation vous est proposée par MatriCx Training
-                      afin de vous aider à identifier les principales
-                      compétences pour votre développement CX...
+                      Formation complète pour devenir un leader en expérience client. 
+                      Maîtrisez les stratégies, outils et méthodes pour concevoir 
+                      et piloter une stratégie CX performante.
                     </p>
                     <div className="text-sm text-gray-500">
-                      Besoin: Leadership • Management • Stratégie
+                      Compétences: Vision CX • Stratégie • Leadership
                     </div>
                   </div>
                 </div>
@@ -365,12 +396,12 @@ const Training: React.FC = () => {
                       Culture centrée client
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">
-                      Vous ne savez pas quelle approche culturelle choisir pour
-                      optimiser votre activité ? Cette formation vous guidera
-                      vers les meilleures pratiques...
+                      Développez une culture d'entreprise centrée sur l'expérience client.
+                      Apprenez à mobiliser vos équipes autour d'une vision commune
+                      de l'excellence client.
                     </p>
                     <div className="text-sm text-gray-500">
-                      Besoin: Culture • Engagement • Transformation
+                      Compétences: Engagement • Transformation • Innovation
                     </div>
                   </div>
                 </div>
@@ -386,12 +417,12 @@ const Training: React.FC = () => {
                       Excellence opérationnelle CX
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">
-                      Cette formation vous permet de découvrir les bonnes
-                      pratiques régionales et locales pour optimiser votre
-                      excellence opérationnelle efficacement...
+                      Optimisez vos processus pour délivrer une expérience client
+                      exceptionnelle. Maîtrisez les outils de mesure et
+                      d'amélioration continue de la satisfaction client.
                     </p>
                     <div className="text-sm text-gray-500">
-                      Besoin: Opérations • Processus • Qualité
+                      Compétences: Mesure • Analytics • Amélioration continue
                     </div>
                   </div>
                 </div>
@@ -404,15 +435,15 @@ const Training: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Certification équipes terrain
+                      Certification CX Practitioner
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">
-                      Cette approche, animée par MatriCx, regroupe sur un seul
-                      programme les certifications d'excellence terrain fournies
-                      par plusieurs experts...
+                      Formation certifiante pour les professionnels de terrain.
+                      Apprenez à mettre en œuvre les meilleures pratiques CX
+                      dans vos interactions quotidiennes avec les clients.
                     </p>
                     <div className="text-sm text-gray-500">
-                      Besoin: Terrain • Certification • Excellence
+                      Compétences: Service client • Empathie • Résolution
                     </div>
                   </div>
                 </div>
@@ -428,64 +459,6 @@ const Training: React.FC = () => {
         </section>
 
         {/* Section Statistiques */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Nos résultats en chiffres
-              </h2>
-              <p className="text-gray-600">
-                L'expertise MatriCx Training en données
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="bg-yellow-400 rounded-2xl p-8 mb-6">
-                  <div className="text-4xl font-bold text-black mb-2">95%</div>
-                  <div className="text-sm font-medium text-black">
-                    Satisfaction
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Taux de satisfaction
-                </h3>
-                <p className="text-gray-600">
-                  De nos participants aux formations
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-yellow-400 rounded-2xl p-8 mb-6">
-                  <div className="text-4xl font-bold text-black mb-2">500+</div>
-                  <div className="text-sm font-medium text-black">
-                    Professionnels
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Formés chaque année
-                </h3>
-                <p className="text-gray-600">
-                  Across différents secteurs d'activité
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-yellow-400 rounded-2xl p-8 mb-6">
-                  <div className="text-4xl font-bold text-black mb-2">12</div>
-                  <div className="text-sm font-medium text-black">
-                    Programmes
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Certifiants disponibles
-                </h3>
-                <p className="text-gray-600">Du débutant à l'expert CX</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Section CTA */}
         <section className="section-padding bg-gray-900 text-white">
           <div className="container-custom text-center">
@@ -507,7 +480,6 @@ const Training: React.FC = () => {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

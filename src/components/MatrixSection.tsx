@@ -32,22 +32,18 @@ const MatrixSection = () => {
   const services = [
     {
       title: "Stratégie Client",
-      description: "Définir votre vision expérience client",
       icon: <Target className="w-8 h-8" />
     },
     {
       title: "Écoute client",
-      description: "Capturer et analyser la voix du client",
       icon: <Headphones className="w-8 h-8" />
     },
     {
       title: "Solutions digitales",
-      description: "Outils CRM et transformation numérique",
       icon: <Monitor className="w-8 h-8" />
     },
     {
       title: "Formation CX",
-      description: "Développer la culture client de vos équipes",
       icon: <GraduationCap className="w-8 h-8" />
     }
   ]
@@ -87,20 +83,12 @@ const MatrixSection = () => {
                     {service.icon}
                   </div>
 
-                  {/* Titre */}
-                  <h3 className="text-base font-bold text-gray-900 mb-1 text-center">
-                    {service.title}
+                  {/* Titre en gras */}
+                  <h3 className="text-lg font-bold text-gray-900 text-center">
+                    <strong>{service.title}</strong>
                   </h3>
 
-                  {/* Description */}
-                  <p className="text-xs text-gray-600 text-center">
-                    {service.description}
-                  </p>
 
-                  {/* Description courte */}
-                  <p className="text-xs text-gray-600 text-center line-clamp-2">
-                    {service.description}
-                  </p>
                 </div>
               </div>
             ))}
