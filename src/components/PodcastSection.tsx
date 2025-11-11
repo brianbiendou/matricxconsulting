@@ -18,7 +18,12 @@ const PodcastSection: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image à gauche */}
           <div className="relative animate-fade-in">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500">
+            <a 
+              href="https://www.youtube.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer"
+            >
               <img 
                 src={podcastImage} 
                 alt="Podcast MatriCx" 
@@ -31,9 +36,9 @@ const PodcastSection: React.FC = () => {
                   <p className="text-white font-semibold text-lg">{t('podcast.cta')}</p>
                 </div>
               </div>
-            </div>
+            </a>
             {/* Badge "Nouveau" */}
-            <div className="absolute -top-4 -right-4 bg-accent-500 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg animate-bounce">
+            <div className="absolute -top-4 -right-4 bg-accent-500 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg animate-bounce pointer-events-none">
               <Headphones size={16} className="inline mr-2" />
               {t('podcast.badge')}
             </div>

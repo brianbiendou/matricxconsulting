@@ -47,10 +47,10 @@ const ServicesSection: React.FC = () => {
         <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-yellow-200">
             <Sparkles size={16} className="mr-2" />
-            Services
+            {t('services.header')}
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Nos domaines d'expertise
+            {t('services.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full"></div>
         </div>
@@ -125,17 +125,17 @@ const ServicesSection: React.FC = () => {
         <div className="text-center animate-fade-in animation-delay-600">
           <div className="max-w-2xl mx-auto mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Prêt à transformer votre expérience client ?
+              {t('servicesSection.ctaTitle')}
             </h3>
             <p className="text-xl text-gray-600">
-              Découvrez comment nos solutions peuvent révolutionner votre approche client.
+              {t('servicesSection.ctaSubtitle')}
             </p>
           </div>
           <Link 
             to="/contact"
             className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-2"
           >
-            <span>Nous contacter</span>
+            <span>{t('contact.cta')}</span>
             <ArrowRight size={20} />
           </Link>
         </div>

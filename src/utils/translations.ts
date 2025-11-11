@@ -100,6 +100,7 @@ export const translations = {
       }
     },
     matrixSection: {
+      badge: "Nos Services",
       title: "Notre Mission, faire préférer votre Marque",
       description: "Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.",
       cta: "En savoir plus",
@@ -127,6 +128,10 @@ export const translations = {
         projects: "Projets",
         satisfaction: "Satisfaction"
       }
+    },
+    partnersCarousel: {
+      title: "Ils nous font confiance",
+      description: "Des partenaires de confiance qui témoignent de notre expertise et de notre engagement à offrir des solutions d'excellence."
     },
     slogan: {
       header: "Notre slogan",
@@ -521,7 +526,8 @@ export const translations = {
       }
     },
     matrixSection: {
-      title: "Your success, our mission",
+      badge: "Our Services",
+      title: "Our Mission: Make Your Brand Preferred",
       description: "Complete support to transform your customers' experience into a sustainable competitive advantage.",
       cta: "Learn more",
       services: {
@@ -548,6 +554,10 @@ export const translations = {
         projects: "Projects",
         satisfaction: "Satisfaction"
       }
+    },
+    partnersCarousel: {
+      title: "They trust us",
+      description: "Trusted partners who attest to our expertise and commitment to delivering excellence solutions."
     },
     slogan: {
       header: "Our slogan",

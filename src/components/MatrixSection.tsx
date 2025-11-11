@@ -31,19 +31,19 @@ const MatrixSection = () => {
 
   const services = [
     {
-      title: "Stratégie Client",
+      title: t('matrixSection.services.strategy.title'),
       icon: <Target className="w-8 h-8" />
     },
     {
-      title: "Écoute Client",
+      title: t('matrixSection.services.listening.title'),
       icon: <Headphones className="w-8 h-8" />
     },
     {
-      title: "Solutions Digitales",
+      title: t('matrixSection.services.digital.title'),
       icon: <Monitor className="w-8 h-8" />
     },
     {
-      title: "Formation CX",
+      title: t('matrixSection.services.training.title'),
       icon: <GraduationCap className="w-8 h-8" />
     }
   ]
@@ -55,13 +55,13 @@ const MatrixSection = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm">
             <Target size={18} className="mr-2" />
-            Nos Services
+            {t('matrixSection.badge')}
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
-            Notre Mission, faire préférer votre Marque
+            {t('matrixSection.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.
+            {t('matrixSection.description')}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full mt-6"></div>
         </div>

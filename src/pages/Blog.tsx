@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useTranslation } from '../hooks/useTranslation'
-import { Calendar, User, ArrowRight, TrendingUp, Users, Lightbulb, Target, BarChart3, Briefcase, Flame, Clock } from 'lucide-react'
+import { Calendar, User, ArrowRight, TrendingUp, Users, Lightbulb, Target, BarChart3, Briefcase, Flame, Clock, Facebook, Linkedin, Twitter } from 'lucide-react'
 
 // Import des images
 import vert1 from '../images/blog/vert1.jpg'
@@ -313,6 +313,42 @@ const Blog: React.FC = () => {
                     )
                   })}
                 </nav>
+
+                {/* Section Réseaux Sociaux */}
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <h4 className="text-sm font-bold text-gray-900 mb-4">
+                    {currentLanguage === 'fr' ? 'Suivez-nous' : 'Follow Us'}
+                  </h4>
+                  <div className="flex items-center justify-center space-x-3">
+                    <a 
+                      href="https://www.linkedin.com/company/matricx-consulting/posts/?feedView=all" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all transform hover:scale-110"
+                      title="LinkedIn"
+                    >
+                      <Linkedin size={18} className="text-white" />
+                    </a>
+                    <a 
+                      href="https://x.com/voix_au" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-blue-400 transition-all transform hover:scale-110"
+                      title="Twitter"
+                    >
+                      <Twitter size={18} className="text-white" />
+                    </a>
+                    <a 
+                      href="https://www.facebook.com/people/La-Voix-du-Client-au-237/100086597136441/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-blue-700 transition-all transform hover:scale-110"
+                      title="Facebook"
+                    >
+                      <Facebook size={18} className="text-white" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </aside>
 

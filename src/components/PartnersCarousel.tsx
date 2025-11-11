@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react'
+import { useTranslation } from '../hooks/useTranslation'
 import finexsLogo from '../images/finexs.png'
 import matricxLogo from '../images/logomatricx.png'
 import matrixLogo from '../images/matrix.png'
@@ -7,6 +8,7 @@ import wafaLogo from '../images/wafa.png'
 import hotelLogo from '../images/hotel.png'
 
 const PartnersCarousel: React.FC = () => {
+  const { t } = useTranslation()
   const [isHovered, setIsHovered] = useState(false)
   
   const handleMouseEnter = useCallback(() => setIsHovered(true), [])
@@ -60,10 +62,10 @@ const PartnersCarousel: React.FC = () => {
         {/* En-tête de la section */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Ils nous font confiance
+            {t('partnersCarousel.title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Des partenaires de confiance qui témoignent de notre expertise et de notre engagement à offrir des solutions d'excellence.
+            {t('partnersCarousel.description')}
           </p>
         </div>
 
