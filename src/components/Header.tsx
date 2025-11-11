@@ -23,11 +23,13 @@ const Header: React.FC = () => {
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
+  const [isMobileLanguageDropdownOpen, setIsMobileLanguageDropdownOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
   const [isSearchFocused, setIsSearchFocused] = useState(false)
   const location = useLocation()
   const languageDropdownRef = useRef<HTMLDivElement>(null)
+  const mobileLanguageDropdownRef = useRef<HTMLDivElement>(null)
   const searchDropdownRef = useRef<HTMLDivElement>(null)
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
@@ -108,16 +110,19 @@ const Header: React.FC = () => {
       if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target as Node)) {
         setIsLanguageDropdownOpen(false)
       }
+      if (mobileLanguageDropdownRef.current && !mobileLanguageDropdownRef.current.contains(event.target as Node)) {
+        setIsMobileLanguageDropdownOpen(false)
+      }
     }
 
-    if (isLanguageDropdownOpen) {
+    if (isLanguageDropdownOpen || isMobileLanguageDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isLanguageDropdownOpen])
+  }, [isLanguageDropdownOpen, isMobileLanguageDropdownOpen])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
@@ -507,6 +512,49 @@ const Header: React.FC = () => {
               <Mail size={14} />
               <span>{t('contact.cta')}</span>
             </Link>
+          </div>
+
+          {/* Mobile Language Selector - visible uniquement sur mobile */}
+          <div className="lg:hidden relative ml-auto" ref={mobileLanguageDropdownRef}>
+            <button
+              onClick={() => setIsMobileLanguageDropdownOpen(!isMobileLanguageDropdownOpen)}
+              className="flex items-center space-x-1 p-2 rounded-lg hover:bg-primary-50 transition-all duration-300 hover:scale-105 text-secondary-600"
+            >
+              <Languages size={20} className="text-secondary-600" />
+              <span className="text-sm font-semibold text-secondary-600">{currentLanguage === 'fr' ? 'FR' : 'EN'}</span>
+            </button>
+            
+            {/* Dropdown Menu Mobile */}
+            {isMobileLanguageDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                <button
+                  onClick={() => {
+                    changeLanguage('fr')
+                    setIsMobileLanguageDropdownOpen(false)
+                  }}
+                  className={`w-full text-left px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                    currentLanguage === 'fr' 
+                      ? 'text-primary-600 bg-primary-50' 
+                      : 'text-secondary-600 hover:text-primary-600 hover:bg-primary-50'
+                  }`}
+                >
+                  Français
+                </button>
+                <button
+                  onClick={() => {
+                    changeLanguage('en')
+                    setIsMobileLanguageDropdownOpen(false)
+                  }}
+                  className={`w-full text-left px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                    currentLanguage === 'en' 
+                      ? 'text-primary-600 bg-primary-50' 
+                      : 'text-secondary-600 hover:text-primary-600 hover:bg-primary-50'
+                  }`}
+                >
+                  English
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Toggle - MatriCx Styling */}
