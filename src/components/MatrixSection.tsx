@@ -93,7 +93,7 @@ const MatrixSection = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> 
 
         {/* CTA avec animation */}
         <div className="text-center animate-fade-in animation-delay-600">
