@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section id="home" className="relative flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-32 pb-8 lg:pb-12">
+    <section id="home" className="relative flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-32 pb-8 lg:pb-12 section-transition">
       {/* Background Elements - MatriCx Colors */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full opacity-25 blur-3xl animate-float"></div>

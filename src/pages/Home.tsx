@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import Header from '../components/Header'
 import HeroSection from '../components/HeroSection'
+import PodcastSection from '../components/PodcastSection'
 import PartnersCarousel from '../components/PartnersCarousel'
 import MatrixSection from '../components/MatrixSection'
 import ServicesSection from '../components/ServicesSection'
@@ -16,8 +17,9 @@ const Home: React.FC = () => {
       <Header />
       <main>
         <HeroSection />
-        <PartnersCarousel />
         <MatrixSection />
+        <PodcastSection />
+        <PartnersCarousel />
         <ServicesSection />
         <TestimonialsSection />
         <ValuesSection />

@@ -104,7 +104,7 @@ const TestimonialsSection: React.FC = () => {
   const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-white overflow-hidden section-transition">
       <div className="container-custom">
         {/* En-tête simple */}
         <div className="text-center mb-12">

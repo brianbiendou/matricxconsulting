@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { Shield, Heart, Sparkles, Lightbulb, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { Shield, Lightbulb, Sparkles, Users, Star, ArrowRight, ArrowUpRight } from 'lucide-react'
 
 const ValuesSection: React.FC = () => {
   const { t } = useTranslation()
   const [activeValue, setActiveValue] = useState(0)
 
   const values = [
+    {
+      icon: <Shield className="w-6 h-6" />,
+      name: t('values.integrity.name'),
+      description: t('values.integrity.description'),
+      gradient: "from-purple-500 to-purple-700",
+      bgColor: "#9333EA",
+      textColor: "text-white"
+    },
     {
       icon: <Lightbulb className="w-6 h-6" />,
       name: t('values.innovation.name'),
@@ -17,33 +25,33 @@ const ValuesSection: React.FC = () => {
       textColor: "text-black"
     },
     {
-      icon: <Shield className="w-6 h-6" />,
-      name: t('values.integrity.name'),
-      description: t('values.integrity.description'),
+      icon: <Star className="w-6 h-6" />,
+      name: t('values.excellence.name'),
+      description: t('values.excellence.description'),
       gradient: "from-blue-500 to-blue-700",
       bgColor: "#0080AF",
       textColor: "text-white"
     },
     {
-      icon: <Heart className="w-6 h-6" />,
-      name: t('values.engagement.name'),
-      description: t('values.engagement.description'),
-      gradient: "from-white to-gray-100",
-      bgColor: "#FFFFFF",
-      textColor: "text-black"
-    },
-    {
       icon: <Sparkles className="w-6 h-6" />,
       name: t('values.authenticity.name'),
       description: t('values.authenticity.description'),
-      gradient: "from-gray-800 to-black",
-      bgColor: "#575756",
+      gradient: "from-green-500 to-green-700",
+      bgColor: "#10B981",
+      textColor: "text-white"
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      name: t('values.collaboration.name'),
+      description: t('values.collaboration.description'),
+      gradient: "from-orange-500 to-orange-700",
+      bgColor: "#F97316",
       textColor: "text-white"
     }
   ]
 
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-gray-50 section-transition">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12 animate-fade-in">
@@ -66,8 +74,7 @@ const ValuesSection: React.FC = () => {
             </div>
             
             <p className="text-gray-600 leading-relaxed mb-8 font-bold">
-              Au travers de quatre valeurs qui nous définissent et déterminent la valeur 
-              ajoutée que nous souhaitons vous apporter.
+              {t('values.subtitle')}
             </p>
 
             {/* Interactive Value Buttons */}

@@ -1,29 +1,130 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Users, Lightbulb, BarChart, Settings, GraduationCap } from 'lucide-react'
+import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Users, Lightbulb, BarChart, Settings, GraduationCap, Search } from 'lucide-react'
 import logoMatricx from '../images/matricxlogo.png'
 import leadershipImage from '../images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg'
 import innovationImage from '../images/blog/vert1.jpg'
 import './Header.css'
 
+interface SearchResult {
+  title: string
+  titleEn: string
+  path: string
+  keywords: string[]
+}
+
 const Header: React.FC = () => {
   const { t, currentLanguage, changeLanguage } = useTranslation()
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
   const location = useLocation()
+  const languageDropdownRef = useRef<HTMLDivElement>(null)
+  const searchDropdownRef = useRef<HTMLDivElement>(null)
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+
+  // Database de recherche - Pages et sections
+  const searchDatabase = [
+    // Pages principales
+    { title: 'Accueil', titleEn: 'Home', path: '/', keywords: ['home', 'accueil', 'principale'] },
+    { title: 'À propos', titleEn: 'About', path: '/about', keywords: ['about', 'propos', 'entreprise', 'company'] },
+    { title: 'Services', titleEn: 'Services', path: '/services', keywords: ['services', 'expertise'] },
+    { title: 'Contact', titleEn: 'Contact', path: '/contact', keywords: ['contact', 'email', 'nous joindre'] },
+    { title: 'Blog', titleEn: 'Blog', path: '/blog', keywords: ['blog', 'articles', 'actualités'] },
+    
+    // Sous-pages About
+    { title: 'Entreprise', titleEn: 'Company', path: '/about/company', keywords: ['company', 'entreprise', 'équipe', 'team'] },
+    { title: 'Carrières', titleEn: 'Careers', path: '/about/careers', keywords: ['careers', 'carrières', 'emploi', 'jobs', 'recrutement'] },
+    { title: 'Expérience', titleEn: 'Experience', path: '/about/experience', keywords: ['experience', 'expérience', 'réalisations'] },
+    { title: 'Partenaires', titleEn: 'Partners', path: '/about/partners', keywords: ['partners', 'partenaires', 'collaboration'] },
+    { title: 'Média', titleEn: 'Media', path: '/about/media', keywords: ['media', 'média', 'presse'] },
+    { title: 'Durabilité', titleEn: 'Sustainability', path: '/about/sustainability', keywords: ['sustainability', 'durabilité', 'environnement'] },
+    
+    // Services
+    { title: 'MatriCx Advisory', titleEn: 'MatriCx Advisory', path: '/services/advisory', keywords: ['advisory', 'conseil', 'stratégie', 'consulting'] },
+    { title: 'MatriCx Survey', titleEn: 'MatriCx Survey', path: '/services/survey', keywords: ['survey', 'enquête', 'études', 'research', 'marché'] },
+    { title: 'MatriCx Technology', titleEn: 'MatriCx Technology', path: '/services/technology', keywords: ['technology', 'technologie', 'crm', 'digital', 'transformation'] },
+    { title: 'MatriCx Training', titleEn: 'MatriCx Training', path: '/services/training', keywords: ['training', 'formation', 'éducation', 'certification'] },
+  ]
+
+  // Fonction de recherche
+  const handleSearch = (query: string) => {
+    setSearchQuery(query)
+    
+    if (query.trim() === '') {
+      setSearchResults([])
+      return
+    }
+
+    const queryLower = query.toLowerCase()
+    const results = searchDatabase.filter(item => {
+      const title = currentLanguage === 'fr' ? item.title : item.titleEn
+      return (
+        title.toLowerCase().includes(queryLower) ||
+        item.keywords.some(keyword => keyword.toLowerCase().includes(queryLower))
+      )
+    })
+
+    setSearchResults(results.slice(0, 5)) // Limiter à 5 résultats
+  }
+
+  // Navigation vers un résultat
+  const handleResultClick = (path: string) => {
+    navigate(path)
+    setSearchQuery('')
+    setSearchResults([])
+    setIsSearchFocused(false)
+  }
+
+  // Fermer le dropdown de recherche en cliquant dehors
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchDropdownRef.current && !searchDropdownRef.current.contains(event.target as Node)) {
+        setIsSearchFocused(false)
+      }
+    }
+
+    if (isSearchFocused) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isSearchFocused])
+
+  // Close language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target as Node)) {
+        setIsLanguageDropdownOpen(false)
+      }
+    }
+
+    if (isLanguageDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isLanguageDropdownOpen])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
       {/* Main Navigation */}
       <nav className="py-2">
-        <div className="container-custom flex justify-between items-center">
-          {/* Logo */}
+        <div className="container-custom flex items-center gap-6">
+          {/* Logo - agrandi de 15% */}
           <div className="flex items-center">
             <Link to="/" className="transition-transform duration-200 hover:scale-105">
               <img 
@@ -34,16 +135,12 @@ const Header: React.FC = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation - MatriCx Styling */}
-          <div className="hidden lg:flex items-center space-x-6 font-primary">
-            <Link to="/" className={`nav-link text-sm font-semibold transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
-              {t('nav.home')}
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-3/4"></span>
-            </Link>
+          {/* Desktop Navigation - MatriCx Styling - textes agrandis de 15% */}
+          <div className="hidden lg:flex items-center space-x-2 font-primary flex-1">
             <div className="relative group"
                  onMouseEnter={() => setIsAboutDropdownOpen(true)}
                  onMouseLeave={() => setIsAboutDropdownOpen(false)}>
-              <Link to="/about" className={`nav-link text-sm font-semibold transition-all duration-300 flex items-center px-3 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/about' || location.pathname.startsWith('/about/') ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
+              <Link to="/about" className={`nav-link text-sm font-semibold transition-all duration-300 flex items-center px-2.5 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/about' || location.pathname.startsWith('/about/') ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
                 {t('nav.about')} 
                 <ChevronDown size={16} className={`ml-1 transition-transform duration-300 ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
               </Link>
@@ -185,7 +282,7 @@ const Header: React.FC = () => {
             <div className="relative group"
                  onMouseEnter={() => setIsServicesDropdownOpen(true)}
                  onMouseLeave={() => setIsServicesDropdownOpen(false)}>
-              <Link to="/services" className={`nav-link text-sm font-semibold transition-all duration-300 flex items-center px-3 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/services' || location.pathname.startsWith('/services/') ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
+              <Link to="/services" className={`nav-link text-sm font-semibold transition-all duration-300 flex items-center px-2.5 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/services' || location.pathname.startsWith('/services/') ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
                 {t('nav.services')} 
                 <ChevronDown size={16} className={`ml-1 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
               </Link>
@@ -315,27 +412,99 @@ const Header: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Link to="/contact" className={`nav-link text-sm font-semibold transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/contact' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
-              {t('nav.contact')}
+            <Link to="/services/training" className={`nav-link text-sm font-semibold transition-all duration-300 relative group px-2.5 py-2 rounded-lg hover:bg-primary-50 whitespace-nowrap ${location.pathname === '/services/training' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
+              {t('nav.training')}
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-3/4"></span>
             </Link>
-            <Link to="/blog" className={`nav-link text-sm font-semibold transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-primary-50 ${location.pathname === '/blog' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
+            <Link to="/blog" className={`nav-link text-sm font-semibold transition-all duration-300 relative group px-2.5 py-2 rounded-lg hover:bg-primary-50 whitespace-nowrap ${location.pathname === '/blog' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600'}`}>
               {t('nav.blog')}
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-3/4"></span>
             </Link>
           </div>
 
           {/* Actions Section - MatriCx Styling */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <button
-              onClick={() => changeLanguage(currentLanguage === 'fr' ? 'en' : 'fr')}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg border border-secondary-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-300 hover:scale-105 font-primary"
-            >
-              <Languages size={16} className="text-accent-500" />
-              <span className="text-sm font-semibold text-secondary-600">{currentLanguage === 'fr' ? 'EN' : 'FR'}</span>
-            </button>
-            <Link to="/contact" className="btn-primary flex items-center space-x-2 hover:shadow-lg transform hover:-translate-y-0.5 text-sm font-primary">
-              <Mail size={16} />
+          <div className="hidden lg:flex items-center space-x-2">
+            {/* Search Bar avec résultats */}
+            <div className="relative" ref={searchDropdownRef}>
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  placeholder={currentLanguage === 'fr' ? 'Rechercher...' : 'Search...'}
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  onFocus={() => setIsSearchFocused(true)}
+                  className="w-40 px-3 py-1.5 pl-8 text-xs rounded-lg border border-secondary-200 focus:border-primary-300 focus:ring-1 focus:ring-primary-300 focus:outline-none transition-all duration-300"
+                />
+                <Search size={14} className="absolute left-2.5 text-secondary-400 pointer-events-none" />
+              </div>
+              
+              {/* Dropdown des résultats de recherche */}
+              {isSearchFocused && searchResults.length > 0 && (
+                <div className="absolute top-full mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50 max-h-80 overflow-y-auto">
+                  {searchResults.map((result, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleResultClick(result.path)}
+                      className="w-full text-left px-4 py-2.5 hover:bg-primary-50 transition-colors duration-200 flex items-center group"
+                    >
+                      <Search size={14} className="mr-3 text-gray-400 group-hover:text-primary-600" />
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900 group-hover:text-primary-600">
+                          {currentLanguage === 'fr' ? result.title : result.titleEn}
+                        </div>
+                        <div className="text-xs text-gray-500">{result.path}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            {/* Language Dropdown */}
+            <div className="relative" ref={languageDropdownRef}>
+              <button
+                onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-secondary-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-300 hover:scale-105 font-primary"
+              >
+                <Languages size={14} className="text-accent-500" />
+                <span className="text-xs font-semibold text-secondary-600">{currentLanguage === 'fr' ? 'FR' : 'EN'}</span>
+                <ChevronDown size={12} className={`text-secondary-600 transition-transform duration-300 ${isLanguageDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Dropdown Menu */}
+              {isLanguageDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                  <button
+                    onClick={() => {
+                      changeLanguage('fr')
+                      setIsLanguageDropdownOpen(false)
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                      currentLanguage === 'fr' 
+                        ? 'text-primary-600 bg-primary-50' 
+                        : 'text-secondary-600 hover:text-primary-600 hover:bg-primary-50'
+                    }`}
+                  >
+                    Français
+                  </button>
+                  <button
+                    onClick={() => {
+                      changeLanguage('en')
+                      setIsLanguageDropdownOpen(false)
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                      currentLanguage === 'en' 
+                        ? 'text-primary-600 bg-primary-50' 
+                        : 'text-secondary-600 hover:text-primary-600 hover:bg-primary-50'
+                    }`}
+                  >
+                    English
+                  </button>
+                </div>
+              )}
+            </div>
+            <Link to="/contact" className="btn-primary flex items-center space-x-1.5 hover:shadow-lg transform hover:-translate-y-0.5 text-xs font-primary px-3 py-1.5">
+              <Mail size={14} />
               <span>{t('contact.cta')}</span>
             </Link>
           </div>
@@ -353,10 +522,6 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="lg:hidden mt-4 bg-white/98 backdrop-blur border-t border-primary-100">
             <div className="container-custom py-6 space-y-2 font-primary">
-              <Link to="/" className={`block py-3 px-4 text-base font-semibold rounded-lg transition-all duration-300 ${location.pathname === '/' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600 hover:bg-primary-50'}`} onClick={() => setIsMenuOpen(false)}>
-                {t('nav.home')}
-              </Link>
-
               {/* About Accordion */}
               <div className="space-y-1">
                 <button 
@@ -451,9 +616,10 @@ const Header: React.FC = () => {
                 )}
               </div>
 
-              <Link to="/contact" className={`block py-3 px-4 text-base font-semibold rounded-lg transition-all duration-300 ${location.pathname === '/contact' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600 hover:bg-primary-50'}`} onClick={() => setIsMenuOpen(false)}>
-                {t('nav.contact')}
+              <Link to="/services/training" className={`block py-3 px-4 text-base font-semibold rounded-lg transition-all duration-300 ${location.pathname === '/services/training' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600 hover:bg-primary-50'}`} onClick={() => setIsMenuOpen(false)}>
+                {t('nav.training')}
               </Link>
+
               <Link to="/blog" className={`block py-3 px-4 text-base font-semibold rounded-lg transition-all duration-300 ${location.pathname === '/blog' ? 'text-primary-600 bg-primary-50' : 'text-secondary-500 hover:text-primary-600 hover:bg-primary-50'}`} onClick={() => setIsMenuOpen(false)}>
                 {t('nav.blog')}
               </Link>

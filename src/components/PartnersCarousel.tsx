@@ -55,20 +55,30 @@ const PartnersCarousel: React.FC = () => {
   const duplicatedPartners = [...partners, ...partners]
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-white overflow-hidden section-transition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* En-tête de la section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Ils nous font confiance
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Des partenaires de confiance qui témoignent de notre expertise et de notre engagement à offrir des solutions d'excellence.
+          </p>
+        </div>
+
         <div className="flex justify-center items-center">
           {/* Conteneur du carrousel */}
-          <div className="relative overflow-hidden h-20">
+          <div className="relative overflow-hidden h-24">
             {/* Carrousel avec CSS pur */}
             <div 
-              className={`flex space-x-12 ${isHovered ? 'carousel-paused' : 'carousel-scroll'}`}
+              className={`flex space-x-14 ${isHovered ? 'carousel-paused' : 'carousel-scroll'}`}
               style={{ width: 'max-content' }}
             >
               {duplicatedPartners.map((partner, index) => (
                 <div
                   key={`${partner.name}-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center h-20 w-32 hover:scale-110 transition-transform duration-300"
+                  className="flex-shrink-0 flex items-center justify-center h-24 w-40 hover:scale-110 transition-transform duration-300"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -76,10 +86,10 @@ const PartnersCarousel: React.FC = () => {
                     <img
                       src={partner.src}
                       alt={partner.alt}
-                      className="max-h-16 max-w-28 object-contain transition-all duration-300"
+                      className="max-h-20 max-w-36 object-contain transition-all duration-300 drop-shadow-md hover:drop-shadow-xl"
                     />
                   ) : (
-                    <div className="text-2xl font-bold text-gray-700 hover:text-gray-900 transition-colors duration-300 font-primary">
+                    <div className="text-2xl font-bold text-gray-700 hover:text-gray-900 transition-colors duration-300 font-primary drop-shadow-md">
                       {partner.name}
                     </div>
                   )}

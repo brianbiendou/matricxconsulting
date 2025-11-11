@@ -41,7 +41,7 @@ const ServicesSection: React.FC = () => {
   ]
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white section-transition">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">

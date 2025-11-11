@@ -35,11 +35,11 @@ const MatrixSection = () => {
       icon: <Target className="w-8 h-8" />
     },
     {
-      title: "Écoute client",
+      title: "Écoute Client",
       icon: <Headphones className="w-8 h-8" />
     },
     {
-      title: "Solutions digitales",
+      title: "Solutions Digitales",
       icon: <Monitor className="w-8 h-8" />
     },
     {
@@ -49,7 +49,7 @@ const MatrixSection = () => {
   ]
 
   return (
-    <section className="py-16 bg-gradient-to-br from-yellow-50 via-white to-blue-50 relative overflow-hidden" ref={sectionRef}>
+    <section className="py-16 bg-gradient-to-br from-yellow-50 via-white to-blue-50 relative overflow-hidden section-transition" ref={sectionRef}>
       <div className="container mx-auto px-4">
         {/* En-tête dynamique avec badge */}
         <div className="text-center mb-16">
@@ -58,7 +58,7 @@ const MatrixSection = () => {
             Nos Services
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
-            Votre succès, notre mission
+            Notre Mission, faire préférer votre Marque
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.

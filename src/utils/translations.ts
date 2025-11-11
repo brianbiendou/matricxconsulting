@@ -4,9 +4,12 @@ export const translations = {
     nav: {
       home: 'Accueil',
       about: 'À propos de nous',
+      training: 'Formation MatriCx',
       services: 'Nos services',
+      publications: 'Nos Publications &',
+      publicationsLine2: 'Recherches',
+      blog: 'Blog MatriCx',
       contact: 'Contact',
-      blog: 'Blog',
       dropdown: {
         advisory: 'MatriCx Advisory',
         survey: 'MatriCx Survey',
@@ -59,6 +62,13 @@ export const translations = {
         satisfaction: "Taux de satisfaction"
       }
     },
+    podcast: {
+      badge: "Nouveau",
+      title: "Podcast MatriCx",
+      subtitle: "Écoutez nos experts",
+      description: "Découvrez nos discussions passionnantes sur l'expérience client, les tendances du marché africain et les meilleures pratiques en matière de transformation digitale. Nos experts partagent leurs insights et conseils pratiques pour faire évoluer votre entreprise.",
+      cta: "Écouter sur YouTube"
+    },
     carousel: {
       images: [
         {
@@ -90,7 +100,7 @@ export const translations = {
       }
     },
     matrixSection: {
-      title: "Votre succès, notre mission",
+      title: "Notre Mission, faire préférer votre Marque",
       description: "Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.",
       cta: "En savoir plus",
       services: {
@@ -99,11 +109,11 @@ export const translations = {
           description: "Définir votre vision expérience client"
         },
         listening: {
-          title: "Écoute client",
+          title: "Écoute Client",
           description: "Capturer et analyser la voix du client"
         },
         digital: {
-          title: "Solutions digitales", 
+          title: "Solutions Digitales", 
           description: "Outils CRM et transformation numérique"
         },
         training: {
@@ -202,22 +212,26 @@ export const translations = {
     values: {
       badge: "Notre objectif est de...",
       title: "Faire préférer votre entreprise !",
-      subtitle: "Au travers de quatre valeurs qui nous définissent et déterminent la valeur ajoutée que nous souhaitons vous apporter.",
-      innovation: {
-        name: "Innovation",
-        description: "Proposer des solutions créatives et avant-gardistes pour transformer votre expérience client."
-      },
+      subtitle: "Au travers de cinq valeurs qui nous définissent et déterminent la valeur ajoutée que nous souhaitons vous apporter.",
       integrity: {
         name: "Intégrité",
-        description: "Assurer l'atteinte des objectifs de nos clients en toute circonstance."
+        description: "On fait ce qui est correct. Transparence, honnêteté et éthique dans toutes nos actions."
       },
-      engagement: {
-        name: "Engagement", 
-        description: "Faire corps avec votre projet : délais, méthodologie, résultats"
+      innovation: {
+        name: "Innovation",
+        description: "On s'adapte continuellement pour améliorer la vie de nos clients et proposer des solutions créatives."
+      },
+      excellence: {
+        name: "Excellence Client",
+        description: "On ne s'arrête jamais de s'améliorer et d'apprendre pour offrir le meilleur service."
       },
       authenticity: {
         name: "Authenticité",
-        description: "Votre expérience sera votre clé de différenciation. Le principal élément de votre recommandation."
+        description: "Nous apportons la différenciation pour faire préférer votre marque et être authentiques."
+      },
+      collaboration: {
+        name: "Collaboration",
+        description: "Nous privilégions la coopération pour créer des solutions efficaces ensemble."
       }
     },
     servicesSection: {
@@ -348,15 +362,74 @@ export const translations = {
           image: "digital-transformation"
         }
       ]
+    },
+    careers: {
+      hero: {
+        title: "Carrières et Culture",
+        subtitle: "Rejoignez-nous dans la transformation digitale de l'Afrique",
+        cta1: "Voir les Opportunités",
+        cta2: "Candidature Spontanée"
+      },
+      matricxWay: {
+        badge: "The MatriCx Way",
+        text1: "Chez MatriCx Consulting, nous considérons nos collaborateurs comme notre atout le plus précieux. Nos compétences, nos parcours et nos expériences variés sont les moteurs de l'Innovation et de l'Excellence, tandis que notre culture d'entreprise basée sur une Hospitalité déraisonnable fait de nous un lieu idéal pour bâtir une carrière florissante et ambitieuse.",
+        text2: "Il s'agit de la méthode MatriCx, the MatriCx Way.",
+        text3: "Nos valeurs façonnent notre culture et définissent notre caractère. Nous vivons nos valeurs fondamentales à travers des comportements individuels qui guident notre façon d'agir et de prendre des décisions.",
+        team: "Une équipe passionnée et engagée",
+        culture: "Rejoignez une culture d'excellence et d'innovation"
+      },
+      benefits: {
+        title: "Pourquoi Nous Rejoindre ?",
+        subtitle: "Développez votre carrière dans un environnement stimulant",
+        training: "Formation Continue",
+        trainingDesc: "Programme de développement professionnel personnalisé",
+        team: "Équipe Internationale",
+        teamDesc: "Collaborez avec des experts de divers horizons",
+        innovation: "Innovation",
+        innovationDesc: "Travaillez sur des projets digitaux innovants",
+        wellbeing: "Bien-être",
+        wellbeingDesc: "Équilibre vie pro/perso et avantages sociaux"
+      },
+      openings: {
+        title: "Postes Ouverts",
+        subtitle: "Explorez nos opportunités actuelles"
+      },
+      values: {
+        sectionTitle: "Nos Valeurs",
+        sectionSubtitle: "Les piliers de notre culture MatriCx",
+        badge: "CE QUI NOUS IMPORTE",
+        title: "Vivre nos valeurs",
+        intro: "Nos valeurs reflètent qui nous sommes et ce en quoi nous croyons. Elles établissent une identité commune qui nous unit, éclaire nos prises de décision et influence nos interactions avec nos collègues et clients.",
+        matricx: "Chez MatriCx Consulting, nous vivons nos valeurs fondamentales à travers des comportements individuels qui guident notre façon d'agir et de prendre des décisions — à chaque moment, chaque jour.",
+        culture: "Notre culture d'entreprise basée sur une Hospitalité déraisonnable fait de nous un lieu idéal pour bâtir une carrière florissante et ambitieuse.",
+        integrity: "Intégrité",
+        integrityDesc: "On fait ce qui est correct. Transparence, honnêteté et éthique.",
+        innovation: "Innovation",
+        innovationDesc: "On s'adapte continuellement pour améliorer la vie de nos clients.",
+        excellence: "Excellence Client",
+        excellenceDesc: "On ne s'arrête jamais de s'améliorer et d'apprendre.",
+        authenticity: "Authenticité",
+        authenticityDesc: "Nous apportons la différenciation pour faire préférer votre marque.",
+        collaboration: "Collaboration",
+        collaborationDesc: "Nous privilégions la coopération pour créer des solutions efficaces."
+      },
+      cta: {
+        title: "Prêt à Nous Rejoindre ?",
+        subtitle: "Envoyez-nous votre candidature et participez à l'aventure MatriCx",
+        button: "Postuler Maintenant"
+      }
     }
   },
   en: {
     nav: {
       home: 'Home',
       about: 'About us',
+      training: 'MatriCx Training',
       services: 'Our services',
+      publications: 'Our Publications &',
+      publicationsLine2: 'Research',
+      blog: 'MatriCx Blog',
       contact: 'Contact',
-      blog: 'Blog',
       dropdown: {
         advisory: 'MatriCx Advisory',
         survey: 'MatriCx Survey',
@@ -381,7 +454,7 @@ export const translations = {
       description: "Personalized strategic support to optimize your customer relationship and generate sustainable growth in Africa.",
       cta: "Book an appointment",
       badge: "Consulting firm specialized in customer experience",
-      heroLine1: "transform your",
+      heroLine1: "Transform your",
       heroLine2: "experience",
       heroLine3: "customer",
       heroLine4: "into competitive",
@@ -409,6 +482,13 @@ export const translations = {
         experience: "Experience",
         satisfaction: "Satisfaction rate"
       }
+    },
+    podcast: {
+      badge: "New",
+      title: "MatriCx Podcast",
+      subtitle: "Listen to our experts",
+      description: "Discover our passionate discussions on customer experience, African market trends, and best practices in digital transformation. Our experts share their insights and practical advice to help your business evolve.",
+      cta: "Listen on YouTube"
     },
     carousel: {
       images: [
@@ -553,22 +633,26 @@ export const translations = {
     values: {
       badge: "Our objective is to...",
       title: "Make your company preferred!",
-      subtitle: "Through four values that define us and determine the added value we want to bring you.",
-      innovation: {
-        name: "Innovation",
-        description: "Propose creative and cutting-edge solutions to transform your customer experience."
-      },
+      subtitle: "Through five values that define us and determine the added value we want to bring you.",
       integrity: {
         name: "Integrity",
-        description: "Ensure achievement of our clients' objectives under all circumstances."
+        description: "We do what is right. Transparency, honesty and ethics in all our actions."
       },
-      engagement: {
-        name: "Commitment",
-        description: "Be one with your project: deadlines, methodology, results"
+      innovation: {
+        name: "Innovation",
+        description: "We continuously adapt to improve our clients' lives and propose creative solutions."
+      },
+      excellence: {
+        name: "Client Excellence",
+        description: "We never stop improving and learning to deliver the best service."
       },
       authenticity: {
         name: "Authenticity",
-        description: "Your experience will be your key differentiator. The main element of your recommendation."
+        description: "We bring differentiation to make your brand preferred and be authentic."
+      },
+      collaboration: {
+        name: "Collaboration",
+        description: "We prioritize cooperation to create effective solutions together."
       }
     },
     servicesSection: {
@@ -699,6 +783,62 @@ export const translations = {
           image: "digital-transformation"
         }
       ]
+    },
+    careers: {
+      hero: {
+        title: "Careers and Culture",
+        subtitle: "Join us in Africa's digital transformation",
+        cta1: "View Opportunities",
+        cta2: "Spontaneous Application"
+      },
+      matricxWay: {
+        badge: "The MatriCx Way",
+        text1: "At MatriCx Consulting, we consider our employees as our most valuable asset. Our diverse skills, backgrounds and experiences are the drivers of Innovation and Excellence, while our company culture based on unreasonable Hospitality makes us an ideal place to build a thriving and ambitious career.",
+        text2: "This is the MatriCx method, the MatriCx Way.",
+        text3: "Our values shape our culture and define our character. We live our core values through individual behaviors that guide our way of acting and making decisions.",
+        team: "A passionate and committed team",
+        culture: "Join a culture of excellence and innovation"
+      },
+      benefits: {
+        title: "Why Join Us?",
+        subtitle: "Develop your career in a stimulating environment",
+        training: "Continuous Training",
+        trainingDesc: "Personalized professional development program",
+        team: "International Team",
+        teamDesc: "Collaborate with experts from diverse backgrounds",
+        innovation: "Innovation",
+        innovationDesc: "Work on innovative digital projects",
+        wellbeing: "Well-being",
+        wellbeingDesc: "Work-life balance and social benefits"
+      },
+      openings: {
+        title: "Open Positions",
+        subtitle: "Explore our current opportunities"
+      },
+      values: {
+        sectionTitle: "Our Values",
+        sectionSubtitle: "The pillars of our MatriCx culture",
+        badge: "WHAT MATTERS TO US",
+        title: "Living our values",
+        intro: "Our values reflect who we are and what we believe. They establish a common identity that unites us, informs our decision-making, and influences our interactions with colleagues and clients.",
+        matricx: "At MatriCx Consulting, we live our core values through individual behaviors that guide our way of acting and making decisions — every moment, every day.",
+        culture: "Our company culture based on unreasonable Hospitality makes us an ideal place to build a thriving and ambitious career.",
+        integrity: "Integrity",
+        integrityDesc: "We do what is right. Transparency, honesty and ethics.",
+        innovation: "Innovation",
+        innovationDesc: "We continually adapt to improve our clients' lives.",
+        excellence: "Client Excellence",
+        excellenceDesc: "We never stop improving and learning.",
+        authenticity: "Authenticity",
+        authenticityDesc: "We bring differentiation to make your brand preferred.",
+        collaboration: "Collaboration",
+        collaborationDesc: "We prioritize cooperation to create effective solutions."
+      },
+      cta: {
+        title: "Ready to Join Us?",
+        subtitle: "Send us your application and join the MatriCx adventure",
+        button: "Apply Now"
+      }
     }
   }
 }
