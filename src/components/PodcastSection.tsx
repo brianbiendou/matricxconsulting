@@ -46,6 +46,10 @@ const PodcastSection: React.FC = () => {
 
           {/* Contenu à droite */}
           <div className="space-y-6 animate-fade-in animation-delay-200">
+            <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm border border-yellow-200">
+              <Headphones size={18} className="mr-2" />
+              {t('podcast.badge')}
+            </div>
             <div className="space-y-3">
               <h2 className="text-4xl lg:text-5xl font-bold text-secondary-600">
                 {t('podcast.title')}

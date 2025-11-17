@@ -65,7 +65,7 @@ const HeroSection: React.FC = () => {
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
               
-              <Link to="/about" className="btn-secondary flex items-center justify-center space-x-2 bg-transparent border-2 border-secondary-300 text-secondary-600 hover:bg-secondary-50 hover:border-accent-400 hover:text-accent-600">
+              <Link to="/services" className="btn-secondary flex items-center justify-center space-x-2 bg-transparent border-2 border-secondary-300 text-secondary-600 hover:bg-secondary-50 hover:border-accent-400 hover:text-accent-600">
                 <span>{t('common.learnMore')}</span>
               </Link>
             </div>

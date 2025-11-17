@@ -293,48 +293,44 @@ const Contact: React.FC = () => {
             <h3 className="text-xl font-bold text-gray-900 mb-8 text-center">{t('contact.page.location')}</h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Informations de localisation - Avec icônes alignées */}
-              <div className="flex flex-col items-start space-y-8 mx-auto lg:ml-20 pl-6">
-                <div className="w-full">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
-                      <MapPin className="w-6 h-6 text-yellow-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Adresse complète</h4>
+              <div className="flex flex-col items-start space-y-8 mx-auto lg:ml-20">
+                <div className="w-full flex items-start">
+                  <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                    <MapPin className="w-6 h-6 text-yellow-600" />
                   </div>
-                  <div className="text-gray-600 leading-relaxed mt-3 ml-16">
-                    <p>Makepe BM</p>
-                    <p>Douala, Cameroun</p>
-                    <p>BP 12777</p>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-lg mb-2">Adresse complète</h4>
+                    <div className="text-gray-600 leading-relaxed">
+                      <p>Makepe BM</p>
+                      <p>Douala, Cameroun</p>
+                      <p>BP 12777</p>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="w-full">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
-                      <Phone className="w-6 h-6 text-yellow-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900 text-lg">Téléphone</h4>
+                <div className="w-full flex items-start">
+                  <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                    <Phone className="w-6 h-6 text-yellow-600" />
                   </div>
-                  <div className="mt-3 ml-16">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-lg mb-2">Téléphone</h4>
                     <a href="tel:+237677810120" className="text-yellow-600 hover:text-yellow-700 font-medium text-lg">
                       +237 677 810 120
                     </a>
                   </div>
                 </div>
 
-                {/* Bouton Google Maps - Responsive */}
-                <div className="flex w-full pt-4 mt-2 lg:ml-16">
-                  <a
-                    href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-flex items-center justify-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-black font-bold w-full sm:w-auto px-4 py-3 text-sm sm:text-base"
-                  >
-                    <MapPin size={16} />
-                    <span className="whitespace-nowrap">Voir sur Google Maps</span>
-                    <ArrowRight size={14} />
-                  </a>
-                </div>
+                {/* Bouton Google Maps - Aligné avec les icônes */}
+                <a
+                  href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center justify-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-black font-bold w-full sm:w-auto px-4 py-3 text-sm sm:text-base"
+                >
+                  <MapPin size={16} />
+                  <span className="whitespace-nowrap">Voir sur Google Maps</span>
+                  <ArrowRight size={14} />
+                </a>
               </div>
 
               {/* Carte alternative avec ombre uniforme */}

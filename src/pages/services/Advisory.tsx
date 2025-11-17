@@ -275,25 +275,25 @@ const Advisory: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                 {/* Étape 1 */}
                 <div className="group">
-                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg border-4 border-yellow-400 group-hover:scale-110 transition-transform">
                         <Users className="w-8 h-8 text-white" />
                       </div>
                     </div>
-                    <div className="mt-12">
-                      <h4 className="text-xl font-bold text-gray-900 mb-4">Compréhension & Analyse</h4>
-                      <ul className="space-y-3 text-gray-600">
+                    <div className="mt-12 flex-grow">
+                      <h4 className="text-xl font-bold text-black mb-4">Compréhension & Analyse</h4>
+                      <ul className="space-y-3 text-black">
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Analyse du contexte</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Identification des besoins</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Évaluation de l'environnement</span>
                         </li>
                       </ul>
@@ -303,25 +303,25 @@ const Advisory: React.FC = () => {
 
                 {/* Étape 2 */}
                 <div className="group">
-                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center shadow-lg border-4 border-yellow-400 group-hover:scale-110 transition-transform">
                         <BarChart3 className="w-8 h-8 text-white" />
                       </div>
                     </div>
-                    <div className="mt-12">
-                      <h4 className="text-xl font-bold text-gray-900 mb-4">Diagnostic & Maturité</h4>
-                      <ul className="space-y-3 text-gray-600">
+                    <div className="mt-12 flex-grow">
+                      <h4 className="text-xl font-bold text-black mb-4">Diagnostic & Maturité</h4>
+                      <ul className="space-y-3 text-black">
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>État des lieux</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Analyse comparative</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Axes d'amélioration</span>
                         </li>
                       </ul>
@@ -331,25 +331,25 @@ const Advisory: React.FC = () => {
 
                 {/* Étape 3 */}
                 <div className="group">
-                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-800 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-800 rounded-full flex items-center justify-center shadow-lg border-4 border-yellow-400 group-hover:scale-110 transition-transform">
                         <Settings className="w-8 h-8 text-white" />
                       </div>
                     </div>
-                    <div className="mt-12">
-                      <h4 className="text-xl font-bold text-gray-900 mb-4">Design & Implémentation</h4>
-                      <ul className="space-y-3 text-gray-600">
+                    <div className="mt-12 flex-grow">
+                      <h4 className="text-xl font-bold text-black mb-4">Design & Implémentation</h4>
+                      <ul className="space-y-3 text-black">
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Co-construction des solutions</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Plan d'action détaillé</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Accompagnement au changement</span>
                         </li>
                       </ul>
@@ -359,25 +359,25 @@ const Advisory: React.FC = () => {
 
                 {/* Étape 4 */}
                 <div className="group">
-                  <div className="relative bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-900 rounded-full flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-900 rounded-full flex items-center justify-center shadow-lg border-4 border-yellow-400 group-hover:scale-110 transition-transform">
                         <BarChart3 className="w-8 h-8 text-white" />
                       </div>
                     </div>
-                    <div className="mt-12">
-                      <h4 className="text-xl font-bold text-gray-900 mb-4">Mesure & Impact ROI</h4>
-                      <ul className="space-y-3 text-gray-600">
+                    <div className="mt-12 flex-grow">
+                      <h4 className="text-xl font-bold text-black mb-4">Mesure & Impact ROI</h4>
+                      <ul className="space-y-3 text-black">
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Suivi des indicateurs</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Analyse des résultats</span>
                         </li>
                         <li className="flex items-start">
-                          <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-5 h-5 mr-2 text-blue-600 flex-shrink-0 mt-0.5" />
                           <span>Optimisation continue</span>
                         </li>
                       </ul>
@@ -425,27 +425,27 @@ const Advisory: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
               {/* Levier 1 - Organisation */}
-              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
-                <div className="relative p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <Users className="w-6 h-6 text-blue-600" />
+                <div className="relative p-6 flex-grow">
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <Users className="w-7 h-7 text-blue-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-4">Organisation</h4>
-                  <div className="space-y-4">
-                    <p className="text-gray-700">Structure optimisée pour :</p>
+                  <div className="space-y-3">
+                    <p className="text-base text-gray-700">Structure optimisée pour :</p>
                     <ul className="space-y-3">
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Décloisonnement des silos</span>
+                        <span className="text-base text-gray-600">Décloisonnement des silos</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Collaboration transverse</span>
+                        <span className="text-base text-gray-600">Collaboration transverse</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Centralité client</span>
+                        <span className="text-base text-gray-600">Centralité client</span>
                       </li>
                     </ul>
                   </div>
@@ -453,27 +453,27 @@ const Advisory: React.FC = () => {
               </div>
 
               {/* Levier 2 - Gouvernance */}
-              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
-                <div className="relative p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <Shield className="w-6 h-6 text-blue-600" />
+                <div className="relative p-6 flex-grow">
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <Shield className="w-7 h-7 text-blue-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-4">Gouvernance</h4>
-                  <div className="space-y-4">
-                    <p className="text-gray-700">Pilotage stratégique :</p>
+                  <div className="space-y-3">
+                    <p className="text-base text-gray-700">Pilotage stratégique :</p>
                     <ul className="space-y-3">
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Vision transverse</span>
+                        <span className="text-base text-gray-600">Vision transverse</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Implication du management</span>
+                        <span className="text-base text-gray-600">Implication du management</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Culture client partagée</span>
+                        <span className="text-base text-gray-600">Culture client partagée</span>
                       </li>
                     </ul>
                   </div>
@@ -481,27 +481,27 @@ const Advisory: React.FC = () => {
               </div>
 
               {/* Levier 3 - Voix du Client */}
-              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
-                <div className="relative p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <MessageSquare className="w-6 h-6 text-blue-600" />
+                <div className="relative p-6 flex-grow">
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <MessageSquare className="w-7 h-7 text-blue-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-4">Voix du Client</h4>
-                  <div className="space-y-4">
-                    <p className="text-gray-700">Écoute active :</p>
+                  <div className="space-y-3">
+                    <p className="text-base text-gray-700">Écoute active :</p>
                     <ul className="space-y-3">
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Dispositif multi-niveaux</span>
+                        <span className="text-base text-gray-600">Dispositif multi-niveaux</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Retours directs</span>
+                        <span className="text-base text-gray-600">Retours directs</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Amélioration continue</span>
+                        <span className="text-base text-gray-600">Amélioration continue</span>
                       </li>
                     </ul>
                   </div>
@@ -509,54 +509,55 @@ const Advisory: React.FC = () => {
               </div>
 
               {/* Levier 4 - Parcours Clients */}
-              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
-                <div className="relative p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <Zap className="w-6 h-6 text-blue-600" />
+                <div className="relative p-6 flex-grow">
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <Zap className="w-7 h-7 text-blue-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-4">Parcours Clients</h4>
-                  <p className="text-xs text-gray-700 mb-2">
-                    Apporter de nouvelles approches pour designer les parcours clients, de ces derniers découleront ensuite :
-                  </p>
-                  <ul className="text-xs text-gray-700 space-y-1">
-                    <li>1. Les processus</li>
-                    <li>2. Les procédures</li>
-                    <li>3. Les modes opératoires</li>
-                  </ul>
-                  <div className="flex justify-center mt-2">
-                    <div className="w-8 h-8 border-2 border-yellow-400 rounded-full flex items-center justify-center">
-                      <ArrowRight className="w-4 h-4 text-yellow-600" />
-                    </div>
+                  <div className="space-y-3">
+                    <p className="text-base text-gray-700">Designer les parcours clients :</p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-base text-gray-600">Les processus</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-base text-gray-600">Les procédures</span>
+                      </li>
+                      <li className="flex items-start">
+                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-base text-gray-600">Les modes opératoires</span>
+                      </li>
+                    </ul>
                   </div>
-                  <p className="text-xs text-center text-yellow-600 mt-1">
-                    Boucle d'amélioration continue
-                  </p>
                 </div>
               </div>
 
               {/* Levier 5 - Mesure et Analyse */}
-              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="group relative overflow-hidden bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
-                <div className="relative p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <BarChart3 className="w-6 h-6 text-blue-600" />
+                <div className="relative p-6 flex-grow">
+                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <BarChart3 className="w-7 h-7 text-blue-600" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-4">Mesure & Analyse</h4>
-                  <div className="space-y-4">
-                    <p className="text-gray-700">Pilotage performant :</p>
+                  <div className="space-y-3">
+                    <p className="text-base text-gray-700">Pilotage performant :</p>
                     <ul className="space-y-3">
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">KPIs stratégiques</span>
+                        <span className="text-base text-gray-600">KPIs stratégiques</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Analyse d'impact</span>
+                        <span className="text-base text-gray-600">Analyse d'impact</span>
                       </li>
                       <li className="flex items-start">
                         <ArrowRight className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-600">Optimisation continue</span>
+                        <span className="text-base text-gray-600">Optimisation continue</span>
                       </li>
                     </ul>
                   </div>

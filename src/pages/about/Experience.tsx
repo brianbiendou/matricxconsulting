@@ -66,9 +66,9 @@ const Experience: React.FC = () => {
             }}></div>
           </div>
           
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl lg:text-6xl font-bold mb-8 animate-slide-up">
+          <div className="container-custom relative z-10 h-full flex items-center">
+            <div className="max-w-4xl mx-auto text-center w-full">
+              <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
                 Notre Expérience
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
@@ -238,10 +238,15 @@ const Experience: React.FC = () => {
               <p className="text-xl text-gray-300 mb-8 animate-fade-in animation-delay-200">
                 Découvrez comment nous pouvons vous aider à atteindre vos objectifs
               </p>
-              <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                Commencer un Projet
+              <a 
+                href="/contact"
+                className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all duration-300 inline-flex items-center group"
+              >
+                <span className="text-black group-hover:text-black group-hover:font-bold">
+                  Commencer un Projet
+                </span>
                 <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </div>
           </div>
         </section>

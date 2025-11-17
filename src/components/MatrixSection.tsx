@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { ArrowRight, Target, Headphones, Monitor, GraduationCap } from 'lucide-react'
+import { Target, Headphones, Monitor, GraduationCap } from 'lucide-react'
 
 const MatrixSection = () => {
   const { t } = useTranslation()
@@ -57,10 +57,10 @@ const MatrixSection = () => {
             <Target size={18} className="mr-2" />
             {t('matrixSection.badge')}
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
+          <h2 className="text-4xl lg:text-5xl font-bold text-secondary-600 mb-6 max-w-4xl mx-auto leading-tight">
             {t('matrixSection.title')}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-primary-600 font-semibold max-w-3xl mx-auto leading-relaxed mb-4">
             {t('matrixSection.description')}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full mt-6"></div>
@@ -94,14 +94,6 @@ const MatrixSection = () => {
             ))}
           </div>
         </div> 
-
-        {/* CTA avec animation */}
-        <div className="text-center animate-fade-in animation-delay-600">
-          <button className="btn-primary group inline-flex items-center space-x-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
-            <span className="text-lg">{t('matrixSection.cta')}</span>
-            <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform duration-300" />
-          </button>
-        </div>
 
         {/* Éléments de fond animés */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

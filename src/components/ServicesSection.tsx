@@ -41,18 +41,21 @@ const ServicesSection: React.FC = () => {
   ]
 
   return (
-    <section className="section-padding bg-white section-transition">
+    <section className="section-padding bg-white section-transition border-b border-gray-100">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-yellow-200">
-            <Sparkles size={16} className="mr-2" />
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm border border-yellow-200">
+            <Sparkles size={18} className="mr-2" />
             {t('services.header')}
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-secondary-600 mb-6">
             {t('services.title')}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full"></div>
+          <p className="text-xl text-primary-600 font-semibold max-w-3xl mx-auto leading-relaxed mb-6">
+            {t('services.subtitle')}
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full\"></div>
         </div>
 
         {/* Services Grid */}
@@ -64,30 +67,30 @@ const ServicesSection: React.FC = () => {
               className="group block animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 h-48 md:h-64 border border-gray-200 transition-transform duration-300 overflow-hidden">
+              <div className="relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl md:rounded-3xl p-4 md:p-6 h-48 md:h-64 border border-yellow-600 transition-all duration-300 overflow-hidden hover:shadow-xl hover:from-yellow-500 hover:to-yellow-600">
                 
                 {/* Contenu de la card */}
                 <div className="relative z-10 h-full flex flex-col">
-                  {/* Icon - Yellow */}
-                  <div className="text-yellow-400 mb-2 md:mb-4 group-hover:text-yellow-500 transition-colors duration-300">
+                  {/* Icon - Black */}
+                  <div className="text-black mb-2 md:mb-4 transition-colors duration-300">
                     <div className="w-6 h-6 md:w-8 md:h-8">
                       {service.icon}
                     </div>
                   </div>
                   
                   {/* Title - Bold Black */}
-                  <h3 className="text-sm md:text-xl font-bold text-black mb-2 md:mb-3 group-hover:text-gray-900 transition-colors duration-300 leading-tight">
+                  <h3 className="text-sm md:text-xl font-bold text-black mb-2 md:mb-3 transition-colors duration-300 leading-tight">
                     {service.name}
                   </h3>
                   
                   {/* Description - Regular Black */}
-                  <p className="text-black text-xs md:text-sm leading-relaxed mb-2 md:mb-4 flex-grow group-hover:text-gray-800 transition-colors duration-300 line-clamp-3">
+                  <p className="text-black text-xs md:text-sm leading-relaxed mb-2 md:mb-4 flex-grow transition-colors duration-300 line-clamp-3">
                     {service.description}
                   </p>
                   
                   {/* En savoir plus avec flèche */}
-                  <div className="flex items-center justify-between text-yellow-600 group-hover:text-yellow-700 transition-colors duration-300">
-                    <span className="text-xs md:text-sm font-medium">
+                  <div className="flex items-center justify-between text-black group-hover:text-gray-900 transition-colors duration-300">
+                    <span className="text-xs md:text-sm font-medium border-2 border-black px-3 py-1.5 rounded-lg group-hover:bg-black group-hover:text-yellow-400 transition-all duration-300">
                       En savoir plus
                     </span>
                     <ArrowRight className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform duration-300" />

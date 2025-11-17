@@ -1,7 +1,7 @@
 export const heroTitleVariants = {
   original: {
     lines: ["ET SI L'EXPÉRIENCE CLIENT", "N'ÉTAIT QU'UN BESOIN", "FONDAMENTAL ?"],
-    subtitle: "MatriCx Consulting est un cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle."
+    subtitle: "MatriCx Consulting est un Cabinet de Conseil spécialisé en Stratégie & Finance, Transformation organisationnelle et l'Excellence Opérationnelle"
   },
   professional1: {
     lines: ["TRANSFORMEZ VOTRE", "EXPÉRIENCE CLIENT", "EN AVANTAGE CONCURRENTIEL"],

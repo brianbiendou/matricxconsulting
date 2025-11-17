@@ -270,8 +270,16 @@ const Blog: React.FC = () => {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white py-16">
-          <div className="container mx-auto px-6 text-center">
+        <section className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white py-16 overflow-hidden">
+          {/* Grille animée en background */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              backgroundSize: '4rem 4rem',
+              animation: 'moveGrid 15s linear infinite',
+            }}></div>
+          </div>
+          <div className="container mx-auto px-6 text-center relative z-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
               {currentLanguage === 'fr' ? 'Du nouveau sur le Blog MatriCx' : 'News on the MatriCx Blog'}
             </h1>

@@ -13,26 +13,36 @@ const Company: React.FC = () => {
       
       <main className="flex-grow">
         {/* Hero Section avec Animation */}
-        <section className="relative bg-gradient-to-br from-gray-900 to-black text-white py-24">
-          <div className="absolute inset-0 bg-black/50"></div>
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl lg:text-6xl font-bold mb-8 animate-slide-up">
+        <section className="relative bg-gradient-to-br from-gray-900 to-black text-white py-24 overflow-hidden">
+          <div className="absolute inset-0">
+            {/* Grille animée */}
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              backgroundSize: '4rem 4rem',
+              animation: 'moveGrid 15s linear infinite',
+            }}></div>
+          </div>
+          
+          <div className="container-custom relative z-10 h-full flex items-center">
+            <div className="max-w-4xl mx-auto text-center w-full">
+              <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
                 MatriCx Consulting
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
                 Leader de la transformation digitale en Afrique
               </p>
-              <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                Notre Histoire
-                <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+              <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 inline-flex items-center group">
+                <a href="#notre-histoire" className="flex items-center w-full text-black no-underline group-hover:text-black group-hover:font-bold">
+                  Notre Histoire
+                  <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                </a>
               </button>
             </div>
           </div>
         </section>
 
         {/* Experience Client Section */}
-        <section className="py-20 bg-white overflow-hidden">
+        <section id="notre-histoire" className="py-20 bg-white overflow-hidden">
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative">
@@ -57,10 +67,13 @@ const Company: React.FC = () => {
                   la formation sur les thématiques client, le développement et l'intégration des solutions 
                   de relation client (Chabots, outil CRM, social listening, etc.).
                 </p>
-                <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                  DÉCOUVREZ PLUS
+                <a 
+                  href="/services/training"
+                  className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all duration-300 inline-flex items-center group"
+                >
+                  <span className="text-black group-hover:text-black group-hover:font-bold">Découvrez plus</span>
                   <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

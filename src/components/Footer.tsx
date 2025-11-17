@@ -33,17 +33,22 @@ const Footer: React.FC = () => {
             {/* Contact Info - MatriCx Styling */}
             <div className="space-y-4">
               <h4 className="font-semibold text-lg text-white mb-4 font-primary">{t('footer.contactInfo')}</h4>
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-primary-300 transition-colors duration-300">
-                <MapPin size={18} className="text-primary-400" />
-                <span className="font-secondary">{t('contact.address')}</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-primary-300 transition-colors duration-300">
-                <Phone size={18} className="text-primary-400" />
-                <span className="font-secondary">{t('contact.phone')}</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-primary-300 transition-colors duration-300">
-                <Mail size={18} className="text-primary-400" />
-                <span className="font-secondary">{t('contact.email')}</span>
+              <div className="space-y-2">
+                <div className="flex items-start space-x-3 text-gray-300">
+                  <MapPin size={18} className="text-primary-400 flex-shrink-0 mt-1" />
+                  <div className="font-secondary">
+                    <div>Makepe BM</div>
+                    <div>BP 12777, Douala</div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-300">
+                  <Phone size={18} className="text-primary-400 flex-shrink-0" />
+                  <span className="font-secondary">677 810 120 | 699 947 136</span>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-300">
+                  <Mail size={18} className="text-primary-400 flex-shrink-0" />
+                  <span className="font-secondary">{t('contact.email')}</span>
+                </div>
               </div>
             </div>
           </div>

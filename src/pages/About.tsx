@@ -57,8 +57,17 @@ const About: React.FC = () => {
       <Header />
       <main className="pt-24 pb-16">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-900 to-primary-700 text-white py-20">
-          <div className="container mx-auto px-4">
+        <section className="relative bg-gradient-to-br from-primary-900 to-primary-700 text-white py-20 overflow-hidden">
+          <div className="absolute inset-0">
+            {/* Grille animée */}
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              backgroundSize: '4rem 4rem',
+              animation: 'moveGrid 15s linear infinite',
+            }}></div>
+          </div>
+          
+          <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

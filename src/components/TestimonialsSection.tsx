@@ -104,13 +104,13 @@ const TestimonialsSection: React.FC = () => {
   const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section className="py-16 bg-white overflow-hidden section-transition">
+    <section className="py-16 bg-white overflow-hidden section-transition border-b border-gray-100">
       <div className="container-custom">
         {/* En-tête simple */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center text-primary-600 text-sm font-medium mb-4">
-            <Quote size={16} className="mr-2" />
-            {t('testimonials.header')}
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm border border-yellow-200">
+            <Quote size={18} className="mr-2" />
+            Témoignages Clients
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             {t('testimonials.title')}

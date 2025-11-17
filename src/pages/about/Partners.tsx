@@ -48,8 +48,15 @@ const Partners: React.FC = () => {
       
       <main className="flex-grow">
         {/* Hero Section avec Animation */}
-        <section className="relative bg-gradient-to-br from-gray-900 to-black text-white py-24">
-          <div className="absolute inset-0 bg-black/50"></div>
+        <section className="relative bg-gradient-to-br from-gray-900 to-black text-white py-24 overflow-hidden">
+          <div className="absolute inset-0">
+            {/* Grille animée */}
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+              backgroundSize: '4rem 4rem',
+              animation: 'moveGrid 15s linear infinite',
+            }}></div>
+          </div>
           {/* Particules animées */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(20)].map((_, i) => (
@@ -67,18 +74,18 @@ const Partners: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl lg:text-6xl font-bold mb-8 animate-slide-up">
+          <div className="container-custom relative z-10 h-full flex items-center">
+            <div className="max-w-4xl mx-auto text-center w-full">
+              <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
                 Nos Partenaires
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
                 Ensemble, construisons l'avenir de la transformation digitale en Afrique
               </p>
-              <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                Devenir Partenaire
+              <a href="/contact" className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
+                <span className="group-hover:text-black group-hover:font-bold">Devenir Partenaire</span>
                 <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </div>
           </div>
         </section>
@@ -86,24 +93,15 @@ const Partners: React.FC = () => {
         {/* Section Partenaires avec Animation */}
         <section className="py-20 bg-white overflow-hidden relative">
           <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6 animate-fade-in">
-                Ils Nous Font Confiance
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Des partenaires de confiance qui ont choisi notre expertise
-              </p>
-            </div>
-            
-            {/* Réutilisation du composant PartnersCarousel */}
-            <div className="animate-slide-up">
+            {/* Réutilisation du composant PartnersCarousel - mais on doit retirer son background */}
+            <div className="animate-slide-up [&>section]:!bg-white [&>section]:!border-0">
               <PartnersCarousel />
             </div>
           </div>
         </section>
 
         {/* Types de Partenaires */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-gray-50 border-t border-gray-100">
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -132,7 +130,7 @@ const Partners: React.FC = () => {
         </section>
 
         {/* Bénéfices avec Animation */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white border-t border-gray-100">
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -178,10 +176,10 @@ const Partners: React.FC = () => {
                 Ensemble, créons des solutions innovantes pour l'Afrique
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                  Devenir Partenaire
+                <a href="/contact" className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
+                  <span className="group-hover:text-black group-hover:font-bold">Devenir Partenaire</span>
                   <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
                 <button className="bg-white text-black font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors">
                   En Savoir Plus
                 </button>

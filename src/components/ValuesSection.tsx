@@ -12,46 +12,46 @@ const ValuesSection: React.FC = () => {
       icon: <Shield className="w-6 h-6" />,
       name: t('values.integrity.name'),
       description: t('values.integrity.description'),
-      gradient: "from-purple-500 to-purple-700",
-      bgColor: "#9333EA",
-      textColor: "text-white"
+      gradient: "from-yellow-400 to-yellow-500",
+      bgColor: "#FDC300",
+      textColor: "text-black"
     },
     {
       icon: <Lightbulb className="w-6 h-6" />,
       name: t('values.innovation.name'),
       description: t('values.innovation.description'),
-      gradient: "from-yellow-400 to-orange-500",
-      bgColor: "#FDC300",
-      textColor: "text-black"
+      gradient: "from-gray-900 to-black",
+      bgColor: "#000000",
+      textColor: "text-white"
     },
     {
       icon: <Star className="w-6 h-6" />,
       name: t('values.excellence.name'),
       description: t('values.excellence.description'),
-      gradient: "from-blue-500 to-blue-700",
-      bgColor: "#0080AF",
-      textColor: "text-white"
+      gradient: "from-white to-gray-100",
+      bgColor: "#FFFFFF",
+      textColor: "text-black"
     },
     {
       icon: <Sparkles className="w-6 h-6" />,
       name: t('values.authenticity.name'),
       description: t('values.authenticity.description'),
-      gradient: "from-green-500 to-green-700",
-      bgColor: "#10B981",
-      textColor: "text-white"
+      gradient: "from-blue-500 to-blue-600",
+      bgColor: "#0080AF",
+      textColor: "text-black"
     },
     {
       icon: <Users className="w-6 h-6" />,
       name: t('values.collaboration.name'),
       description: t('values.collaboration.description'),
-      gradient: "from-orange-500 to-orange-700",
-      bgColor: "#F97316",
-      textColor: "text-white"
+      gradient: "from-gray-400 to-gray-500",
+      bgColor: "#9CA3AF",
+      textColor: "text-black"
     }
   ]
 
   return (
-    <section className="section-padding bg-gray-50 section-transition">
+    <section className="section-padding bg-white section-transition">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12 animate-fade-in">
