@@ -124,9 +124,9 @@ const ServicesSection: React.FC = () => {
           }
         `}</style>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA Text */}
         <div className="text-center animate-fade-in animation-delay-600">
-          <div className="max-w-2xl mx-auto mb-8">
+          <div className="max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               {t('servicesSection.ctaTitle')}
             </h3>
@@ -134,13 +134,6 @@ const ServicesSection: React.FC = () => {
               {t('servicesSection.ctaSubtitle')}
             </p>
           </div>
-          <Link 
-            to="/contact"
-            className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-2"
-          >
-            <span>{t('contact.cta')}</span>
-            <ArrowRight size={20} />
-          </Link>
         </div>
       </div>
     </section>

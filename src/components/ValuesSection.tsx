@@ -55,7 +55,7 @@ const ValuesSection: React.FC = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12 animate-fade-in">
-          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-yellow-200">
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm border border-yellow-200">
             {t('values.badge')}
           </div>
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-500 via-green-500 to-blue-500 bg-clip-text text-transparent">
