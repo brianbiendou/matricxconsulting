@@ -19,7 +19,7 @@ const PodcastSection: React.FC = () => {
           {/* Image à gauche */}
           <div className="relative animate-fade-in">
             <a 
-              href="https://www.youtube.com" 
+              href="https://www.youtube.com/@mcx-1906" 
               target="_blank" 
               rel="noopener noreferrer"
               className="block relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer"
@@ -66,7 +66,7 @@ const PodcastSection: React.FC = () => {
             {/* Bouton CTA */}
             <div className="flex gap-4 pt-4">
               <a 
-                href="https://www.youtube.com" 
+                href="https://www.youtube.com/@mcx-1906" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn-primary flex items-center space-x-3 group"

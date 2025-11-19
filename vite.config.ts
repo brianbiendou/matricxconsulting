@@ -55,9 +55,9 @@ export default defineConfig({
         ]
       },
       manifest: {
-        name: 'MatriCx Consulting - Cabinet de conseil en expérience client',
+        name: 'MatriCx Consulting - Cabinet de Conseil en Expérience Client',
         short_name: 'MatriCx',
-        description: 'Cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l\'excellence opérationnelle en Afrique',
+        description: 'Cabinet de Conseil spécialisé en Stratégie & Finance, Transformation Organisationnelle et l\'Excellence Opérationnelle en Afrique',
         theme_color: '#1E3A8A',
         background_color: '#ffffff',
         display: 'standalone',

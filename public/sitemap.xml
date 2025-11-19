@@ -3,40 +3,40 @@
   
   <!-- Page d'accueil -->
   <url>
-    <loc>https://matricxconsulting.netlify.app/</loc>
-    <lastmod>2025-01-14</lastmod>
+    <loc>https://matricxconsulting.com/</loc>
+    <lastmod>2025-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Page À propos -->
   <url>
-    <loc>https://matricxconsulting.netlify.app/about</loc>
-    <lastmod>2025-01-14</lastmod>
+    <loc>https://matricxconsulting.com/about</loc>
+    <lastmod>2025-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Page Services -->
   <url>
-    <loc>https://matricxconsulting.netlify.app/services</loc>
-    <lastmod>2025-01-14</lastmod>
+    <loc>https://matricxconsulting.com/services</loc>
+    <lastmod>2025-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <!-- Page Contact -->
   <url>
-    <loc>https://matricxconsulting.netlify.app/contact</loc>
-    <lastmod>2025-01-14</lastmod>
+    <loc>https://matricxconsulting.com/contact</loc>
+    <lastmod>2025-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Page Blog -->
   <url>
-    <loc>https://matricxconsulting.netlify.app/blog</loc>
-    <lastmod>2025-01-14</lastmod>
+    <loc>https://matricxconsulting.com/blog</loc>
+    <lastmod>2025-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

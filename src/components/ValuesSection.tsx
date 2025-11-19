@@ -139,29 +139,6 @@ const ValuesSection: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center bg-gradient-to-br from-yellow-400 to-blue-500 rounded-3xl p-12 text-white relative overflow-hidden animate-fade-in animation-delay-600">
-          <div className="relative z-10">
-            <h3 className="text-3xl lg:text-4xl font-bold mb-4">
-              {t('contact.title')}
-            </h3>
-            <p className="text-xl mb-8 opacity-90">
-              {t('contact.subtitle')}
-            </p>
-            <Link 
-              to="/contact" 
-              className="bg-white text-gray-900 hover:bg-gray-100 font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center space-x-2"
-            >
-              <span>{t('contact.cta')}</span>
-              <ArrowRight size={20} />
-            </Link>
-          </div>
-
-          {/* Background Decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white bg-opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white bg-opacity-10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-        </div>
       </div>
 
       {/* Background Elements */}

@@ -243,6 +243,21 @@ export const translations = {
       ctaTitle: "Un plan pour améliorer votre expérience client ?",
       ctaSubtitle: "Nos experts toujours prêts à travailler avec vous."
     },
+    newsletter: {
+      title: "Newsletter MatriCx",
+      subtitle: "Restez informé de nos actualités",
+      description: "Recevez nos dernières analyses, conseils et insights sur l'expérience client directement dans votre boîte mail.",
+      emailPlaceholder: "Votre adresse email",
+      ctaDescription: "Nos experts sont toujours prêts à travailler avec vous pour transformer votre expérience client.",
+      subscribe: "S'abonner",
+      subscribing: "Inscription en cours...",
+      subscribed: "Inscrit !",
+      successMessage: "Merci ! Vous êtes inscrit(e) à notre newsletter.",
+      alreadySubscribed: "Vous êtes déjà inscrit(e) à notre newsletter !",
+      errorMessage: "Une erreur est survenue. Veuillez réessayer.",
+      invalidEmail: "Veuillez entrer une adresse email valide",
+      disclaimer: "En vous inscrivant, vous acceptez de recevoir nos newsletters. Vous pouvez vous désinscrire à tout moment."
+    },
     contact: {
       title: "Parlons-en",
       subtitle: "Demandez un devis gratuit",
@@ -668,6 +683,21 @@ export const translations = {
     servicesSection: {
       ctaTitle: "A plan to improve your customer experience?",
       ctaSubtitle: "Our experts always ready to work with you."
+    },
+    newsletter: {
+      title: "MatriCx Newsletter",
+      subtitle: "Stay informed of our news",
+      description: "Receive our latest analyses, advice and insights on customer experience directly in your inbox.",
+      emailPlaceholder: "Your email address",
+      ctaDescription: "Our experts are always ready to work with you to transform your customer experience.",
+      subscribe: "Subscribe",
+      subscribing: "Subscribing...",
+      subscribed: "Subscribed!",
+      successMessage: "Thank you! You are subscribed to our newsletter.",
+      alreadySubscribed: "You are already subscribed to our newsletter!",
+      errorMessage: "An error occurred. Please try again.",
+      invalidEmail: "Please enter a valid email address",
+      disclaimer: "By subscribing, you agree to receive our newsletters. You can unsubscribe at any time."
     },
     contact: {
       title: "Let's Talk",

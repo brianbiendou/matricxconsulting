@@ -13,8 +13,8 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    // Vérifier si l'utilisateur a déjà fermé ou souscrit
-    const hasInteracted = localStorage.getItem('newsletter-interacted')
+    // Vérifier si l'utilisateur a déjà fermé ou souscrit PENDANT CETTE SESSION
+    const hasInteracted = sessionStorage.getItem('newsletter-interacted')
     if (hasInteracted) return
 
     // Afficher après le délai
@@ -27,7 +27,7 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
 
   const handleClose = () => {
     setIsVisible(false)
-    localStorage.setItem('newsletter-interacted', 'true')
+    sessionStorage.setItem('newsletter-interacted', 'true')
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -44,22 +44,36 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
         return
       }
 
-      // Appel à la Netlify Function (clé API cachée côté serveur)
-      // Appelle toujours la fonction Netlify en production, même en dev local
-      const functionUrl = 'https://matricxconsulting.netlify.app/.netlify/functions/subscribe-newsletter';
-      
-      const response = await fetch(functionUrl, {
+      // Appel direct à Brevo API
+      const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
+      const BREVO_LIST_ID = parseInt(import.meta.env.VITE_BREVO_LIST_ID || '3');
+
+      if (!BREVO_API_KEY) {
+        throw new Error('VITE_BREVO_API_KEY not configured');
+      }
+
+      const response = await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'accept': 'application/json',
+          'api-key': BREVO_API_KEY,
+          'content-type': 'application/json'
         },
-        body: JSON.stringify({ email: email })
+        body: JSON.stringify({
+          email: email,
+          listIds: [BREVO_LIST_ID],
+          updateEnabled: false,
+          attributes: {
+            SOURCE: 'Website Popup',
+            SIGNUP_DATE: new Date().toISOString()
+          }
+        })
       })
 
       if (response.ok) {
         setIsSuccess(true)
-        localStorage.setItem('newsletter-subscribed', 'true')
-        localStorage.setItem('newsletter-interacted', 'true')
+        sessionStorage.setItem('newsletter-subscribed', 'true')
+        sessionStorage.setItem('newsletter-interacted', 'true')
         
         // Fermer après 3 secondes
         setTimeout(() => {
@@ -67,10 +81,10 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
         }, 3000)
       } else {
         const data = await response.json()
-        if (response.status === 409 || data.error?.includes('déjà inscrit')) {
+        if (data.code === 'duplicate_parameter') {
           setError('Cet email est déjà inscrit')
         } else {
-          setError(data.error || 'Une erreur est survenue. Veuillez réessayer.')
+          setError('Une erreur est survenue. Veuillez réessayer.')
         }
       }
     } catch (err) {

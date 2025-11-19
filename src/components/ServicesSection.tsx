@@ -16,26 +16,26 @@ const ServicesSection: React.FC = () => {
   const services = [
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      name: "MatriCx Advisory",
-      description: "Conseil, stratégie, pilotage, amélioration continue, optimisation, CXM...",
+      name: t('services.advisory.name'),
+      description: t('services.advisory.description'),
       link: "/services/advisory"
     },
     {
       icon: <Search className="w-8 h-8" />,
-      name: "MatriCx Survey", 
-      description: "Études de marché, connaissance client, stratégie de marché / marque...",
+      name: t('services.survey.name'), 
+      description: t('services.survey.description'),
       link: "/services/survey"
     },
     {
       icon: <GraduationCap className="w-8 h-8" />,
-      name: "MatriCx Training",
-      description: "Leader CX, formation sur mesure, certificats CX, culture centrée client...",
+      name: t('services.training.name'),
+      description: t('services.training.description'),
       link: "/services/training"
     },
     {
       icon: <Settings className="w-8 h-8" />,
-      name: "MatriCx Technology",
-      description: "Outils de la relation client, innovation, CRM transformation digitale...",
+      name: t('services.technology.name'),
+      description: t('services.technology.description'),
       link: "/services/technology"
     }
   ]
@@ -91,7 +91,7 @@ const ServicesSection: React.FC = () => {
                   {/* En savoir plus avec flèche */}
                   <div className="flex items-center justify-between text-black group-hover:text-gray-900 transition-colors duration-300">
                     <span className="text-xs md:text-sm font-medium border-2 border-black px-3 py-1.5 rounded-lg group-hover:bg-black group-hover:text-yellow-400 transition-all duration-300">
-                      En savoir plus
+                      {t('services.learnMore')}
                     </span>
                     <ArrowRight className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </div>

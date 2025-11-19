@@ -8,6 +8,7 @@ import MatrixSection from '../components/MatrixSection'
 import ServicesSection from '../components/ServicesSection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import ValuesSection from '../components/ValuesSection'
+import NewsletterSection from '../components/NewsletterSection'
 import Footer from '../components/Footer'
 
 const Home: React.FC = () => {
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
         <TestimonialsSection />
         <PartnersCarousel />
         <ValuesSection />
+        <NewsletterSection />
       </main>
       <Footer />
     </div>
