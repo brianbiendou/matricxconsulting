@@ -55,3 +55,6 @@ Thumbs.db
 !public/browserconfig.xml
 !public/robots.txt
 
+
+# Local Netlify folder
+.netlify

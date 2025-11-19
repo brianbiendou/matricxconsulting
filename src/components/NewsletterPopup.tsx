@@ -45,11 +45,8 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
       }
 
       // Appel à la Netlify Function (clé API cachée côté serveur)
-      // En développement local avec Netlify CLI: http://localhost:8888/.netlify/functions/subscribe-newsletter
-      // En production: https://matricxconsulting.netlify.app/.netlify/functions/subscribe-newsletter
-      const functionUrl = import.meta.env.DEV 
-        ? 'http://localhost:8888/.netlify/functions/subscribe-newsletter'
-        : 'https://matricxconsulting.netlify.app/.netlify/functions/subscribe-newsletter';
+      // Appelle toujours la fonction Netlify en production, même en dev local
+      const functionUrl = 'https://matricxconsulting.netlify.app/.netlify/functions/subscribe-newsletter';
       
       const response = await fetch(functionUrl, {
         method: 'POST',
