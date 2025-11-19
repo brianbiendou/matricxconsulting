@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
+import NewsletterPopup from './components/NewsletterPopup'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -21,6 +22,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <NewsletterPopup delay={5000} />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />

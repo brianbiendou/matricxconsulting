@@ -1,0 +1,5 @@
+open ftp://contact@Matricxconsulting.com:matricx@2025@matricxconsulting.com
+cd /public_html
+lcd dist
+mput *
+quit
