@@ -55,7 +55,7 @@ const ServicesSection: React.FC = () => {
           <p className="text-xl text-primary-600 font-semibold max-w-3xl mx-auto leading-relaxed mb-6">
             {t('services.subtitle')}
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full\"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Services Grid */}

@@ -1,10 +1,22 @@
 import React from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import { useSanityPodcastStats } from '../hooks/useSanityContent'
 import { PlayCircle, Headphones } from 'lucide-react'
 import podcastImage from '../images/podcast.jpeg'
 
 const PodcastSection: React.FC = () => {
-  const { t } = useTranslation()
+  const { t, currentLanguage } = useTranslation()
+  const { podcastStats } = useSanityPodcastStats()
+
+  // Stats - données Sanity ou fallback
+  const stats = (podcastStats && podcastStats.length > 0) ? podcastStats.map(stat => ({
+    value: stat.value,
+    label: stat.label[currentLanguage as 'fr' | 'en'] || stat.label.fr
+  })) : [
+    { value: '20+', label: 'Épisodes' },
+    { value: '5K+', label: 'Auditeurs' },
+    { value: '4.8⭐', label: 'Note' }
+  ]
 
   return (
     <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-accent-50 relative overflow-hidden section-transition">
@@ -77,20 +89,14 @@ const PodcastSection: React.FC = () => {
               </a>
             </div>
 
-            {/* Statistiques optionnelles */}
+            {/* Statistiques - Sanity ou fallback */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">20+</div>
-                <div className="text-sm text-gray-600">Épisodes</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">5K+</div>
-                <div className="text-sm text-gray-600">Auditeurs</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary-600">4.8⭐</div>
-                <div className="text-sm text-gray-600">Note</div>
-              </div>
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-2xl font-bold text-primary-600">{stat.value}</div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

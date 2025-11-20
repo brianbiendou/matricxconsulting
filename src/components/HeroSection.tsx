@@ -1,11 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
+import { useSanityHomeStats } from '../hooks/useSanityContent'
 import { Mail, ArrowRight, TrendingUp } from 'lucide-react'
 import ImageCarousel from './ImageCarousel'
 
 const HeroSection: React.FC = () => {
-  const { t } = useTranslation()
+  const { t, currentLanguage } = useTranslation()
+  const { homeStats } = useSanityHomeStats()
+  
+  // Statistiques - données Sanity ou fallback
+  const stats = (homeStats && homeStats.length > 0) ? homeStats.map(stat => ({
+    value: stat.value,
+    label: { fr: stat.label.fr, en: stat.label.en }
+  })) : [
+    { value: '100+', label: { fr: t('hero.stats.clients'), en: t('hero.stats.clients') } },
+    { value: '3 ans', label: { fr: t('hero.stats.experience'), en: t('hero.stats.experience') } },
+    { value: '95%', label: { fr: t('hero.stats.satisfaction'), en: t('hero.stats.satisfaction') } }
+  ]
 
   return (
     <section id="home" className="relative flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-32 pb-8 lg:pb-12 section-transition">
@@ -70,20 +82,16 @@ const HeroSection: React.FC = () => {
               </Link>
             </div>
 
-            {/* Stats */}
+            {/* Stats - Données Sanity ou fallback */}
             <div className="flex flex-wrap gap-6 lg:gap-8 pt-6 lg:pt-8 border-t border-gray-200 justify-center lg:justify-start">
-              <div className="text-center">
-                <div className="text-xl lg:text-2xl font-bold text-primary-600">100+</div>
-                <div className="text-xs lg:text-sm text-gray-600">{t('hero.stats.clients')}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xl lg:text-2xl font-bold text-primary-600">3 ans</div>
-                <div className="text-xs lg:text-sm text-gray-600">{t('hero.stats.experience')}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xl lg:text-2xl font-bold text-primary-600">95%</div>
-                <div className="text-xs lg:text-sm text-gray-600">{t('hero.stats.satisfaction')}</div>
-              </div>
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-xl lg:text-2xl font-bold text-primary-600">{stat.value}</div>
+                  <div className="text-xs lg:text-sm text-gray-600">
+                    {stat.label[currentLanguage as 'fr' | 'en'] || stat.label.fr}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

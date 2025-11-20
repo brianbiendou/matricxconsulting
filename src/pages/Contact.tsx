@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Send, Calendar, Clock, CheckCircle, ArrowRight, MessageSquare } from 'lucide-react'
+import React, { useState, useCallback } from 'react'
+import { Mail, Phone, MapPin, Send, Calendar, Clock, CheckCircle, ArrowRight } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 const Contact: React.FC = () => {
-  const { t, currentLanguage } = useTranslation()
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,56 +16,160 @@ const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
-  }
+  }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     
-    // Simulation d'envoi d'email
-    setTimeout(() => {
-      setIsSubmitted(true)
+    try {
+      // 1. Envoyer l'email de NOTIFICATION (à vous)
+      const notificationPromise = fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'MatriCx Website',
+            email: 'consultingmatricx@gmail.com'
+          },
+          to: [
+            {
+              email: 'consultingmatricx@gmail.com',
+              name: 'MatriCx Consulting'
+            }
+          ],
+          replyTo: {
+            email: formData.email,
+            name: formData.name
+          },
+          templateId: 2,
+          params: {
+            name: formData.name,
+            email: formData.email,
+            company: formData.company || 'Non renseigné',
+            phone: formData.phone,
+            message: formData.message
+          }
+        })
+      })
+
+      // 2. Envoyer l'email de CONFIRMATION (à l'utilisateur)
+      const confirmationPromise = fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'MatriCx Consulting',
+            email: 'consultingmatricx@gmail.com'
+          },
+          to: [
+            {
+              email: formData.email,
+              name: formData.name
+            }
+          ],
+          templateId: 3,
+          params: {
+            name: formData.name,
+            email: formData.email
+          }
+        })
+      })
+
+      // 3. Ajouter l'email à la newsletter (même méthode que NewsletterSection)
+      const newsletterPromise = fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          listIds: [3],
+          updateEnabled: true
+        })
+      })
+
+      // Attendre que tout soit envoyé (en parallèle)
+      const [notificationRes, confirmationRes] = await Promise.all([
+        notificationPromise,
+        confirmationPromise,
+        newsletterPromise.catch(() => null) // Newsletter optionnelle
+      ])
+
+      if (notificationRes.ok && confirmationRes.ok) {
+        setIsSubmitted(true)
+      } else {
+        alert('Erreur lors de l\'envoi du message')
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      alert('Erreur de connexion. Veuillez réessayer.')
+    } finally {
       setIsLoading(false)
-    }, 1500)
-  }
-
-  const openCalendly = () => {
-    window.open('https://calendly.com/enablermoney/new-meeting', '_blank')
-  }
-
-  const ContactForm = () => {
-    if (isSubmitted) {
-      return (
-        <div className="max-w-2xl mx-auto text-center py-16">
-          <CheckCircle className="w-16 h-16 text-primary-500 mx-auto mb-6" />
-          <h2 className="text-3xl font-bold text-secondary-600 mb-4 font-primary">
-            {t('contact.page.form.success')}
-          </h2>
-          <p className="text-lg text-secondary-500 mb-8 font-secondary">
-            {t('contact.page.form.successDescription', { name: formData.name, hours: '24' })}
-          </p>
-          <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl p-6 shadow-lg border border-primary-200">
-            <h3 className="font-semibold text-secondary-600 mb-3 font-primary">{t('contact.page.form.scheduleText')}</h3>
-            <button 
-              onClick={openCalendly}
-              className="btn-primary inline-flex items-center space-x-2 group"
-            >
-              <Calendar size={20} />
-              <span>{t('contact.page.form.scheduleButton')}</span>
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
-          </div>
-        </div>
-      )
     }
+  }, [formData])
 
-    return (
+  const openCalendly = useCallback(() => {
+    window.open('https://calendly.com/enablermoney/new-meeting', '_blank')
+  }, [])
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-blue-50">
+      <Header />
+      <main className="flex-grow pt-32 pb-16 px-6">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-100 to-accent-100 rounded-full mb-6 shadow-md">
+              <Mail size={20} className="text-primary-600 mr-2" />
+              {t('contact.page.badge')}
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-bold text-secondary-600 mb-6 font-primary">
+              {t('contact.page.title')} <span className="gradient-text">{t('contact.page.titleHighlight')}</span>
+            </h1>
+            <p className="text-xl text-secondary-500 max-w-3xl mx-auto font-secondary">
+              {t('contact.page.subtitle')}
+            </p>
+          </div>
+
+          {/* Formulaire de contact ou message de succès */}
+          {isSubmitted ? (
+            <div className="max-w-2xl mx-auto text-center py-16">
+              <CheckCircle className="w-16 h-16 text-primary-500 mx-auto mb-6" />
+              <h2 className="text-3xl font-bold text-secondary-600 mb-4 font-primary">
+                {t('contact.page.form.success')}
+              </h2>
+              <p className="text-lg text-secondary-500 mb-8 font-secondary">
+                {t('contact.page.form.successDescription', { name: formData.name, hours: '24' })}
+              </p>
+              <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl p-6 shadow-lg border border-primary-200">
+                <h3 className="font-semibold text-secondary-600 mb-3 font-primary">{t('contact.page.form.scheduleText')}</h3>
+                <button 
+                  onClick={openCalendly}
+                  className="btn-primary inline-flex items-center space-x-2 group"
+                >
+                  <Calendar size={20} />
+                  <span>{t('contact.page.form.scheduleButton')}</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+                </button>
+              </div>
+            </div>
+          ) : (
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Informations de contact */}
         <div className="space-y-8">
@@ -174,13 +278,12 @@ const Contact: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-secondary-600 mb-2 font-primary">
-                    {t('contact.page.form.company')} *
+                    {t('contact.page.form.company')}
                   </label>
                   <input
                     type="text"
                     id="company"
                     name="company"
-                    required
                     value={formData.company}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-400 transition-all duration-300 font-secondary hover:border-primary-300"
@@ -264,29 +367,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
-    )
-  }
-
-  return (
-    <div key={currentLanguage} className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50">
-      <Header />
-      <main className="pt-20">
-        <div className="container-custom py-16">
-          {/* Header MatriCx */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-primary-100 border border-primary-200 text-primary-700 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm">
-              <MessageSquare size={18} className="mr-2 text-accent-500" />
-              {t('contact.page.badge')}
-            </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-secondary-600 mb-6 font-primary">
-              {t('contact.page.title')} <span className="gradient-text">{t('contact.page.titleHighlight')}</span>
-            </h1>
-            <p className="text-xl text-secondary-500 max-w-3xl mx-auto font-secondary">
-              {t('contact.page.subtitle')}
-            </p>
-          </div>
-
-          <ContactForm />
+          )}
 
           {/* Localisation */}
           <div className="bg-white rounded-2xl shadow-2xl p-8 mt-16 border border-gray-100">
@@ -333,28 +414,46 @@ const Contact: React.FC = () => {
                 </a>
               </div>
 
-              {/* Carte alternative avec ombre uniforme */}
-              <div className="w-full h-80 lg:h-96 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl shadow-lg border border-yellow-200 flex flex-col items-center justify-center text-center p-8">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md mb-5">
-                  <MapPin className="w-10 h-10 text-primary-600" />
+              {/* Carte Google Maps avec vue satellite */}
+              <div className="w-full h-80 lg:h-96 rounded-xl shadow-lg border border-gray-300 overflow-hidden relative">
+                {/* Overlay avec informations */}
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-2xl shadow-2xl p-6 pointer-events-auto border border-white/30">
+                    <div className="w-16 h-16 bg-yellow-500/55 rounded-full flex items-center justify-center shadow-lg mb-4 mx-auto">
+                      <MapPin className="w-8 h-8 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,1)]" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2 text-center drop-shadow-[0_2px_10px_rgba(0,0,0,1)]">
+                      Notre bureau à Douala
+                    </h4>
+                    <p className="text-white mb-6 font-medium text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                      Makepe BM, quartier d'affaires
+                    </p>
+                    
+                    {/* Bouton itinéraire */}
+                    <a
+                      href="https://www.google.com/maps/dir/?api=1&destination=4.0511,9.7679"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gray-900/55 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-900/75 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg transform hover:scale-105 w-full justify-center border border-white/25"
+                    >
+                      <span>Obtenir l'itinéraire</span>
+                      <ArrowRight size={18} />
+                    </a>
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Notre bureau à Douala
-                </h4>
-                <p className="text-gray-700 mb-8 font-medium text-lg">
-                  Makepe BM, quartier d'affaires
-                </p>
                 
-                {/* Bouton itinéraire - Centré et aligné */}
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Makepe+Missoke,+Douala,+Cameroun"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-800 text-white px-7 py-4 rounded-lg font-semibold hover:bg-gray-900 transition-all duration-300 inline-flex items-center space-x-3 shadow-lg transform hover:scale-105"
-                >
-                  <span>Obtenir l'itinéraire</span>
-                  <ArrowRight size={18} />
-                </a>
+                {/* Vue satellite Google Maps en arrière-plan */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.8984726347845!2d9.765790075781254!3d4.051099996432188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDMnMDQuMCJOIDnCsDQ2JzAzLjYiRQ!5e1!3m2!1sfr!2scm!4v1700000000000!5m2!1sfr!2scm"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Localisation MatriCx Consulting - Makepe BM, Douala"
+                  className="absolute inset-0"
+                ></iframe>
               </div>
             </div>
           </div>

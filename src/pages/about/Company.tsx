@@ -3,9 +3,11 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { useSanityTeamMembers } from '../../hooks/useSanityContent';
 
 const Company: React.FC = () => {
-  useTranslation(); // Keep the hook call even if we don't use it directly
+  const { currentLanguage } = useTranslation();
+  const { teamMembers, urlFor } = useSanityTeamMembers();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -95,47 +97,50 @@ const Company: React.FC = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Expert 1 */}
-              <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <img
-                  src="/team1.jpg"
-                  alt="Amadou Nkongho"
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Amadou Nkongho</h3>
-                <p className="text-yellow-600 font-medium mb-4">Responsable Innovation Digitale</p>
-                <p className="text-gray-600">
-                  Expert en solutions CRM et intelligence artificielle, il transforme les défis clients en opportunités de croissance grâce à des stratégies digitales innovantes.
-                </p>
-              </div>
-
-              {/* Expert 2 */}
-              <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <img
-                  src="/team2.jpg"
-                  alt="Marie-Claire Fotso"
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Marie-Claire Fotso</h3>
-                <p className="text-yellow-600 font-medium mb-4">Directrice Expérience Client</p>
-                <p className="text-gray-600">
-                  Spécialiste en expérience client, elle révolutionne la relation client en intégrant technologies avancées et approche humaine personnalisée.
-                </p>
-              </div>
-
-              {/* Expert 3 */}
-              <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                <img
-                  src="/team3.jpg"
-                  alt="Jean-Paul Mbarga"
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Jean-Paul Mbarga</h3>
-                <p className="text-yellow-600 font-medium mb-4">Lead Stratégie Digitale</p>
-                <p className="text-gray-600">
-                  Architecte de solutions digitales, il conçoit des stratégies sur mesure pour optimiser la performance et la croissance de nos clients.
-                </p>
-              </div>
+              {(teamMembers && teamMembers.length > 0) ? (
+                teamMembers.map((member, index) => (
+                  <div 
+                    key={member._id} 
+                    className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" 
+                    style={{ animationDelay: `${(index + 1) * 0.2}s` }}
+                  >
+                    <img
+                      src={urlFor(member.photo).width(200).height(200).url()}
+                      alt={member.name}
+                      className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
+                    />
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                    <p className="text-yellow-600 font-medium mb-4">
+                      {member.position[currentLanguage as 'fr' | 'en'] || member.position.fr}
+                    </p>
+                    <p className="text-gray-600">
+                      {member.description[currentLanguage as 'fr' | 'en'] || member.description.fr}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                // Fallback si pas de données Sanity
+                <>
+                  <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                    <img src="/team1.jpg" alt="Amadou Nkongho" className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400" />
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Amadou Nkongho</h3>
+                    <p className="text-yellow-600 font-medium mb-4">Responsable Innovation Digitale</p>
+                    <p className="text-gray-600">Expert en solutions CRM et intelligence artificielle.</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                    <img src="/team2.jpg" alt="Marie-Claire Fotso" className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400" />
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Marie-Claire Fotso</h3>
+                    <p className="text-yellow-600 font-medium mb-4">Directrice Expérience Client</p>
+                    <p className="text-gray-600">Spécialiste en expérience client.</p>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.6s' }}>
+                    <img src="/team3.jpg" alt="Jean-Paul Mbarga" className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400" />
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Jean-Paul Mbarga</h3>
+                    <p className="text-yellow-600 font-medium mb-4">Lead Stratégie Digitale</p>
+                    <p className="text-gray-600">Architecte de solutions digitales.</p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>

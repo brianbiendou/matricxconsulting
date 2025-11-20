@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import { useSanityTestimonials } from '../hooks/useSanityTestimonials'
 import { Star, Quote } from 'lucide-react'
 
 const TestimonialsSection: React.FC = () => {
   const { t, currentLanguage } = useTranslation()
+  const { testimonials: sanityTestimonials } = useSanityTestimonials()
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  // Témoignages selon la langue choisie
-  const testimonialsData = currentLanguage === 'fr' ? [
+  // Témoignages hardcodés (fallback)
+  const defaultTestimonialsData = currentLanguage === 'fr' ? [
     {
       quote: "MatriCx Consulting a révolutionné notre approche client. Une expertise remarquable qui a boosté notre chiffre d'affaires de 40%.",
       author: "Amina Tchinda",
@@ -83,7 +85,26 @@ const TestimonialsSection: React.FC = () => {
     }
   ]
 
-  const testimonials = testimonialsData
+  // Mapper les données Sanity vers le format existant (mémorisé pour éviter re-renders)
+  const sanityMappedTestimonials = useMemo(() => {
+    const mapped = sanityTestimonials
+      .filter((t: any) => t.featured === true)
+      .sort((a: any, b: any) => (a.order || 0) - (b.order || 0)) // Gérer les valeurs nulles
+      .map((t: any) => ({
+        quote: t.content?.[currentLanguage as 'fr' | 'en'] || t.content?.fr || 'Témoignage non disponible',
+        author: t.name || 'Auteur anonyme',
+        position: t.position || 'Position non spécifiée',
+        company: t.company || 'Entreprise non spécifiée',
+        rating: t.rating || 5,
+        avatar: t.name ? t.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'AA',
+        photoId: t.image ? null : "1580489944761-95a4bd4e7909"
+      }))
+    
+    return mapped
+  }, [sanityTestimonials, currentLanguage])
+
+  // LOGIQUE ADDITIVE : Sanity + Défaut (au lieu de remplacer)
+  const testimonials = [...sanityMappedTestimonials, ...defaultTestimonialsData]
 
   // Défilement ultra-fluide et lent pour lecture confortable
   useEffect(() => {

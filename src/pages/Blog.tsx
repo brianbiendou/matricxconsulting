@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useTranslation } from '../hooks/useTranslation'
+import { useSanityBlogPosts } from '../hooks/useSanityBlogPosts'
 import { Calendar, User, ArrowRight, TrendingUp, Users, Lightbulb, Target, BarChart3, Briefcase, Flame, Clock, Facebook, Linkedin, Twitter } from 'lucide-react'
 
-// Import des images
+// Import des images (fallback)
 import vert1 from '../images/blog/vert1.jpg'
 import vert2 from '../images/blog/vert2.jpg'
 import vert3 from '../images/blog/vert3.jpg'
@@ -19,6 +21,7 @@ import affiliesImage from '../images/blog/affilies-de-prevision-examinant-les-do
 
 const Blog: React.FC = () => {
   const { currentLanguage } = useTranslation()
+  const { posts: sanityPosts } = useSanityBlogPosts()
   const [selectedTopic, setSelectedTopic] = useState('all')
   const [sortBy, setSortBy] = useState<'popular' | 'recent' | 'oldest'>('popular')
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
@@ -197,6 +200,42 @@ const Blog: React.FC = () => {
     }
   ]
 
+  // Mapper les articles Sanity vers le format existant
+  const sanityMappedArticles = sanityPosts.map((post: any, index: number) => {
+    // Mapping des catégories Sanity vers les catégories existantes
+    const categoryMap: { [key: string]: string } = {
+      'cx': 'transformation',
+      'strategie': 'innovation',
+      'digital': 'transformation',
+      'formation': 'leadership',
+      'etudes': 'consulting'
+    }
+
+    return {
+      id: 1000 + index, // ID unique pour éviter les conflits
+      title: post.title[currentLanguage as 'fr' | 'en'] || post.title.fr,
+      excerpt: post.excerpt?.[currentLanguage as 'fr' | 'en'] || post.excerpt?.fr || '',
+      date: new Date(post.publishedAt).toLocaleDateString(currentLanguage === 'fr' ? 'fr-FR' : 'en-US', { 
+        day: 'numeric', 
+        month: 'short', 
+        year: 'numeric' 
+      }),
+      dateValue: new Date(post.publishedAt),
+      author: post.author || 'MatriCx Consulting',
+      category: categoryMap[post.category] || 'transformation',
+      readTime: '6 min', // Valeur par défaut
+      image: post.mainImage ? post.mainImage : whatsapp1, // Fallback image
+      views: Math.floor(Math.random() * 5000) + 1000, // Vue aléatoire pour le tri
+      slug: post.slug?.current, // Slug pour les articles Sanity
+      isSanity: true // Flag pour identifier les articles Sanity
+    }
+  })
+
+  // Fusionner les articles Sanity avec les articles hardcodés
+  const allArticles = sanityPosts.length > 0 
+    ? [...sanityMappedArticles, ...articles] 
+    : articles
+
   // Services/thèmes verticaux pour la section principale
   const featuredServices = [
     {
@@ -246,8 +285,8 @@ const Blog: React.FC = () => {
 
   // Filtrage par topic
   const topicFilteredArticles = selectedTopic === 'all' 
-    ? articles 
-    : articles.filter(article => article.category === selectedTopic)
+    ? allArticles 
+    : allArticles.filter(article => article.category === selectedTopic)
 
   // Filtrage par mois (si sélectionné)
   const monthFilteredArticles = selectedMonth !== null
@@ -553,14 +592,27 @@ const Blog: React.FC = () => {
                     <article key={article.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
                       {/* Image de l'article */}
                       <div className="h-48 relative overflow-hidden">
-                        <img 
-                          src={article.image} 
-                          alt={article.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          style={{
-                            objectPosition: 'center 30%'
-                          }}
-                        />
+                        {article.isSanity && article.slug ? (
+                          <Link to={`/blog/${article.slug}`}>
+                            <img 
+                              src={article.image} 
+                              alt={article.title}
+                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+                              style={{
+                                objectPosition: 'center 30%'
+                              }}
+                            />
+                          </Link>
+                        ) : (
+                          <img 
+                            src={article.image} 
+                            alt={article.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            style={{
+                              objectPosition: 'center 30%'
+                            }}
+                          />
+                        )}
                         <div className="absolute top-4 left-4">
                           <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
                             {topics.find(t => t.id === article.category)?.name}
@@ -582,18 +634,36 @@ const Blog: React.FC = () => {
                           <span className="text-blue-600">{article.readTime}</span>
                         </div>
 
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
-                          {article.title}
-                        </h3>
+                        {article.isSanity && article.slug ? (
+                          <Link to={`/blog/${article.slug}`}>
+                            <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors cursor-pointer">
+                              {article.title}
+                            </h3>
+                          </Link>
+                        ) : (
+                          <h3 className="text-xl font-bold text-gray-900 mb-3">
+                            {article.title}
+                          </h3>
+                        )}
 
                         <p className="text-gray-600 mb-4 line-clamp-3">
                           {article.excerpt}
                         </p>
 
-                        <button className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium group">
-                          <span>{currentLanguage === 'fr' ? 'Lire l\'article' : 'Read article'}</span>
-                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
+                        {article.isSanity && article.slug ? (
+                          <Link 
+                            to={`/blog/${article.slug}`}
+                            className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium group"
+                          >
+                            <span>{currentLanguage === 'fr' ? 'Lire l\'article' : 'Read article'}</span>
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        ) : (
+                          <button className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium group">
+                            <span>{currentLanguage === 'fr' ? 'Lire l\'article' : 'Read article'}</span>
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                          </button>
+                        )}
                       </div>
                     </article>
                   ))}

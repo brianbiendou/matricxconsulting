@@ -23,7 +23,8 @@ const Services: React.FC = () => {
     return features[serviceKey as keyof typeof features] || []
   }
 
-  const services = [
+  // Mapper les services Sanity ou utiliser les données hardcodées
+  const defaultServices = [
     {
       id: 'advisory',
       name: t('services.advisory.name'),
@@ -61,6 +62,10 @@ const Services: React.FC = () => {
       features: getServiceFeatures('training')
     }
   ]
+
+
+
+  const services = defaultServices
 
   return (
     <div key={currentLanguage} className="min-h-screen bg-white">

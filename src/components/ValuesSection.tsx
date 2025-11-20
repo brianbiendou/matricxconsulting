@@ -4,10 +4,11 @@ import { useTranslation } from '../hooks/useTranslation'
 import { Shield, Lightbulb, Sparkles, Users, Star, ArrowRight, ArrowUpRight } from 'lucide-react'
 
 const ValuesSection: React.FC = () => {
-  const { t } = useTranslation()
+  const { t, currentLanguage } = useTranslation()
   const [activeValue, setActiveValue] = useState(0)
 
-  const values = [
+  // Fallback vers données hardcodées si Sanity ne retourne rien
+  const defaultValues = [
     {
       icon: <Shield className="w-6 h-6" />,
       name: t('values.integrity.name'),
@@ -49,6 +50,9 @@ const ValuesSection: React.FC = () => {
       textColor: "text-black"
     }
   ]
+
+  // Utiliser les données hardcodées directement
+  const values = defaultValues
 
   return (
     <section className="section-padding bg-white section-transition">

@@ -91,9 +91,12 @@ const Careers: React.FC = () => {
                   </span>
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
-                <button className="bg-white text-black font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                <a 
+                  href="mailto:contact@matricxconsulting.com?subject=Candidature Spontanée"
+                  className="bg-white text-black font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
+                >
                   {t('careers.hero.cta2')}
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -346,9 +349,12 @@ const Careers: React.FC = () => {
               <p className="text-xl text-gray-300 mb-8">
                 {t('careers.cta.subtitle')}
               </p>
-              <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors">
+              <a 
+                href="mailto:contact@matricxconsulting.com?subject=Candidature - MatriCx Consulting"
+                className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-block"
+              >
                 {t('careers.cta.button')}
-              </button>
+              </a>
             </div>
           </div>
         </section>

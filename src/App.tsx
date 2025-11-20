@@ -6,6 +6,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import Advisory from './pages/services/Advisory'
 import Survey from './pages/services/Survey'
 import Technology from './pages/services/Technology'
@@ -40,6 +41,7 @@ function App() {
           <Route path="/services/training" element={<Training />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </div>
     </Router>

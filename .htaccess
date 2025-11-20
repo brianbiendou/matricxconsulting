@@ -6,14 +6,34 @@ RewriteBase /
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Gestion des routes React Router
+# Forcer www ou non-www (choisir l'un des deux)
+# Redirection vers www (décommentez si vous voulez www)
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# Redirection vers non-www (recommandé pour matricxconsulting.com)
+RewriteCond %{HTTP_HOST} ^www\.matricxconsulting\.com$ [NC]
+RewriteRule ^(.*)$ https://matricxconsulting.com/$1 [R=301,L]
+
+# Fichiers Google Search Console et robots.txt - accès direct
+RewriteRule ^googlefa72e8e4ea0b7a68\.html$ - [L]
+RewriteRule ^sitemap\.xml$ - [L]
+RewriteRule ^robots\.txt$ - [L]
+
+# PWA - Service Worker et Manifest
+RewriteRule ^sw\.js$ - [L]
+RewriteRule ^workbox-.*\.js$ - [L]
+RewriteRule ^manifest\.json$ - [L]
+RewriteRule ^browserconfig\.xml$ - [L]
+
+# Gestion des routes React Router (toutes les nouvelles pages)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
 
 # Compression GZIP
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
 </IfModule>
 
 # Cache des fichiers statiques
@@ -24,9 +44,13 @@ RewriteRule . /index.html [L]
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
 </IfModule>
 
 # Sécurité
@@ -34,4 +58,35 @@ RewriteRule . /index.html [L]
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Cache Control pour fichiers statiques
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|ico|css|js)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  # Pas de cache pour HTML et fichiers dynamiques (important pour Sanity)
+  <FilesMatch "\.(html|htm|json)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+  
+  # Service Worker - pas de cache
+  <FilesMatch "sw\.js$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
 </IfModule>
+
+# Type MIME corrects pour PWA
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType application/x-web-app-manifest+json .webapp
+  AddType text/cache-manifest .appcache
+</IfModule>
+
+# Désactiver l'affichage des répertoires
+Options -Indexes

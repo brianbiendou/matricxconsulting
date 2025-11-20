@@ -2,35 +2,44 @@ import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Clock, Users, BarChart, ArrowRight, Star } from 'lucide-react';
+import { useTranslation } from '../../hooks/useTranslation';
+import { useSanityExperienceStats, useSanityProjects } from '../../hooks/useSanityContent';
 
 const Experience: React.FC = () => {
-  const stats = [
-    {
-      value: '200+',
-      label: 'Projets Réalisés'
-    },
-    {
-      value: '15+',
-      label: 'Pays Africains'
-    },
-    {
-      value: '95%',
-      label: 'Clients Satisfaits'
-    },
-    {
-      value: '50M€+',
-      label: 'Impact Généré'
-    }
+  const { currentLanguage } = useTranslation();
+  const { experienceStats } = useSanityExperienceStats();
+  const { projects: sanityProjects, urlFor } = useSanityProjects();
+
+  // Stats - Sanity ou fallback
+  const stats = (experienceStats && experienceStats.length > 0) ? experienceStats.map(stat => ({
+    value: stat.value,
+    label: stat.label[currentLanguage as 'fr' | 'en'] || stat.label.fr
+  })) : [
+    { value: '200+', label: 'Projets Réalisés' },
+    { value: '15+', label: 'Pays Africains' },
+    { value: '95%', label: 'Clients Satisfaits' },
+    { value: '50M€+', label: 'Impact Généré' }
   ];
 
-  const projects = [
+  // Projets - Sanity ou fallback
+  const projects = (sanityProjects && sanityProjects.length > 0) ? sanityProjects.map(project => ({
+    title: project.title[currentLanguage as 'fr' | 'en'] || project.title.fr,
+    client: project.client,
+    description: project.description[currentLanguage as 'fr' | 'en'] || project.description.fr,
+    impact: project.impact[currentLanguage as 'fr' | 'en'] || project.impact.fr,
+    duration: typeof project.duration === 'string' ? project.duration : 
+             (project.duration?.[currentLanguage as 'fr' | 'en'] || project.duration?.fr || ''),
+    tags: project.tags || [],
+    image: project.image ? urlFor(project.image).width(400).height(300).url() : null
+  })) : [
     {
       title: 'Transformation Digitale Bancaire',
       client: 'Grande Banque Ouest-Africaine',
       description: 'Modernisation complète des services bancaires numériques',
       impact: 'Augmentation de 300% des transactions en ligne',
       duration: '18 mois',
-      tags: ['Finance', 'Digital Banking', 'UX Design']
+      tags: ['Finance', 'Digital Banking', 'UX Design'],
+      image: null
     },
     {
       title: 'Optimisation CX Télécom',
@@ -38,7 +47,8 @@ const Experience: React.FC = () => {
       description: 'Refonte de l\'expérience client multicanal',
       impact: 'Réduction de 45% du temps de résolution',
       duration: '12 mois',
-      tags: ['Télécom', 'CX', 'Analytics']
+      tags: ['Télécom', 'CX', 'Analytics'],
+      image: null
     },
     {
       title: 'Plateforme E-commerce',
@@ -46,7 +56,8 @@ const Experience: React.FC = () => {
       description: 'Création d\'une marketplace B2B innovante',
       impact: '+200% de croissance des ventes en ligne',
       duration: '8 mois',
-      tags: ['E-commerce', 'B2B', 'Tech']
+      tags: ['E-commerce', 'B2B', 'Tech'],
+      image: null
     }
   ];
 
@@ -110,9 +121,16 @@ const Experience: React.FC = () => {
               {projects.map((project, index) => (
                 <div 
                   key={index}
-                  className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+                  className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="mb-6">
+                  {project.image && (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
+                  <div className="p-8">
                     <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-yellow-500 transition-colors">
                       {project.title}
                     </h3>
@@ -132,17 +150,17 @@ const Experience: React.FC = () => {
                       <Clock className="w-4 h-4 mt-1 flex-shrink-0" />
                       <span>{project.duration}</span>
                     </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span 
-                        key={tagIndex}
-                        className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex}
+                          className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-1 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}

@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
+import { useSanityPartners } from '../hooks/useSanityContent'
 import finexsLogo from '../images/finexs.png'
 import matricxLogo from '../images/logomatricx.png'
 import matrixLogo from '../images/matrix.png'
@@ -9,12 +10,14 @@ import hotelLogo from '../images/hotel.png'
 
 const PartnersCarousel: React.FC = () => {
   const { t } = useTranslation()
+  const { partners: sanityPartners, urlFor } = useSanityPartners()
   const [isHovered, setIsHovered] = useState(false)
   
   const handleMouseEnter = useCallback(() => setIsHovered(true), [])
   const handleMouseLeave = useCallback(() => setIsHovered(false), [])
 
-  const partners = [
+  // Partenaires hardcodés (fallback)
+  const defaultPartners = [
     {
       type: 'image',
       src: finexsLogo,
@@ -52,6 +55,18 @@ const PartnersCarousel: React.FC = () => {
       name: 'Hotel'
     }
   ]
+
+  // Mapper les partenaires Sanity
+  const sanityMappedPartners = (sanityPartners && sanityPartners.length > 0) ? sanityPartners.map(partner => ({
+    type: 'image' as const,
+    src: urlFor(partner.logo).width(200).height(100).url(),
+    alt: partner.name,
+    name: partner.name,
+    website: partner.website
+  })) : []
+
+  // Utiliser Sanity si disponible, sinon fallback
+  const partners = sanityMappedPartners.length > 0 ? sanityMappedPartners : defaultPartners
 
   // Dupliquer exactement 2 fois pour un défilement CSS fluide
   const duplicatedPartners = [...partners, ...partners]
