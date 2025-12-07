@@ -268,7 +268,7 @@ const Chatbot: React.FC = () => {
 
   const handleSpecialAction = (actionId: string) => {
     if (actionId === 'take_appointment') {
-      window.open('https://calendly.com/enablermoney/new-meeting', '_blank')
+      window.open('https://calendly.com/consultingmatricx/30min', '_blank')
     } else if (actionId === 'redirect_contact') {
       // Fermer le chatbot et rediriger vers la page contact
       setIsOpen(false)

@@ -4,58 +4,62 @@ import Footer from '../../components/Footer';
 import { Users, Laptop, GraduationCap, Heart, ArrowRight, ChevronRight } from 'lucide-react';
 import equipeImage from '../../images/equipe.jpg';
 import { useTranslation } from '../../hooks/useTranslation';
+import { useSanityJobOpenings } from '../../hooks/useSanityJobOpenings';
 
 const Careers: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, currentLanguage } = useTranslation();
+  const { jobOpenings, loading } = useSanityJobOpenings();
+  
+  // Fonction pour créer le lien mailto avec message pré-rempli (toujours en français)
+  const createApplicationEmail = (jobTitle: string, jobLocation: string, jobType: string) => {
+    const recipient = 'consultingmatricx@gmail.com';
+    const subject = `Candidature - ${jobTitle}`;
+    
+    const body = `Bonjour,
+
+Je me permets de vous contacter suite à l'offre d'emploi "${jobTitle}" que vous avez publiée.
+
+Après avoir pris connaissance des détails du poste (${jobLocation} - ${jobType}), je suis vivement intéressé(e) par cette opportunité qui correspond parfaitement à mon profil et à mes aspirations professionnelles.
+
+Convaincu(e) que mes compétences et mon expérience pourraient être un atout pour MatriCx Consulting, je serais ravi(e) de pouvoir échanger avec vous sur ma candidature.
+
+Vous trouverez mon CV en pièce jointe de cet email.
+
+Je reste à votre disposition pour toute information complémentaire et serais honoré(e) de vous rencontrer lors d'un entretien.
+
+Dans l'attente de votre retour, je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.
+
+Cordialement,
+[Votre nom]
+[Votre téléphone]`;
+
+    return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   const benefits = [
     {
       icon: <GraduationCap className="w-6 h-6" />,
-      title: 'Formation Continue',
-      description: 'Programme de développement professionnel personnalisé'
+      titleKey: 'training',
+      descKey: 'trainingDesc'
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: 'Équipe Internationale',
-      description: 'Collaborez avec des experts de divers horizons'
+      titleKey: 'team',
+      descKey: 'teamDesc'
     },
     {
       icon: <Laptop className="w-6 h-6" />,
-      title: 'Innovation',
-      description: 'Travaillez sur des projets digitaux innovants'
+      titleKey: 'innovation',
+      descKey: 'innovationDesc'
     },
     {
       icon: <Heart className="w-6 h-6" />,
-      title: 'Bien-être',
-      description: 'Équilibre vie pro/perso et avantages sociaux'
+      titleKey: 'wellbeing',
+      descKey: 'wellbeingDesc'
     }
   ];
 
-  const openings = [
-    {
-      title: 'Consultant(e) en Transformation Digitale',
-      location: 'Douala, Cameroun',
-      type: 'CDI',
-      experience: '3-5 ans'
-    },
-    {
-      title: 'Chef de Projet Digital',
-      location: 'Abidjan, Côte d\'Ivoire',
-      type: 'CDI',
-      experience: '5+ ans'
-    },
-    {
-      title: 'Analyste CX',
-      location: 'Dakar, Sénégal',
-      type: 'CDI',
-      experience: '2-4 ans'
-    },
-    {
-      title: 'Développeur(se) Full Stack',
-      location: 'Remote',
-      type: 'CDI',
-      experience: '3+ ans'
-    }
-  ];
+
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -184,10 +188,10 @@ const Careers: React.FC = () => {
                     {benefit.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {t(`careers.benefits.${benefit.title === 'Formation Continue' ? 'training' : benefit.title === 'Équipe Internationale' ? 'team' : benefit.title === 'Innovation' ? 'innovation' : 'wellbeing'}`)}
+                    {t(`careers.benefits.${benefit.titleKey}`)}
                   </h3>
                   <p className="text-gray-600">
-                    {t(`careers.benefits.${benefit.title === 'Formation Continue' ? 'trainingDesc' : benefit.title === 'Équipe Internationale' ? 'teamDesc' : benefit.title === 'Innovation' ? 'innovationDesc' : 'wellbeingDesc'}`)}
+                    {t(`careers.benefits.${benefit.descKey}`)}
                   </p>
                 </div>
               ))}
@@ -208,25 +212,55 @@ const Careers: React.FC = () => {
             </div>
 
             <div className="max-w-4xl mx-auto space-y-6">
-              {openings.map((job, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{job.title}</h3>
-                      <div className="flex items-center gap-4 text-gray-600">
-                        <span>{job.location}</span>
-                        <span>•</span>
-                        <span>{job.type}</span>
-                        <span>•</span>
-                        <span>{job.experience}</span>
-                      </div>
-                    </div>
-                    <button className="text-yellow-500 hover:text-yellow-600">
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </div>
+              {loading ? (
+                <div className="text-center py-12">
+                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500"></div>
+                  <p className="mt-4 text-gray-600">{currentLanguage === 'fr' ? 'Chargement des postes...' : 'Loading positions...'}</p>
                 </div>
-              ))}
+              ) : jobOpenings.length === 0 ? (
+                <div className="text-center py-12 bg-white rounded-xl shadow-lg">
+                  <p className="text-xl text-gray-600">
+                    {currentLanguage === 'fr' 
+                      ? 'Aucun poste ouvert pour le moment. Consultez régulièrement cette page ou envoyez une candidature spontanée !' 
+                      : 'No open positions at the moment. Check back regularly or send us your spontaneous application!'}
+                  </p>
+                </div>
+              ) : (
+                jobOpenings.map((job) => (
+                  <div key={job._id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                    <div className="flex items-center justify-between gap-6">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {currentLanguage === 'fr' ? job.title.fr : job.title.en}
+                        </h3>
+                        <div className="flex items-center gap-4 text-gray-600">
+                          <span>{currentLanguage === 'fr' ? job.location.fr : job.location.en}</span>
+                          <span>•</span>
+                          <span>{job.type}</span>
+                          <span>•</span>
+                          <span>{currentLanguage === 'fr' ? job.experience.fr : job.experience.en}</span>
+                        </div>
+                        {job.description && (
+                          <p className="mt-3 text-gray-600 text-sm">
+                            {currentLanguage === 'fr' ? job.description.fr : job.description.en}
+                          </p>
+                        )}
+                      </div>
+                      <a 
+                        href={createApplicationEmail(
+                          currentLanguage === 'fr' ? job.title.fr : job.title.en,
+                          currentLanguage === 'fr' ? job.location.fr : job.location.en,
+                          job.type
+                        )}
+                        className="bg-yellow-400 text-black hover:text-black font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 transition-all duration-300 flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transform hover:scale-105"
+                      >
+                        <span>{currentLanguage === 'fr' ? 'Postulez ici' : 'Apply here'}</span>
+                        <ChevronRight className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </section>

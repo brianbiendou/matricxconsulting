@@ -7,7 +7,7 @@ export const config = {
     listId: parseInt(import.meta.env.VITE_BREVO_LIST_ID || '3')
   },
   calendly: {
-    url: import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/enablermoney/new-meeting'
+    url: import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/consultingmatricx/30min'
   },
   site: {
     baseUrl: import.meta.env.VITE_BASE_URL || 'https://matricxconsulting.com'

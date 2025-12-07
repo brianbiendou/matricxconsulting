@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { Target, Headphones, Monitor, GraduationCap } from 'lucide-react'
+import { Target, Headphones, Monitor, GraduationCap, Award } from 'lucide-react'
 
 const MatrixSection = () => {
   const { t } = useTranslation()
@@ -14,7 +14,7 @@ const MatrixSection = () => {
           setIsVisible(true)
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.4, rootMargin: '-100px' }
     )
 
     const currentRef = sectionRef.current
@@ -30,6 +30,10 @@ const MatrixSection = () => {
   }, [])
 
   const services = [
+    {
+      title: t('matrixSection.services.index.title'),
+      icon: <Award className="w-8 h-8" />
+    },
     {
       title: t('matrixSection.services.strategy.title'),
       icon: <Target className="w-8 h-8" />
@@ -68,14 +72,16 @@ const MatrixSection = () => {
 
         {/* Services en cercles */}
         <div className="max-w-6xl mx-auto px-4 mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
             {services.map((service, index) => (
               <div 
                 key={index}
-                className={`transform transition-all duration-500 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`transform transition-all duration-500 ease-out ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
                 }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="w-48 h-48 rounded-full bg-white shadow-lg border-2 border-yellow-400 flex flex-col items-center justify-center p-6 hover:border-yellow-500 hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   {/* Icône */}

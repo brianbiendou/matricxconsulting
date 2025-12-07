@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
   }, [formData])
 
   const openCalendly = useCallback(() => {
-    window.open('https://calendly.com/enablermoney/new-meeting', '_blank')
+    window.open('https://calendly.com/consultingmatricx/30min', '_blank')
   }, [])
 
   return (

@@ -12,75 +12,147 @@ const TestimonialsSection: React.FC = () => {
   const defaultTestimonialsData = currentLanguage === 'fr' ? [
     {
       quote: "MatriCx Consulting a révolutionné notre approche client. Une expertise remarquable qui a boosté notre chiffre d'affaires de 40%.",
-      author: "Amina Tchinda",
-      position: "Directrice Générale",
-      company: "Cameroon Bank",
+      author: "Laure Mazigui",
+      position: "Responsable Développement Commercial",
+      company: "Wafacash",
       rating: 5,
-      avatar: "AT",
+      avatar: "LM",
       photoId: "1580489944761-95a4bd4e7909"
     },
     {
       quote: "Une équipe professionnelle qui comprend parfaitement les enjeux du marché africain. Résultats concrets et durables.",
-      author: "Jean-Baptiste Nkomo",
-      position: "CEO",
-      company: "Tech Solutions Cameroun",
+      author: "Durand Nana",
+      position: "DGA",
+      company: "Matrix Telecoms SA",
       rating: 5,
-      avatar: "JN",
+      avatar: "DN",
       photoId: "1472099645785-5658abf4ff4e"
     },
     {
       quote: "L'accompagnement de MatriCx nous a permis d'optimiser notre relation client et d'améliorer significativement notre satisfaction client.",
-      author: "Françoise Mballa",
-      position: "Responsable Marketing",
-      company: "Orange Cameroun",
+      author: "Eva Tchokonte",
+      position: "DRH",
+      company: "Matrix Telecoms SA",
       rating: 5,
-      avatar: "FM",
+      avatar: "ET",
       photoId: "1494790108755-7d6c0b8e76e"
     },
     {
       quote: "Des conseils stratégiques et un accompagnement personnalisé. MatriCx comprend vraiment les besoins des entreprises africaines.",
-      author: "Paul Mvondo",
-      position: "Directeur Commercial",
-      company: "SABC Douala",
+      author: "Solange Yana",
+      position: "DG",
+      company: "Wafacash Central Africa",
       rating: 5,
-      avatar: "PM",
+      avatar: "SY",
+      photoId: "1507003211169-0a1dd7a838a0"
+    },
+    {
+      quote: "Grâce à MatriCx, nous avons transformé notre expérience client et fidélisé notre clientèle de manière exceptionnelle.",
+      author: "Gabrielle Simo",
+      position: "DG",
+      company: "Hôtel Y",
+      rating: 5,
+      avatar: "GS",
+      photoId: "1580489944761-95a4bd4e7909"
+    },
+    {
+      quote: "Un partenariat stratégique qui a permis d'améliorer nos performances commerciales et notre relation client.",
+      author: "Gaelle Hapi",
+      position: "Responsable Commercial",
+      company: "Newtelnet",
+      rating: 5,
+      avatar: "GH",
+      photoId: "1472099645785-5658abf4ff4e"
+    },
+    {
+      quote: "L'expertise de MatriCx en matière d'expérience client est incomparable. Une collaboration enrichissante.",
+      author: "Mairamou Pantami",
+      position: "Chargée de Clientèle",
+      company: "SCB Cameroun",
+      rating: 5,
+      avatar: "MP",
+      photoId: "1494790108755-7d6c0b8e76e"
+    },
+    {
+      quote: "MatriCx nous a aidé à mieux comprendre nos clients et à offrir un service d'excellence au quotidien.",
+      author: "Esther Njock",
+      position: "Chargée de Clientèle",
+      company: "Studely",
+      rating: 5,
+      avatar: "EN",
       photoId: "1507003211169-0a1dd7a838a0"
     }
   ] : [
     {
       quote: "MatriCx Consulting has revolutionized our customer approach. Remarkable expertise that boosted our revenue by 40%.",
-      author: "Amina Tchinda",
-      position: "General Manager",
-      company: "Cameroon Bank",
+      author: "Laure Mazigui",
+      position: "Responsable Développement Commercial",
+      company: "Wafacash",
       rating: 5,
-      avatar: "AT",
+      avatar: "LM",
       photoId: "1580489944761-95a4bd4e7909"
     },
     {
       quote: "A professional team that perfectly understands the challenges of the African market. Concrete and lasting results.",
-      author: "Jean-Baptiste Nkomo",
-      position: "CEO",
-      company: "Tech Solutions Cameroon",
+      author: "Durand Nana",
+      position: "DGA",
+      company: "Matrix Telecoms SA",
       rating: 5,
-      avatar: "JN",
+      avatar: "DN",
       photoId: "1472099645785-5658abf4ff4e"
     },
     {
       quote: "MatriCx's support allowed us to optimize our customer relationship and significantly improve our customer satisfaction.",
-      author: "Françoise Mballa",
-      position: "Marketing Manager",
-      company: "Orange Cameroon",
+      author: "Eva Tchokonte",
+      position: "DRH",
+      company: "Matrix Telecoms SA",
       rating: 5,
-      avatar: "FM",
+      avatar: "ET",
       photoId: "1494790108755-7d6c0b8e76e"
     },
     {
       quote: "Strategic advice and personalized support. MatriCx truly understands the needs of African businesses.",
-      author: "Paul Mvondo",
-      position: "Commercial Director",
-      company: "SABC Douala",
+      author: "Solange Yana",
+      position: "DG",
+      company: "Wafacash Central Africa",
       rating: 5,
-      avatar: "PM",
+      avatar: "SY",
+      photoId: "1507003211169-0a1dd7a838a0"
+    },
+    {
+      quote: "Thanks to MatriCx, we have transformed our customer experience and built exceptional customer loyalty.",
+      author: "Gabrielle Simo",
+      position: "DG",
+      company: "Hôtel Y",
+      rating: 5,
+      avatar: "GS",
+      photoId: "1580489944761-95a4bd4e7909"
+    },
+    {
+      quote: "A strategic partnership that has improved our commercial performance and customer relationships.",
+      author: "Gaelle Hapi",
+      position: "Responsable Commercial",
+      company: "Newtelnet",
+      rating: 5,
+      avatar: "GH",
+      photoId: "1472099645785-5658abf4ff4e"
+    },
+    {
+      quote: "MatriCx's expertise in customer experience is unparalleled. An enriching collaboration.",
+      author: "Mairamou Pantami",
+      position: "Chargée de Clientèle",
+      company: "SCB Cameroun",
+      rating: 5,
+      avatar: "MP",
+      photoId: "1494790108755-7d6c0b8e76e"
+    },
+    {
+      quote: "MatriCx helped us better understand our customers and deliver excellent service every day.",
+      author: "Esther Njock",
+      position: "Chargée de Clientèle",
+      company: "Studely",
+      rating: 5,
+      avatar: "EN",
       photoId: "1507003211169-0a1dd7a838a0"
     }
   ]
@@ -125,13 +197,13 @@ const TestimonialsSection: React.FC = () => {
   const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section className="py-16 bg-white overflow-hidden section-transition border-b border-gray-100">
-      <div className="container-custom">
+    <section className="pt-6 pb-16 bg-white overflow-hidden section-transition border-b border-gray-100">
+      <div className="container-custom relative z-10">
         {/* En-tête simple */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm border border-yellow-200">
             <Quote size={18} className="mr-2" />
-            Témoignages Clients
+            {t('testimonials.badge')}
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             {t('testimonials.title')}

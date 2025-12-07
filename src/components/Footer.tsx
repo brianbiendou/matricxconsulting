@@ -7,8 +7,7 @@ import {
   MapPin, 
   Facebook, 
   Linkedin, 
-  Twitter,
-  Heart 
+  Twitter
 } from 'lucide-react'
 
 const Footer: React.FC = () => {
@@ -167,9 +166,7 @@ const Footer: React.FC = () => {
               <span>{t('footer.copyright')}</span>
             </div>
             <div className="flex items-center space-x-2 text-gray-400 text-sm font-secondary">
-              <span>{t('footer.madeWith')}</span>
-              <Heart size={16} className="text-primary-500 fill-current" />
-              <span>{t('footer.by')}</span>
+              <span>Made in Cameroon</span>
             </div>
           </div>
         </div>

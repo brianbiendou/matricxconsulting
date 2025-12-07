@@ -30,12 +30,12 @@ export const translations = {
     hero: {
       title: "Et si l'expérience client n'était qu'un besoin fondamental ?",
       subtitle: "MatriCx Consulting est un Cabinet de Conseil spécialisé en Stratégie & Finance, Transformation organisationnelle et l'Excellence Opérationnelle",
-      description: "Accompagnement stratégique personnalisé pour optimiser votre relation client et générer une croissance durable en Afrique.",
+      description: "Accompagnement stratégique personnalisé pour optimiser votre Relation Client et générer une croissance durable en Afrique.",
       cta: "Prendre rendez-vous",
       badge: "Cabinet de conseil en Expérience Client et Excellence Opérationnelle",
       heroLine1: "Transformez votre",
-      heroLine2: "expérience",
-      heroLine3: "client",
+      heroLine2: "Expérience",
+      heroLine3: "Client",
       heroLine4: "en avantage",
       heroLine5: "concurrentiel",
       heroLine5Base: "",
@@ -101,10 +101,14 @@ export const translations = {
     },
     matrixSection: {
       badge: "Nos Services",
-      title: "Notre Mission, faire préférer votre Marque",
+      title: "L'Expérience Client qui fait préférer votre Marque",
       description: "Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.",
       cta: "En savoir plus",
       services: {
+        index: {
+          title: "Indice Expérience Client",
+          description: "Mesurer et évaluer la qualité de l'expérience client"
+        },
         strategy: {
           title: "Stratégie Client",
           description: "Définir votre vision expérience client"
@@ -118,7 +122,7 @@ export const translations = {
           description: "Outils CRM et transformation numérique"
         },
         training: {
-          title: "Formation CX",
+          title: "Formation Expérience Client",
           description: "Développer la culture client de vos équipes"
         }
       },
@@ -129,7 +133,14 @@ export const translations = {
         satisfaction: "Satisfaction"
       }
     },
+    featuredArticles: {
+      badge: "Blog MatriCx",
+      title: "À la Une",
+      readMore: "Lire l'article",
+      viewAll: "Voir tous les articles"
+    },
     partnersCarousel: {
+      badge: "Nos Partenaires",
       title: "Ils nous font confiance",
       description: "Des partenaires de confiance qui témoignent de notre expertise et de notre engagement à offrir des solutions d'excellence."
     },
@@ -174,7 +185,7 @@ export const translations = {
         ]
       },
       training: {
-        name: "MatriCx Training",
+        name: "MatriCx Training & Certification",
         description: "Leader CX, formation sur mesure, certificats CX, culture client...",
         features: [
           "Formation sur mesure",
@@ -182,9 +193,40 @@ export const translations = {
           "Culture client",
           "Leadership CX"
         ]
+      },
+      care: {
+        name: "MatriCx Care",
+        description: "Sous-traitance, externalisation de votre Relation Client. Concentrez-vous sur votre cœur de métier. \"We Care Your Business\"",
+        features: [
+          "Externalisation Relation Client",
+          "Solutions évolutives",
+          "Soutien expert",
+          "Croissance business"
+        ]
+      },
+      summit: {
+        name: "MatriCx Summit & Events",
+        description: "Sommets et workshops sur l'Expérience Client et l'excellence opérationnelle. Contenus fiables basés sur des recherches.",
+        features: [
+          "Sommets CX",
+          "Workshops",
+          "Contenus recherche",
+          "Plans d'actions"
+        ]
+      },
+      mcxi: {
+        name: "MatriCx Customer Experience Index (MCxI)",
+        description: "Indice de la qualité de service globale pays. Prix \"Customer-Obsessed Enterprise Award\" pour les entreprises centrées client.",
+        features: [
+          "Indice qualité pays",
+          "Indice par secteur",
+          "Évaluation annuelle",
+          "Prix CX Award"
+        ]
       }
     },
     testimonials: {
+      badge: "Témoignages Clients",
       header: "Témoignages",
       title: "Les avis de nos clients",
       clients: [
@@ -438,6 +480,147 @@ export const translations = {
         subtitle: "Envoyez-nous votre candidature et participez à l'aventure MatriCx",
         button: "Postuler Maintenant"
       }
+    },
+    companyPage: {
+      hero: {
+        title: "MatriCx Consulting",
+        subtitle: "Leader de la transformation digitale en Afrique",
+        cta: "Notre Histoire"
+      },
+      about: {
+        badge: "À PROPOS DE NOUS",
+        title: "Et si l'expérience client n'était qu'un besoin fondamental ?",
+        description: "Nos consultants vous accompagnent sur des sujets variés tels que les études de marché, le conseil en stratégie & finance, l'expérience & la relation client, la voix du client, la formation sur les thématiques client, le développement et l'intégration des solutions de relation client (Chabots, outil CRM, social listening, etc.).",
+        cta: "Découvrez plus"
+      },
+      team: {
+        badge: "NOTRE ÉQUIPE",
+        title: "Des experts passionnés à votre service",
+        subtitle: "Découvrez les talents qui font de MatriCx Consulting un leader dans la transformation digitale en Afrique."
+      },
+      approach: {
+        badge: "NOTRE APPROCHE",
+        title: "Innovation et expertise au service de votre réussite",
+        description: "Notre approche unique combine expertise technique, compréhension approfondie des marchés africains et méthodologies agiles pour garantir des résultats exceptionnels. Nous créons des solutions sur mesure qui répondent aux défis spécifiques de votre entreprise.",
+        stat1: "Satisfaction client",
+        stat2: "Projets réussis"
+      }
+    },
+    experiencePage: {
+      hero: {
+        title: "Notre Expérience",
+        subtitle: "Des projets innovants qui transforment l'Afrique"
+      },
+      projects: {
+        title: "Projets Marquants",
+        subtitle: "Des solutions innovantes pour des défis complexes"
+      },
+      methodology: {
+        title: "Notre Approche",
+        subtitle: "Une méthodologie éprouvée pour des résultats concrets",
+        steps: {
+          analysis: {
+            title: "Analyse",
+            description: "Description détaillée de l'étape analyse avec nos meilleures pratiques."
+          },
+          design: {
+            title: "Conception",
+            description: "Description détaillée de l'étape conception avec nos meilleures pratiques."
+          },
+          implementation: {
+            title: "Implémentation",
+            description: "Description détaillée de l'étape implémentation avec nos meilleures pratiques."
+          },
+          monitoring: {
+            title: "Suivi",
+            description: "Description détaillée de l'étape suivi avec nos meilleures pratiques."
+          }
+        }
+      },
+      cta: {
+        title: "Prêt à Transformer Votre Business ?",
+        subtitle: "Découvrez comment nous pouvons vous aider à atteindre vos objectifs",
+        button: "Commencer un Projet"
+      }
+    },
+    mediaPage: {
+      hero: {
+        title: "MatriCx dans les Médias",
+        subtitle: "Découvrez nos dernières actualités et apparitions médiatiques",
+        cta: "Contact Presse"
+      },
+      pressReleases: {
+        title: "Communiqués de Presse",
+        subtitle: "Nos dernières annonces et actualités"
+      },
+      mediaAppearances: {
+        title: "Apparitions Médiatiques",
+        subtitle: "Interviews, podcasts et articles",
+        types: {
+          video: "Vidéo",
+          podcast: "Podcast",
+          article: "Article"
+        },
+        seeMore: "Voir plus"
+      },
+      upcomingEvents: {
+        title: "Prochains Événements",
+        subtitle: "Retrouvez-nous lors des événements à venir",
+        learnMore: "En savoir plus"
+      }
+    },
+    partnersPage: {
+      hero: {
+        title: "Nos Partenaires",
+        subtitle: "Ensemble, construisons l'avenir de la transformation digitale en Afrique",
+        cta: "Devenir Partenaire"
+      },
+      types: {
+        title: "Types de Partenariats",
+        subtitle: "Des solutions adaptées à chaque type d'organisation",
+        categories: {
+          companies: {
+            title: "Entreprises",
+            description: "Grandes entreprises et PME en transformation digitale"
+          },
+          institutions: {
+            title: "Institutions",
+            description: "Organismes publics et institutions financières"
+          },
+          startups: {
+            title: "Startups",
+            description: "Startups innovantes en croissance"
+          }
+        }
+      },
+      benefits: {
+        title: "Avantages du Partenariat",
+        subtitle: "Développez votre activité avec MatriCx",
+        items: {
+          expertise: {
+            title: "Expertise Partagée",
+            description: "Accès à notre réseau d'experts et nos ressources"
+          },
+          visibility: {
+            title: "Visibilité Accrue",
+            description: "Promotion via nos canaux de communication"
+          },
+          opportunities: {
+            title: "Opportunités Business",
+            description: "Accès à notre portefeuille de clients"
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Participation à nos programmes d'innovation"
+          }
+        }
+      },
+      cta: {
+        title: "Rejoignez Notre Réseau de Partenaires",
+        subtitle: "Ensemble, créons des solutions innovantes pour l'Afrique",
+        button: "Devenir Partenaire",
+        learnMore: "En Savoir Plus"
+      }
     }
   },
   en: {
@@ -471,12 +654,12 @@ export const translations = {
     hero: {
       title: "What if customer experience was just a fundamental need?",
       subtitle: "MatriCx Consulting is a consulting firm specializing in strategy & finance, organizational transformation and operational excellence.",
-      description: "Personalized strategic support to optimize your customer relationship and generate sustainable growth in Africa.",
+      description: "Personalized strategic support to optimize your Customer Relationship and generate sustainable growth in Africa.",
       cta: "Book an appointment",
-      badge: "Consulting firm specialized in customer experience",
+      badge: "Consulting firm specialized in Customer Experience and Operational Excellence",
       heroLine1: "Transform your",
-      heroLine2: "experience",
-      heroLine3: "customer",
+      heroLine2: "Experience",
+      heroLine3: "Customer",
       heroLine4: "into competitive",
       heroLine5: "advantage",
       heroLine5Base: "",
@@ -542,10 +725,14 @@ export const translations = {
     },
     matrixSection: {
       badge: "Our Services",
-      title: "Our Mission: Make Your Brand Preferred",
+      title: "The Customer Experience that Makes Your Brand Preferred",
       description: "Complete support to transform your customers' experience into a sustainable competitive advantage.",
       cta: "Learn more",
       services: {
+        index: {
+          title: "Customer Experience Index",
+          description: "Measure and evaluate customer experience quality"
+        },
         strategy: {
           title: "Customer strategy",
           description: "Define your customer experience vision"
@@ -559,7 +746,7 @@ export const translations = {
           description: "CRM tools and digital transformation"
         },
         training: {
-          title: "CX Training",
+          title: "Customer Experience Training",
           description: "Develop customer culture in your teams"
         }
       },
@@ -570,7 +757,14 @@ export const translations = {
         satisfaction: "Satisfaction"
       }
     },
+    featuredArticles: {
+      badge: "MatriCx Blog",
+      title: "Featured Articles",
+      readMore: "Read article",
+      viewAll: "View all articles"
+    },
     partnersCarousel: {
+      badge: "Our Partners",
       title: "They trust us",
       description: "Trusted partners who attest to our expertise and commitment to delivering excellence solutions."
     },
@@ -615,7 +809,7 @@ export const translations = {
         ]
       },
       training: {
-        name: "MatriCx Training",
+        name: "MatriCx Training & Certification",
         description: "CX Leader, customized training, CX certificates, customer culture...",
         features: [
           "Custom training",
@@ -623,9 +817,40 @@ export const translations = {
           "Customer culture",
           "CX Leadership"
         ]
+      },
+      care: {
+        name: "MatriCx Care",
+        description: "Outsourcing your Customer Relationship. Focus on your core business. \"We Care Your Business\"",
+        features: [
+          "Customer Relationship outsourcing",
+          "Scalable solutions",
+          "Expert support",
+          "Business growth"
+        ]
+      },
+      summit: {
+        name: "MatriCx Summit & Events",
+        description: "Summits and workshops on Customer Experience and operational excellence. Reliable research-based content.",
+        features: [
+          "CX Summits",
+          "Workshops",
+          "Research content",
+          "Action plans"
+        ]
+      },
+      mcxi: {
+        name: "MatriCx Customer Experience Index (MCxI)",
+        description: "Country-wide service quality index. \"Customer-Obsessed Enterprise Award\" for customer-centric companies.",
+        features: [
+          "Country quality index",
+          "Sector index",
+          "Annual assessment",
+          "CX Award"
+        ]
       }
     },
     testimonials: {
+      badge: "Client Testimonials",
       header: "Testimonials",
       title: "Our clients' reviews",
       clients: [
@@ -878,6 +1103,147 @@ export const translations = {
         title: "Ready to Join Us?",
         subtitle: "Send us your application and join the MatriCx adventure",
         button: "Apply Now"
+      }
+    },
+    companyPage: {
+      hero: {
+        title: "MatriCx Consulting",
+        subtitle: "Leader in digital transformation in Africa",
+        cta: "Our Story"
+      },
+      about: {
+        badge: "ABOUT US",
+        title: "What if customer experience was just a fundamental need?",
+        description: "Our consultants support you on a variety of topics such as market research, strategy & finance consulting, customer experience & relationship, voice of the customer, training on customer topics, development and integration of customer relationship solutions (Chatbots, CRM tools, social listening, etc.).",
+        cta: "Discover more"
+      },
+      team: {
+        badge: "OUR TEAM",
+        title: "Passionate experts at your service",
+        subtitle: "Discover the talents that make MatriCx Consulting a leader in digital transformation in Africa."
+      },
+      approach: {
+        badge: "OUR APPROACH",
+        title: "Innovation and expertise for your success",
+        description: "Our unique approach combines technical expertise, deep understanding of African markets and agile methodologies to guarantee exceptional results. We create tailor-made solutions that meet your company's specific challenges.",
+        stat1: "Customer satisfaction",
+        stat2: "Successful projects"
+      }
+    },
+    experiencePage: {
+      hero: {
+        title: "Our Experience",
+        subtitle: "Innovative projects transforming Africa"
+      },
+      projects: {
+        title: "Flagship Projects",
+        subtitle: "Innovative solutions for complex challenges"
+      },
+      methodology: {
+        title: "Our Approach",
+        subtitle: "A proven methodology for concrete results",
+        steps: {
+          analysis: {
+            title: "Analysis",
+            description: "Detailed description of the analysis phase with our best practices."
+          },
+          design: {
+            title: "Design",
+            description: "Detailed description of the design phase with our best practices."
+          },
+          implementation: {
+            title: "Implementation",
+            description: "Detailed description of the implementation phase with our best practices."
+          },
+          monitoring: {
+            title: "Monitoring",
+            description: "Detailed description of the monitoring phase with our best practices."
+          }
+        }
+      },
+      cta: {
+        title: "Ready to Transform Your Business?",
+        subtitle: "Discover how we can help you achieve your goals",
+        button: "Start a Project"
+      }
+    },
+    mediaPage: {
+      hero: {
+        title: "MatriCx in the Media",
+        subtitle: "Discover our latest news and media appearances",
+        cta: "Press Contact"
+      },
+      pressReleases: {
+        title: "Press Releases",
+        subtitle: "Our latest announcements and news"
+      },
+      mediaAppearances: {
+        title: "Media Appearances",
+        subtitle: "Interviews, podcasts and articles",
+        types: {
+          video: "Video",
+          podcast: "Podcast",
+          article: "Article"
+        },
+        seeMore: "See more"
+      },
+      upcomingEvents: {
+        title: "Upcoming Events",
+        subtitle: "Meet us at upcoming events",
+        learnMore: "Learn more"
+      }
+    },
+    partnersPage: {
+      hero: {
+        title: "Our Partners",
+        subtitle: "Together, building the future of digital transformation in Africa",
+        cta: "Become a Partner"
+      },
+      types: {
+        title: "Partnership Types",
+        subtitle: "Solutions tailored to each type of organization",
+        categories: {
+          companies: {
+            title: "Companies",
+            description: "Large companies and SMEs in digital transformation"
+          },
+          institutions: {
+            title: "Institutions",
+            description: "Public organizations and financial institutions"
+          },
+          startups: {
+            title: "Startups",
+            description: "Innovative startups in growth"
+          }
+        }
+      },
+      benefits: {
+        title: "Partnership Benefits",
+        subtitle: "Grow your business with MatriCx",
+        items: {
+          expertise: {
+            title: "Shared Expertise",
+            description: "Access to our network of experts and resources"
+          },
+          visibility: {
+            title: "Increased Visibility",
+            description: "Promotion through our communication channels"
+          },
+          opportunities: {
+            title: "Business Opportunities",
+            description: "Access to our client portfolio"
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Participation in our innovation programs"
+          }
+        }
+      },
+      cta: {
+        title: "Join Our Partner Network",
+        subtitle: "Together, let's create innovative solutions for Africa",
+        button: "Become a Partner",
+        learnMore: "Learn More"
       }
     }
   }

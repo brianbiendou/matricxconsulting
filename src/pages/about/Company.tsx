@@ -6,7 +6,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { useSanityTeamMembers } from '../../hooks/useSanityContent';
 
 const Company: React.FC = () => {
-  const { currentLanguage } = useTranslation();
+  const { t, currentLanguage } = useTranslation();
   const { teamMembers, urlFor } = useSanityTeamMembers();
 
   return (
@@ -28,14 +28,14 @@ const Company: React.FC = () => {
           <div className="container-custom relative z-10 h-full flex items-center">
             <div className="max-w-4xl mx-auto text-center w-full">
               <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
-                MatriCx Consulting
+                {t('companyPage.hero.title')}
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
-                Leader de la transformation digitale en Afrique
+                {t('companyPage.hero.subtitle')}
               </p>
               <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-400 transition-all duration-300 inline-flex items-center group">
                 <a href="#notre-histoire" className="flex items-center w-full text-black no-underline group-hover:text-black group-hover:font-bold">
-                  Notre Histoire
+                  {t('companyPage.hero.cta')}
                   <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                 </a>
               </button>
@@ -58,22 +58,19 @@ const Company: React.FC = () => {
               </div>
               <div className="space-y-8">
                 <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block">
-                  <span className="text-yellow-600 font-semibold">À PROPOS DE NOUS</span>
+                  <span className="text-yellow-600 font-semibold">{t('companyPage.about.badge')}</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900">
-                  Et si l'expérience client n'était qu'un besoin fondamental ?
+                  {t('companyPage.about.title')}
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Nos consultants vous accompagnent sur des sujets variés tels que les études de marché, 
-                  le conseil en stratégie & finance, l'expérience & la relation client, la voix du client, 
-                  la formation sur les thématiques client, le développement et l'intégration des solutions 
-                  de relation client (Chabots, outil CRM, social listening, etc.).
+                  {t('companyPage.about.description')}
                 </p>
                 <a 
                   href="/services/training"
                   className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all duration-300 inline-flex items-center group"
                 >
-                  <span className="text-black group-hover:text-black group-hover:font-bold">Découvrez plus</span>
+                  <span className="text-black group-hover:text-black group-hover:font-bold">{t('companyPage.about.cta')}</span>
                   <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
@@ -86,13 +83,13 @@ const Company: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block mb-4">
-                <span className="text-yellow-600 font-semibold">NOTRE ÉQUIPE</span>
+                <span className="text-yellow-600 font-semibold">{t('companyPage.team.badge')}</span>
               </div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Des experts passionnés à votre service
+                {t('companyPage.team.title')}
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Découvrez les talents qui font de MatriCx Consulting un leader dans la transformation digitale en Afrique.
+                {t('companyPage.team.subtitle')}
               </p>
             </div>
             
@@ -151,24 +148,22 @@ const Company: React.FC = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8 animate-slide-right">
                 <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block">
-                  <span className="text-yellow-600 font-semibold">NOTRE APPROCHE</span>
+                  <span className="text-yellow-600 font-semibold">{t('companyPage.approach.badge')}</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900">
-                  Innovation et expertise au service de votre réussite
+                  {t('companyPage.approach.title')}
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Notre approche unique combine expertise technique, compréhension approfondie des marchés africains 
-                  et méthodologies agiles pour garantir des résultats exceptionnels. Nous créons des solutions 
-                  sur mesure qui répondent aux défis spécifiques de votre entreprise.
+                  {t('companyPage.approach.description')}
                 </p>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="text-3xl font-bold text-yellow-500 mb-2">98%</div>
-                    <div className="text-gray-600">Satisfaction client</div>
+                    <div className="text-gray-600">{t('companyPage.approach.stat1')}</div>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="text-3xl font-bold text-yellow-500 mb-2">150+</div>
-                    <div className="text-gray-600">Projets réussis</div>
+                    <div className="text-gray-600">{t('companyPage.approach.stat2')}</div>
                   </div>
                 </div>
               </div>

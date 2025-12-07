@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import TestimonialsSection from '../../components/TestimonialsSection';
 import { Clock, Users, BarChart, ArrowRight, Star } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useSanityExperienceStats, useSanityProjects } from '../../hooks/useSanityContent';
 
 const Experience: React.FC = () => {
-  const { currentLanguage } = useTranslation();
+  const { currentLanguage, t } = useTranslation();
   const { experienceStats } = useSanityExperienceStats();
   const { projects: sanityProjects, urlFor } = useSanityProjects();
 
@@ -80,10 +81,10 @@ const Experience: React.FC = () => {
           <div className="container-custom relative z-10 h-full flex items-center">
             <div className="max-w-4xl mx-auto text-center w-full">
               <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
-                Notre Expérience
+                {t('experiencePage.hero.title')}
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
-                Des projets innovants qui transforment l'Afrique
+                {t('experiencePage.hero.subtitle')}
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
                 {stats.map((stat, index) => (
@@ -110,10 +111,10 @@ const Experience: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Projets Marquants
+                {t('experiencePage.projects.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Des solutions innovantes pour des défis complexes
+                {t('experiencePage.projects.subtitle')}
               </p>
             </div>
 
@@ -180,18 +181,23 @@ const Experience: React.FC = () => {
             <div className="relative z-10">
               <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  Notre Approche
+                  {t('experiencePage.methodology.title')}
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Une méthodologie éprouvée pour des résultats concrets
+                  {t('experiencePage.methodology.subtitle')}
                 </p>
               </div>
 
               <div className="max-w-4xl mx-auto">
                 <div className="space-y-12">
-                  {['Analyse', 'Conception', 'Implémentation', 'Suivi'].map((step, index) => (
+                  {[
+                    { key: 'analysis', title: t('experiencePage.methodology.steps.analysis.title'), desc: t('experiencePage.methodology.steps.analysis.description') },
+                    { key: 'design', title: t('experiencePage.methodology.steps.design.title'), desc: t('experiencePage.methodology.steps.design.description') },
+                    { key: 'implementation', title: t('experiencePage.methodology.steps.implementation.title'), desc: t('experiencePage.methodology.steps.implementation.description') },
+                    { key: 'monitoring', title: t('experiencePage.methodology.steps.monitoring.title'), desc: t('experiencePage.methodology.steps.monitoring.description') }
+                  ].map((step, index) => (
                     <div 
-                      key={index}
+                      key={step.key}
                       className="flex items-center gap-8 group"
                       style={{animationDelay: `${index * 200}ms`}}
                     >
@@ -199,9 +205,9 @@ const Experience: React.FC = () => {
                         {index + 1}
                       </div>
                       <div className="flex-grow bg-white rounded-xl p-6 shadow-lg group-hover:shadow-xl transition-all transform group-hover:-translate-y-1">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step}</h3>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
                         <p className="text-gray-600">
-                          Description détaillée de l'étape {step.toLowerCase()} avec nos meilleures pratiques.
+                          {step.desc}
                         </p>
                       </div>
                     </div>
@@ -213,55 +219,24 @@ const Experience: React.FC = () => {
         </section>
 
         {/* Témoignages Section */}
-        <section className="py-20 bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Ce Qu'ils Disent de Nous
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((_, index) => (
-                <div 
-                  key={index}
-                  className="relative bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        className="w-5 h-5 text-yellow-400 fill-current"
-                      />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-6">
-                    "MatriCx a transformé notre approche digitale. Leur expertise et leur professionnalisme ont dépassé nos attentes."
-                  </p>
-                  <div className="font-semibold text-gray-900">Client {index + 1}</div>
-                  <div className="text-sm text-gray-500">Secteur d'activité</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection />
 
         {/* CTA Section */}
         <section className="py-20 bg-gray-900 text-white">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-4xl font-bold mb-6 animate-fade-in">
-                Prêt à Transformer Votre Business ?
+                {t('experiencePage.cta.title')}
               </h2>
               <p className="text-xl text-gray-300 mb-8 animate-fade-in animation-delay-200">
-                Découvrez comment nous pouvons vous aider à atteindre vos objectifs
+                {t('experiencePage.cta.subtitle')}
               </p>
               <a 
                 href="/contact"
                 className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all duration-300 inline-flex items-center group"
               >
                 <span className="text-black group-hover:text-black group-hover:font-bold">
-                  Commencer un Projet
+                  {t('experiencePage.cta.button')}
                 </span>
                 <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </a>

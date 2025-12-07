@@ -6,7 +6,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { useSanityPressReleases, useSanityMediaAppearances, useSanityUpcomingEvents } from '../../hooks/useSanityContent';
 
 const Media: React.FC = () => {
-  const { currentLanguage } = useTranslation();
+  const { currentLanguage, t } = useTranslation();
   const { pressReleases: sanityPressReleases } = useSanityPressReleases();
   const { mediaAppearances: sanityMediaAppearances } = useSanityMediaAppearances();
   const { upcomingEvents: sanityUpcomingEvents } = useSanityUpcomingEvents();
@@ -125,17 +125,17 @@ const Media: React.FC = () => {
           <div className="container-custom relative z-10 h-full flex items-center">
             <div className="max-w-4xl mx-auto text-center w-full">
               <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
-                MatriCx dans les Médias
+                {t('mediaPage.hero.title')}
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
-                Découvrez nos dernières actualités et apparitions médiatiques
+                {t('mediaPage.hero.subtitle')}
               </p>
               <a 
                 href="#apparitions-mediatiques"
                 className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-all duration-300 inline-flex items-center group"
               >
                 <span className="text-black group-hover:text-black group-hover:font-bold">
-                  Contact Presse
+                  {t('mediaPage.hero.cta')}
                 </span>
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
@@ -148,10 +148,10 @@ const Media: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Communiqués de Presse
+                {t('mediaPage.pressReleases.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Nos dernières annonces et actualités
+                {t('mediaPage.pressReleases.subtitle')}
               </p>
             </div>
 
@@ -182,10 +182,10 @@ const Media: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Apparitions Médiatiques
+                {t('mediaPage.mediaAppearances.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Interviews, podcasts et articles
+                {t('mediaPage.mediaAppearances.subtitle')}
               </p>
             </div>
 
@@ -198,7 +198,7 @@ const Media: React.FC = () => {
                         {media.icon}
                       </div>
                       <span className="text-xs font-semibold text-gray-500 uppercase px-3 py-1 bg-gray-100 rounded-full">
-                        {media.type === 'video' ? 'Vidéo' : media.type === 'podcast' ? 'Podcast' : 'Article'}
+                        {media.type === 'video' ? t('mediaPage.mediaAppearances.types.video') : media.type === 'podcast' ? t('mediaPage.mediaAppearances.types.podcast') : t('mediaPage.mediaAppearances.types.article')}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{media.title}</h3>
@@ -210,7 +210,7 @@ const Media: React.FC = () => {
                     {media.link && media.link !== '#' && (
                       <div className="mt-4 flex items-center text-blue-600 text-sm font-medium">
                         <ExternalLink className="w-4 h-4 mr-1" />
-                        Voir plus
+                        {t('mediaPage.mediaAppearances.seeMore')}
                       </div>
                     )}
                   </div>
@@ -241,10 +241,10 @@ const Media: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Prochains Événements
+                {t('mediaPage.upcomingEvents.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Retrouvez-nous lors des événements à venir
+                {t('mediaPage.upcomingEvents.subtitle')}
               </p>
             </div>
 
@@ -262,7 +262,7 @@ const Media: React.FC = () => {
                     {event.link && (
                       <div className="mt-4 flex items-center text-blue-600 text-sm">
                         <ExternalLink className="w-4 h-4 mr-1" />
-                        En savoir plus
+                        {t('mediaPage.upcomingEvents.learnMore')}
                       </div>
                     )}
                   </div>

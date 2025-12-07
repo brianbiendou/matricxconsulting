@@ -3,42 +3,45 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import PartnersCarousel from '../../components/PartnersCarousel';
 import { ArrowRight, Award, Briefcase, Users } from 'lucide-react';
+import { useTranslation } from '../../hooks/useTranslation';
 
 const Partners: React.FC = () => {
+  const { t } = useTranslation();
+
   const partnerTypes = [
     {
       icon: <Briefcase className="w-6 h-6" />,
-      title: 'Entreprises',
-      description: 'Grandes entreprises et PME en transformation digitale'
+      titleKey: 'partnersPage.types.categories.companies.title',
+      descKey: 'partnersPage.types.categories.companies.description'
     },
     {
       icon: <Award className="w-6 h-6" />,
-      title: 'Institutions',
-      description: 'Organismes publics et institutions financières'
+      titleKey: 'partnersPage.types.categories.institutions.title',
+      descKey: 'partnersPage.types.categories.institutions.description'
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: 'Startups',
-      description: 'Startups innovantes en croissance'
+      titleKey: 'partnersPage.types.categories.startups.title',
+      descKey: 'partnersPage.types.categories.startups.description'
     }
   ];
 
   const benefits = [
     {
-      title: 'Expertise Partagée',
-      description: 'Accès à notre réseau d\'experts et nos ressources'
+      titleKey: 'partnersPage.benefits.items.expertise.title',
+      descKey: 'partnersPage.benefits.items.expertise.description'
     },
     {
-      title: 'Visibilité Accrue',
-      description: 'Promotion via nos canaux de communication'
+      titleKey: 'partnersPage.benefits.items.visibility.title',
+      descKey: 'partnersPage.benefits.items.visibility.description'
     },
     {
-      title: 'Opportunités Business',
-      description: 'Accès à notre portefeuille de clients'
+      titleKey: 'partnersPage.benefits.items.opportunities.title',
+      descKey: 'partnersPage.benefits.items.opportunities.description'
     },
     {
-      title: 'Innovation',
-      description: 'Participation à nos programmes d\'innovation'
+      titleKey: 'partnersPage.benefits.items.innovation.title',
+      descKey: 'partnersPage.benefits.items.innovation.description'
     }
   ];
 
@@ -77,13 +80,13 @@ const Partners: React.FC = () => {
           <div className="container-custom relative z-10 h-full flex items-center">
             <div className="max-w-4xl mx-auto text-center w-full">
               <h1 className="text-5xl lg:text-6xl font-bold mb-8 mt-16 animate-slide-up">
-                Nos Partenaires
+                {t('partnersPage.hero.title')}
               </h1>
               <p className="text-xl text-white/90 mb-12 animation-delay-200 animate-fade-in">
-                Ensemble, construisons l'avenir de la transformation digitale en Afrique
+                {t('partnersPage.hero.subtitle')}
               </p>
               <a href="/contact" className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                <span className="group-hover:text-black group-hover:font-bold">Devenir Partenaire</span>
+                <span className="group-hover:text-black group-hover:font-bold">{t('partnersPage.hero.cta')}</span>
                 <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -105,10 +108,10 @@ const Partners: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Types de Partenariats
+                {t('partnersPage.types.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Des solutions adaptées à chaque type d'organisation
+                {t('partnersPage.types.subtitle')}
               </p>
             </div>
 
@@ -121,8 +124,8 @@ const Partners: React.FC = () => {
                   <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6">
                     {type.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{type.title}</h3>
-                  <p className="text-gray-600">{type.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{t(type.titleKey)}</h3>
+                  <p className="text-gray-600">{t(type.descKey)}</p>
                 </div>
               ))}
             </div>
@@ -134,10 +137,10 @@ const Partners: React.FC = () => {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Avantages du Partenariat
+                {t('partnersPage.benefits.title')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Développez votre activité avec MatriCx
+                {t('partnersPage.benefits.subtitle')}
               </p>
             </div>
 
@@ -148,10 +151,10 @@ const Partners: React.FC = () => {
                   className="group hover:bg-yellow-400 bg-gray-50 p-8 rounded-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-black mb-4">
-                    {benefit.title}
+                    {t(benefit.titleKey)}
                   </h3>
                   <p className="text-gray-600 group-hover:text-black/80">
-                    {benefit.description}
+                    {t(benefit.descKey)}
                   </p>
                 </div>
               ))}
@@ -170,18 +173,18 @@ const Partners: React.FC = () => {
             
             <div className="max-w-4xl mx-auto text-center relative z-10">
               <h2 className="text-4xl font-bold mb-6 animate-fade-in">
-                Rejoignez Notre Réseau de Partenaires
+                {t('partnersPage.cta.title')}
               </h2>
               <p className="text-xl text-gray-300 mb-8 animate-fade-in animation-delay-200">
-                Ensemble, créons des solutions innovantes pour l'Afrique
+                {t('partnersPage.cta.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/contact" className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
-                  <span className="group-hover:text-black group-hover:font-bold">Devenir Partenaire</span>
+                  <span className="group-hover:text-black group-hover:font-bold">{t('partnersPage.cta.button')}</span>
                   <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                 </a>
                 <button className="bg-white text-black font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors">
-                  En Savoir Plus
+                  {t('partnersPage.cta.learnMore')}
                 </button>
               </div>
             </div>

@@ -10,6 +10,7 @@ import {project} from './project'
 import {pressRelease} from './pressRelease'
 import {mediaAppearance} from './mediaAppearance'
 import {upcomingEvent} from './upcomingEvent'
+import {jobOpening} from './jobOpening'
 
 export const schemas = [
   // Contenu éditorial
@@ -27,6 +28,9 @@ export const schemas = [
   pressRelease,
   mediaAppearance,
   upcomingEvent,
+  
+  // Carrières
+  jobOpening,
   
   // Statistiques
   homeStats,
