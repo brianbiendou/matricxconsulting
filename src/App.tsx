@@ -12,6 +12,11 @@ import Survey from './pages/services/Survey'
 import Technology from './pages/services/Technology'
 import Training from './pages/services/Training'
 
+// Training Portal Pages
+import TrainingHome from './pages/services/training/TrainingHome'
+import EspaceClient from './pages/services/training/EspaceClient'
+import ContactTraining from './pages/services/training/ContactTraining'
+
 import Company from './pages/about/Company'
 import Careers from './pages/about/Careers'
 import Experience from './pages/about/Experience'
@@ -38,7 +43,10 @@ function App() {
           <Route path="/services/advisory" element={<Advisory />} />
           <Route path="/services/survey" element={<Survey />} />
           <Route path="/services/technology" element={<Technology />} />
-          <Route path="/services/training" element={<Training />} />
+          <Route path="/services/training" element={<TrainingHome />} />
+          <Route path="/services/training/espace-client" element={<EspaceClient />} />
+          <Route path="/services/training/contact" element={<ContactTraining />} />
+          <Route path="/services/training/*" element={<TrainingHome />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

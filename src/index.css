@@ -35,6 +35,19 @@
 }
 
 @layer components {
+  /* FORCE TITLE SIZE */
+  .huge-title {
+    font-size: 3.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  @media (min-width: 1024px) {
+    .huge-title {
+      font-size: 7rem !important;
+      line-height: 0.9 !important;
+    }
+  }
+
   /* MatriCx Button System - Contraste Amélioré */
   .btn-primary {
     @apply bg-primary-500 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg transform;

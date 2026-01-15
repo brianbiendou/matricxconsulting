@@ -18,7 +18,7 @@ export const partner = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+      description: 'Optionnel - Si non fourni, le nom du partenaire sera affiché',
     }),
     defineField({
       name: 'website',

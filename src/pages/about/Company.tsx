@@ -95,17 +95,33 @@ const Company: React.FC = () => {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {(teamMembers && teamMembers.length > 0) ? (
-                teamMembers.map((member, index) => (
+                teamMembers.map((member, index) => {
+                  // Fonction pour obtenir les initiales (max 2 caractères)
+                  const getInitials = (name: string) => {
+                    const parts = name.trim().split(/\s+/);
+                    if (parts.length >= 2) {
+                      return (parts[0][0] + parts[1][0]).toUpperCase();
+                    }
+                    return name.substring(0, 2).toUpperCase();
+                  };
+
+                  return (
                   <div 
                     key={member._id} 
                     className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" 
                     style={{ animationDelay: `${(index + 1) * 0.2}s` }}
                   >
-                    <img
-                      src={urlFor(member.photo).width(200).height(200).url()}
-                      alt={member.name}
-                      className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
-                    />
+                    {member.photo ? (
+                      <img
+                        src={urlFor(member.photo).width(200).height(200).url()}
+                        alt={member.name}
+                        className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
+                      />
+                    ) : (
+                      <div className="w-32 h-32 rounded-full mx-auto mb-6 bg-gradient-to-br from-yellow-400 to-yellow-600 border-4 border-yellow-400 flex items-center justify-center">
+                        <span className="text-3xl font-bold text-white">{getInitials(member.name)}</span>
+                      </div>
+                    )}
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
                     <p className="text-yellow-600 font-medium mb-4">
                       {member.position[currentLanguage as 'fr' | 'en'] || member.position.fr}
@@ -114,7 +130,8 @@ const Company: React.FC = () => {
                       {member.description[currentLanguage as 'fr' | 'en'] || member.description.fr}
                     </p>
                   </div>
-                ))
+                  );
+                })
               ) : (
                 // Fallback si pas de données Sanity
                 <>

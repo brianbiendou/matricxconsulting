@@ -4,7 +4,7 @@ import { client, queries, urlFor } from '../lib/sanity'
 interface Partner {
   _id: string
   name: string
-  logo: unknown
+  logo?: unknown
   website?: string
   order: number
 }
@@ -38,7 +38,7 @@ interface TeamMember {
   _id: string
   name: string
   position: { fr: string; en: string }
-  photo: unknown
+  photo?: unknown
   description: { fr: string; en: string }
   order: number
 }

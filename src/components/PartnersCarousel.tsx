@@ -58,8 +58,8 @@ const PartnersCarousel: React.FC = () => {
 
   // Mapper les partenaires Sanity
   const sanityMappedPartners = (sanityPartners && sanityPartners.length > 0) ? sanityPartners.map(partner => ({
-    type: 'image' as const,
-    src: urlFor(partner.logo).width(200).height(100).url(),
+    type: partner.logo ? 'image' as const : 'text' as const,
+    src: partner.logo ? urlFor(partner.logo).height(80).fit('max').url() : '',
     alt: partner.name,
     name: partner.name,
     website: partner.website
@@ -68,8 +68,10 @@ const PartnersCarousel: React.FC = () => {
   // Utiliser Sanity si disponible, sinon fallback
   const partners = sanityMappedPartners.length > 0 ? sanityMappedPartners : defaultPartners
 
-  // Dupliquer exactement 2 fois pour un défilement CSS fluide
-  const duplicatedPartners = [...partners, ...partners]
+  // Dupliquer seulement si on a assez de partenaires pour le carousel (minimum 4)
+  // Sinon afficher sans animation
+  const needsCarousel = partners.length >= 4
+  const displayPartners = needsCarousel ? [...partners, ...partners] : partners
 
   return (
     <section className="py-16 bg-white overflow-hidden section-transition border-b border-gray-100">
@@ -92,16 +94,16 @@ const PartnersCarousel: React.FC = () => {
 
         <div className="flex justify-center items-center">
           {/* Conteneur du carrousel */}
-          <div className="relative overflow-hidden h-24">
-            {/* Carrousel avec CSS pur */}
+          <div className={`relative ${needsCarousel ? 'overflow-hidden' : ''} h-24`}>
+            {/* Carrousel avec CSS pur (ou affichage statique si peu de partenaires) */}
             <div 
-              className={`flex space-x-14 ${isHovered ? 'carousel-paused' : 'carousel-scroll'}`}
-              style={{ width: 'max-content' }}
+              className={`flex ${needsCarousel ? 'space-x-14' : 'space-x-8 justify-center'} ${needsCarousel && !isHovered ? 'carousel-scroll' : ''} ${needsCarousel && isHovered ? 'carousel-paused' : ''}`}
+              style={needsCarousel ? { width: 'max-content' } : {}}
             >
-              {duplicatedPartners.map((partner, index) => (
+              {displayPartners.map((partner, index) => (
                 <div
                   key={`${partner.name}-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center h-24 w-40 hover:scale-110 transition-transform duration-300"
+                  className="flex-shrink-0 flex items-center justify-center h-24 min-w-[120px] max-w-[200px] hover:scale-110 transition-transform duration-300"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -109,7 +111,7 @@ const PartnersCarousel: React.FC = () => {
                     <img
                       src={partner.src}
                       alt={partner.alt}
-                      className="max-h-20 max-w-36 object-contain transition-all duration-300 drop-shadow-md hover:drop-shadow-xl"
+                      className="max-h-20 w-auto object-contain transition-all duration-300 drop-shadow-md hover:drop-shadow-xl"
                     />
                   ) : (
                     <div className="text-2xl font-bold text-gray-700 hover:text-gray-900 transition-colors duration-300 font-primary drop-shadow-md">

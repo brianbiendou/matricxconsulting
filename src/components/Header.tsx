@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Users, Lightbulb, BarChart, Settings, GraduationCap, Search } from 'lucide-react'
+import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Users, Lightbulb, BarChart, Settings, GraduationCap, Search, HeartHandshake, CalendarDays, Trophy } from 'lucide-react'
 import logoMatricx from '../images/matricxlogo.png'
 import leadershipImage from '../images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg'
 import innovationImage from '../images/blog/vert1.jpg'
@@ -56,6 +56,10 @@ const Header: React.FC = () => {
     { title: 'MatriCx Survey', titleEn: 'MatriCx Survey', path: '/services/survey', keywords: ['survey', 'enquête', 'études', 'research', 'marché'] },
     { title: 'MatriCx Technology', titleEn: 'MatriCx Technology', path: '/services/technology', keywords: ['technology', 'technologie', 'crm', 'digital', 'transformation'] },
     { title: 'MatriCx Training', titleEn: 'MatriCx Training', path: '/services/training', keywords: ['training', 'formation', 'éducation', 'certification'] },
+    // Services non disponibles pour le moment (non cliquables)
+    // { title: 'MatriCx Care', titleEn: 'MatriCx Care', path: '/services/care', keywords: ['care', 'sous-traitance', 'externalisation', 'relation client', 'outsourcing'] },
+    // { title: 'MatriCx Summit & Events', titleEn: 'MatriCx Summit & Events', path: '/services/summit', keywords: ['summit', 'events', 'sommets', 'événements', 'workshops', 'conférences'] },
+    // { title: 'MatriCx Customer Experience Index', titleEn: 'MatriCx Customer Experience Index', path: '/services/mcxi', keywords: ['mcxi', 'index', 'indice', 'qualité', 'award', 'prix'] },
   ]
 
   // Fonction de recherche
@@ -299,14 +303,14 @@ const Header: React.FC = () => {
                   <div className="flex">
                     {/* Section Navigation Services (2 colonnes à gauche) */}
                     <div className="flex-1 max-w-2xl mr-16">
-                      <div className="grid grid-cols-2 gap-12">
+                      <div className="grid grid-cols-2 gap-8">
                         {/* Colonne 1 */}
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                           <Link to="/services/advisory" className="flex items-center p-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-md group">
                             <Lightbulb size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
                             <div>
                               <div className="font-bold text-black">{t('nav.dropdown.advisory')}</div>
-                              <div className="text-sm text-gray-500">Conseil & stratégie financière</div>
+                              <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'Conseil & stratégie financière' : 'Consulting & financial strategy'}</div>
                             </div>
                           </Link>
                           
@@ -314,18 +318,30 @@ const Header: React.FC = () => {
                             <BarChart size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
                             <div>
                               <div className="font-bold text-black">{t('nav.dropdown.survey')}</div>
-                              <div className="text-sm text-gray-500">Études & analyses de marché</div>
+                              <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'Études & analyses de marché' : 'Market studies & analysis'}</div>
                             </div>
                           </Link>
+                          
+                          <div className="flex items-center p-3 rounded-lg text-gray-400 cursor-not-allowed opacity-60">
+                            <HeartHandshake size={20} className="mr-4 text-gray-300" />
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="font-bold text-gray-400">{currentLanguage === 'fr' ? 'MatriCx Care' : 'MatriCx Care'}</span>
+                                <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">{currentLanguage === 'fr' ? 'Bientôt' : 'Soon'}</span>
+                              </div>
+                              <div className="text-sm text-gray-400">{currentLanguage === 'fr' ? 'Externalisation Relation Client' : 'Customer Relations Outsourcing'}</div>
+                            </div>
+                          </div>
+                          
                         </div>
                         
                         {/* Colonne 2 */}
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                           <Link to="/services/technology" className="flex items-center p-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-md group">
                             <Settings size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
                             <div>
                               <div className="font-bold text-black">{t('nav.dropdown.technology')}</div>
-                              <div className="text-sm text-gray-500">CRM & transformation digitale</div>
+                              <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'CRM & transformation digitale' : 'CRM & digital transformation'}</div>
                             </div>
                           </Link>
                           
@@ -333,9 +349,10 @@ const Header: React.FC = () => {
                             <GraduationCap size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
                             <div>
                               <div className="font-bold text-black">{t('nav.dropdown.training')}</div>
-                              <div className="text-sm text-gray-500">Formation & certificats CX</div>
+                              <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'Formation & certificats CX' : 'Training & CX certifications'}</div>
                             </div>
                           </Link>
+                          
                         </div>
                       </div>
                     </div>

@@ -28,7 +28,7 @@ export const teamMember = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+      description: 'Optionnel - Si non fournie, les initiales du membre seront affichées',
     }),
     defineField({
       name: 'description',

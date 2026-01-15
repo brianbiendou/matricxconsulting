@@ -58,7 +58,7 @@ Dans Netlify Dashboard > Site settings > Environment variables:
 NODE_ENV=production
 VITE_PWA_ENABLED=true
 VITE_BASE_URL=https://votre-site.netlify.app
-VITE_CALENDLY_URL=https://calendly.com/enablermoney/new-meeting
+VITE_CALENDLY_URL=https://calendly.com/consultingmatricx/30min
 ```
 
 #### Nom de domaine personnalisé (optionnel)

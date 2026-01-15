@@ -1,97 +1,89 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { 
-  BarChart3, 
-  Search, 
-  Settings, 
-  GraduationCap, 
-  ArrowRight,
-  Sparkles,
-  HeartHandshake,
-  CalendarDays,
-  Award
-} from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
+
+// Images Unsplash pour les cartes bento (environnement/décor professionnel)
+const IMAGES = {
+  // Training: Salle de conférence moderne avec lumière naturelle
+  training: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80',
+  // Advisory: Bureau moderne avec vue panoramique
+  advisory: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+  // Technology: Dashboard CRM / Interface email sur écran
+  technology: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+  // Survey: Graphiques et données analytiques
+  survey: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+  // Care: Espace de travail collaboratif chaleureux
+  care: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80'
+}
+
+// Styles pour les text-shadow
+const textShadowDark = { textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)' }
+const textShadowLight = { textShadow: '1px 1px 4px rgba(255,255,255,0.9), 0 0 10px rgba(255,255,255,0.5)' }
 
 const ServicesSection: React.FC = () => {
-  const { t } = useTranslation()
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const { t, currentLanguage } = useTranslation()
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2, rootMargin: '-50px' }
-    )
-
-    const currentRef = sectionRef.current
-    if (currentRef) {
-      observer.observe(currentRef)
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef)
-      }
-    }
-  }, [])
-
+  // Configuration des services - Nom MatriCx en titre principal, tagline dans description
   const services = [
     {
-      icon: <BarChart3 className="w-8 h-8" />,
-      name: t('services.advisory.name'),
-      description: t('services.advisory.description'),
-      link: "/services/advisory"
+      id: 'training',
+      name: 'MatriCx Training & Certification',
+      description: currentLanguage === 'fr' 
+        ? 'Leader CX en Afrique. Développez vos compétences avec nos formations certifiantes en Expérience Client. Programmes sur mesure, certifications internationales et coaching personnalisé.'
+        : 'CX Leader in Africa. Develop your skills with our certified Customer Experience training programs. Customized programs, international certifications and personalized coaching.',
+      link: '/services/training',
+      image: IMAGES.training,
+      buttonText: currentLanguage === 'fr' ? 'Découvrir nos formations' : 'Discover our training'
     },
     {
-      icon: <Search className="w-8 h-8" />,
-      name: t('services.survey.name'), 
-      description: t('services.survey.description'),
-      link: "/services/survey"
+      id: 'advisory',
+      name: 'MatriCx Advisory',
+      description: currentLanguage === 'fr'
+        ? 'Conseil stratégique, pilotage et optimisation de votre stratégie CX & financière pour une croissance durable.'
+        : 'Strategic consulting, management and optimization of your CX & financial strategy for sustainable growth.',
+      link: '/services/advisory',
+      image: IMAGES.advisory,
+      buttonText: currentLanguage === 'fr' ? 'Accélérez votre croissance' : 'Accelerate your growth'
     },
     {
-      icon: <GraduationCap className="w-8 h-8" />,
-      name: t('services.training.name'),
-      description: t('services.training.description'),
-      link: "/services/training"
+      id: 'technology',
+      name: 'MatriCx Technology',
+      description: currentLanguage === 'fr'
+        ? 'Transformation digitale, CRM et outils de la relation client pour moderniser votre entreprise.'
+        : 'Digital transformation, CRM and customer relationship tools to modernize your business.',
+      link: '/services/technology',
+      image: IMAGES.technology,
+      buttonText: currentLanguage === 'fr' ? 'Modernisez-vous maintenant' : 'Modernize now'
     },
     {
-      icon: <Settings className="w-8 h-8" />,
-      name: t('services.technology.name'),
-      description: t('services.technology.description'),
-      link: "/services/technology"
+      id: 'survey',
+      name: 'MatriCx Survey',
+      description: currentLanguage === 'fr'
+        ? 'Études & analyses de marché, connaissance client et insights approfondis pour éclairer vos décisions stratégiques.'
+        : 'Market studies & analysis, customer insights and in-depth research to inform your strategic decisions.',
+      link: '/services/survey',
+      image: IMAGES.survey,
+      buttonText: currentLanguage === 'fr' ? 'Prenez les bonnes décisions' : 'Make the right decisions'
     },
     {
-      icon: <HeartHandshake className="w-8 h-8" />,
-      name: t('services.care.name'),
-      description: t('services.care.description'),
-      link: "/services/care"
-    },
-    {
-      icon: <CalendarDays className="w-8 h-8" />,
-      name: t('services.summit.name'),
-      description: t('services.summit.description'),
-      link: "/services/summit"
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      name: t('services.mcxi.name'),
-      description: t('services.mcxi.description'),
-      link: "/services/mcxi"
+      id: 'care',
+      name: 'MatriCx Care',
+      description: currentLanguage === 'fr'
+        ? 'Externalisation et sous-traitance de votre Relation Client. "We Care Your Business"'
+        : 'Outsourcing of your Customer Relations. "We Care Your Business"',
+      link: null,
+      image: IMAGES.care,
+      buttonText: currentLanguage === 'fr' ? 'Bientôt disponible' : 'Coming soon',
+      comingSoon: true
     }
   ]
 
   return (
-    <section ref={sectionRef} className="section-padding bg-white section-transition border-b border-gray-100">
+    <section className="section-padding bg-white section-transition border-b border-gray-100">
       <div className="container-custom">
         {/* Section Header */}
-        <div className={`text-center mb-16 transform transition-all duration-500 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+        <div className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-sm border border-yellow-200">
             <Sparkles size={18} className="mr-2" />
             {t('services.header')}
@@ -105,79 +97,242 @@ const ServicesSection: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto rounded-full"></div>
         </div>
 
-        {/* Services Grid - 3 colonnes */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 mb-8">
-          {services.map((service, index) => (
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+          
+          {/* Grande carte - Training (occupe 7 colonnes sur 12) */}
+          <Link 
+            to={services[0].link!}
+            className="lg:col-span-7 group relative overflow-hidden rounded-2xl lg:rounded-3xl min-h-[400px] lg:min-h-[520px]"
+          >
+            {/* Image de fond */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+              style={{ backgroundImage: `url(${services[0].image})` }}
+            />
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+            
+            {/* Contenu */}
+            <div className="relative z-10 h-full flex flex-col justify-between p-6 lg:p-10">
+              {/* Titre en haut */}
+              <div className="mb-4">
+                <span 
+                  style={{ 
+                    display: 'block',
+                    fontSize: '1.8vw',
+                    fontWeight: 900,
+                    color: 'white',
+                    lineHeight: 0.95,
+                    textShadow: '4px 4px 16px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.8)'
+                  }}
+                >
+                  MatriCx
+                </span>
+                <span 
+                  style={{ 
+                    display: 'block',
+                    fontSize: '1.8vw',
+                    fontWeight: 900,
+                    color: '#FDC300',
+                    lineHeight: 0.95,
+                    textShadow: '4px 4px 16px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.8)'
+                  }}
+                >
+                  Training &
+                </span>
+                <span 
+                  style={{ 
+                    display: 'block',
+                    fontSize: '1.8vw',
+                    fontWeight: 900,
+                    color: 'white',
+                    lineHeight: 0.95,
+                    textShadow: '4px 4px 16px rgba(0,0,0,0.95), 0 0 40px rgba(0,0,0,0.8)'
+                  }}
+                >
+                  Certification
+                </span>
+              </div>
+              
+              {/* Description et bouton en bas */}
+              <div>
+                <p 
+                  className="text-white text-base lg:text-lg max-w-lg mb-6 leading-relaxed font-medium"
+                  style={textShadowDark}
+                >
+                  {services[0].description}
+                </p>
+                <span className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 group-hover:shadow-lg">
+                  {services[0].buttonText}
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Colonne droite - 2 cartes empilées (5 colonnes sur 12) */}
+          <div className="lg:col-span-5 flex flex-col gap-4 lg:gap-6">
+            
+            {/* Carte Advisory - Style clair avec image */}
             <Link 
-              key={index}
-              to={service.link}
-              className={`group block ${index === 6 ? 'sm:col-span-2 lg:col-span-3' : ''} transform transition-all duration-500 ease-out ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
+              to={services[1].link!}
+              className="group relative overflow-hidden rounded-2xl lg:rounded-3xl min-h-[200px] lg:min-h-[250px]"
             >
-              <div className={`relative bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl md:rounded-3xl p-4 md:p-6 border border-yellow-600 transition-all duration-300 overflow-hidden hover:shadow-xl hover:from-yellow-500 hover:to-yellow-600 ${index === 6 ? 'min-h-[120px] md:h-40' : 'min-h-[200px] md:h-64'}`}>
-                
-                {/* Contenu de la card */}
-                <div className={`relative z-10 h-full ${index === 6 ? 'flex flex-row items-center gap-4 md:gap-6' : 'flex flex-col'}`}>
-                  {/* Icon - Black */}
-                  <div className={`text-black transition-colors duration-300 ${index === 6 ? 'mb-0 flex-shrink-0' : 'mb-2 md:mb-4'}`}>
-                    <div className="w-6 h-6 md:w-8 md:h-8">
-                      {service.icon}
-                    </div>
-                  </div>
-                  
-                  {/* Content wrapper pour la dernière carte */}
-                  <div className={`${index === 6 ? 'flex-grow min-w-0' : 'flex flex-col flex-grow'}`}>
-                    {/* Title - Bold Black */}
-                    <h3 className={`font-bold text-black transition-colors duration-300 leading-tight ${index === 6 ? 'text-base md:text-2xl mb-1' : 'text-sm md:text-xl mb-2 md:mb-3'}`}>
-                      {service.name}
-                    </h3>
-                    
-                    {/* Description - Regular Black */}
-                    <p className={`text-black leading-relaxed transition-colors duration-300 ${index === 6 ? 'text-xs md:text-base' : 'text-xs md:text-sm mb-3 md:mb-4'}`}>
-                      {service.description}
-                    </p>
-                  </div>
-                  
-                  {/* En savoir plus avec flèche */}
-                  <div className={`flex items-center text-black group-hover:text-gray-900 transition-colors duration-300 ${index === 6 ? 'flex-shrink-0' : 'justify-between mt-auto'}`}>
-                    <span className="text-xs md:text-sm font-medium border-2 border-black px-3 py-1.5 rounded-lg group-hover:bg-black group-hover:text-yellow-400 transition-all duration-300 whitespace-nowrap">
-                      {t('services.learnMore')}
-                    </span>
-                    {index !== 6 && <ArrowRight className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform duration-300" />}
-                  </div>
+              {/* Image de fond */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url(${services[1].image})` }}
+              />
+              {/* Overlay clair */}
+              <div className="absolute inset-0 bg-white/85" />
+              
+              {/* Contenu */}
+              <div className="relative z-10 h-full flex flex-col justify-between p-6 lg:p-8">
+                <div>
+                  <h3 
+                    className="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-2"
+                    style={textShadowLight}
+                  >
+                    {services[1].name}
+                  </h3>
+                  <p className="text-gray-700 text-sm leading-relaxed font-medium">
+                    {services[1].description}
+                  </p>
+                </div>
+                <div>
+                  <span className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2.5 rounded-full transition-all duration-300 text-sm">
+                    {services[1].buttonText}
+                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </div>
               </div>
             </Link>
-          ))}
+
+            {/* Carte Technology - Style sombre avec image */}
+            <Link 
+              to={services[2].link!}
+              className="group relative overflow-hidden rounded-2xl lg:rounded-3xl min-h-[200px] lg:min-h-[250px]"
+            >
+              {/* Image de fond */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url(${services[2].image})` }}
+              />
+              {/* Overlay sombre */}
+              <div className="absolute inset-0 bg-black/70" />
+              
+              {/* Pattern décoratif */}
+              <div className="absolute right-0 bottom-0 w-1/2 h-1/2 opacity-30">
+                <svg viewBox="0 0 200 200" className="w-full h-full text-yellow-400">
+                  <defs>
+                    <radialGradient id="techGradient" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="currentColor" stopOpacity="0.4"/>
+                      <stop offset="100%" stopColor="currentColor" stopOpacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                  <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                  <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                  <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" strokeWidth="0.3"/>
+                  <line x1="20" y1="100" x2="180" y2="100" stroke="currentColor" strokeWidth="0.3"/>
+                </svg>
+              </div>
+              
+              {/* Contenu */}
+              <div className="relative z-10 h-full flex flex-col justify-between p-6 lg:p-8">
+                <div>
+                  <h3 
+                    className="text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-2"
+                    style={textShadowDark}
+                  >
+                    {services[2].name}
+                  </h3>
+                  <p className="text-white text-sm leading-relaxed font-medium" style={textShadowDark}>
+                    {services[2].description}
+                  </p>
+                </div>
+                <div>
+                  <span className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2.5 rounded-full transition-all duration-300 text-sm">
+                    {services[2].buttonText}
+                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Rangée du bas - 2 cartes de taille égale */}
+          <Link 
+            to={services[3].link!}
+            className="lg:col-span-6 group relative overflow-hidden rounded-2xl lg:rounded-3xl min-h-[220px] lg:min-h-[280px]"
+          >
+            {/* Image de fond */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+              style={{ backgroundImage: `url(${services[3].image})` }}
+            />
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+            
+            {/* Contenu */}
+            <div className="relative z-10 h-full flex flex-col justify-end p-6 lg:p-8">
+              <h3 
+                className="text-2xl lg:text-3xl font-extrabold text-white leading-tight mb-3"
+                style={textShadowDark}
+              >
+                {services[3].name}
+              </h3>
+              <p 
+                className="text-white text-sm mb-4 max-w-md font-semibold"
+                style={textShadowDark}
+              >
+                {services[3].description}
+              </p>
+              <div>
+                <span className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-5 py-2.5 rounded-full transition-all duration-300 text-sm">
+                  {services[3].buttonText}
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Carte Care - Coming Soon */}
+          <div className="lg:col-span-6 group relative overflow-hidden rounded-2xl lg:rounded-3xl min-h-[220px] lg:min-h-[280px]">
+            {/* Image de fond */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${services[4].image})` }}
+            />
+            {/* Overlay plus prononcé pour "coming soon" */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/40" />
+            
+            {/* Contenu */}
+            <div className="relative z-10 h-full flex flex-col justify-end p-6 lg:p-8">
+              <h3 
+                className="text-2xl lg:text-3xl font-extrabold text-white leading-tight mb-3"
+                style={textShadowDark}
+              >
+                {services[4].name}
+              </h3>
+              <p 
+                className="text-white/80 text-sm mb-4 max-w-md font-medium"
+                style={textShadowDark}
+              >
+                {services[4].description}
+              </p>
+              <div>
+                <span className="inline-flex items-center bg-white/20 text-white/80 font-medium px-5 py-2.5 rounded-full text-sm cursor-not-allowed border border-white/30">
+                  {services[4].buttonText}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Styles CSS pour les animations de vagues */}
-        <style jsx>{`
-          @keyframes wave-oscillate {
-            0%, 100% { transform: translateY(0px) skewX(0deg); }
-            25% { transform: translateY(-2px) skewX(1deg); }
-            50% { transform: translateY(0px) skewX(0deg); }
-            75% { transform: translateY(2px) skewX(-1deg); }
-          }
-          
-          @keyframes wave-oscillate-reverse {
-            0%, 100% { transform: translateY(0px) skewX(0deg); }
-            25% { transform: translateY(2px) skewX(-1deg); }
-            50% { transform: translateY(0px) skewX(0deg); }
-            75% { transform: translateY(-2px) skewX(1deg); }
-          }
-          
-          @keyframes wave-shimmer {
-            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-            33% { opacity: 0.6; transform: scale(1.05) rotate(0.5deg); }
-            66% { opacity: 0.4; transform: scale(0.98) rotate(-0.5deg); }
-          }
-        `}</style>
-
         {/* Bottom CTA Text */}
-        <div className="text-center animate-fade-in animation-delay-600">
+        <div className="text-center mt-12 lg:mt-16 animate-fade-in animation-delay-600">
           <div className="max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               {t('servicesSection.ctaTitle')}

@@ -1,33 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { Target, Headphones, Monitor, GraduationCap, Award } from 'lucide-react'
 
 const MatrixSection = () => {
   const { t } = useTranslation()
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.4, rootMargin: '-100px' }
-    )
-
-    const currentRef = sectionRef.current
-    if (currentRef) {
-      observer.observe(currentRef)
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef)
-      }
-    }
-  }, [])
 
   const services = [
     {
@@ -53,7 +28,7 @@ const MatrixSection = () => {
   ]
 
   return (
-    <section className="py-16 bg-gradient-to-br from-yellow-50 via-white to-blue-50 relative overflow-hidden section-transition" ref={sectionRef}>
+    <section className="py-16 bg-gradient-to-br from-yellow-50 via-white to-blue-50 relative overflow-hidden section-transition">
       <div className="container mx-auto px-4">
         {/* En-tête dynamique avec badge */}
         <div className="text-center mb-16">
@@ -76,12 +51,6 @@ const MatrixSection = () => {
             {services.map((service, index) => (
               <div 
                 key={index}
-                className={`transform transition-all duration-500 ease-out ${
-                  isVisible 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="w-48 h-48 rounded-full bg-white shadow-lg border-2 border-yellow-400 flex flex-col items-center justify-center p-6 hover:border-yellow-500 hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   {/* Icône */}
