@@ -1,0 +1,109 @@
+[build]
+  # Commande de build avec TypeScript check propre
+  command = "npm run build"
+  
+  # Dossier de publication (sortie de Vite)
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--include=dev"
+
+[build.processing]
+  # Optimisation automatique des images
+  skip_processing = false
+
+[build.processing.images]
+  # Compression des images
+  compress = true
+
+[build.processing.css]
+  # Minification CSS
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  # Minification JavaScript
+  bundle = true
+  minify = true
+
+# Configuration PWA et caching
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/workbox-*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Sécurité HTTPS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Protection XSS
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    
+    # CSP pour PWA et React
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://calendly.com https://*.calendly.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://calendly.com https://*.calendly.com; frame-src https://calendly.com https://*.calendly.com; object-src 'none'; base-uri 'self'"
+    
+    # Permissions Policy
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    
+    # Référer Policy
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache des assets statiques
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirections pour SPA (Single Page Application)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Redirection forcée HTTPS (sera automatique avec Netlify)
+[[redirects]]
+  from = "http://matricxconsulting.netlify.app/*"
+  to = "https://matricxconsulting.netlify.app/:splat"
+  status = 301
+  force = true
+
+# Configuration des formulaires Netlify
+[forms]
+  # Activation des formulaires Netlify pour les contacts
+  
+# Configuration des fonctions (si nécessaire plus tard)
+[functions]
+  # Répertoire des fonctions serverless
+  directory = "netlify/functions"
+
+# Configuration du contexte de déploiement
+[context.production]
+  command = "npm run build"
+  environment = { NODE_ENV = "production" }
+
+[context.deploy-preview]
+  command = "npm run build"
+  environment = { NODE_ENV = "development" }
+
+[context.branch-deploy]
+  command = "npm run build"
+  environment = { NODE_ENV = "development"}

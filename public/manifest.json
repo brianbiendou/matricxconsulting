@@ -1,0 +1,70 @@
+{
+  "name": "MatriCx Consulting - Cabinet de conseil en expérience client",
+  "short_name": "MatriCx",
+  "description": "Cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle en Afrique",
+  "theme_color": "#1E3A8A",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "consulting"],
+  "icons": [
+    {
+      "src": "/pwa-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nous contacter",
+      "short_name": "Contact",
+      "description": "Contactez MatriCx Consulting",
+      "url": "/contact",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nos services",
+      "short_name": "Services",
+      "description": "Découvrez nos services",
+      "url": "/services",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

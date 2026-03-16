@@ -1,0 +1,69 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables - ALL .env files
+.env*
+!.env.example
+
+# Sanity
+.sanity
+dist/
+sanity/dist/
+
+# Build outputs
+build
+.cache
+dev-dist
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+.eslintcache
+.parcel-cache
+.turbo
+
+# OS
+Thumbs.db
+
+# Keep PWA icons (don't ignore them!)
+!public/*.png
+!public/*.ico
+!public/manifest.json
+!public/browserconfig.xml
+!public/robots.txt
+
+
+# Local Netlify folder
+.netlify
+# Image optimization backups
+*.original.jpg
+*.original.jpeg
+*.original.png
+optimize-images.cjs
+public_html/
+temp_*.txt

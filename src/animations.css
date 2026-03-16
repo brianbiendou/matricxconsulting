@@ -1,0 +1,327 @@
+/* Animations personnalisées */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  80% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-right {
+  animation: slideRight 1s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideLeft 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Styles des cartes de services */
+.grid .group .bg-white {
+  background: linear-gradient(
+    135deg,
+    rgb(245, 245, 245) 0%,
+    rgb(255, 246, 220) 20%,
+    rgb(250, 214, 135) 40%,
+    rgb(255, 223, 155) 50%,
+    rgb(250, 214, 135) 60%,
+    rgb(255, 246, 220) 80%,
+    rgb(245, 245, 245) 100%
+  ) !important;
+  position: relative;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(250, 214, 135, 0.3);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    inset 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* Effet de brillance métallique */
+.grid .group .bg-white::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 45%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.2) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.grid .group:hover .bg-white {
+  transform: scale(1.02);
+}
+
+.grid .group h3 {
+  font-size: 1.4em !important; /* Augmentation de 40% */
+}
+
+.grid .group p {
+  font-size: 1.12em !important; /* Augmentation de 40% */
+}
+
+.progress-line {
+  width: 0;
+  will-change: width;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 195, 0, 1) 0%,
+    rgba(0, 128, 175, 1) 50%,
+    rgba(87, 87, 86, 1) 100%
+  );
+}
+
+.progress-line.active {
+  animation: progress-animation 6s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+
+.timeline-segment {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .progress-line {
+    height: 1px;
+  }
+
+  .progress-line.active {
+    animation: progress-animation-mobile 6s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+  }
+
+  @keyframes progress-animation-mobile {
+    0% {
+      clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+    }
+    45% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    50% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    95% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%);
+    }
+    100% {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 100% 100%);
+    }
+  }
+
+  .first-line {
+    margin-bottom: 2rem;
+  }
+
+  .second-line {
+    margin-top: 2rem;
+  }
+}
+
+/* Styles communs pour les éléments de la timeline */
+.icon-bounce,
+.content-fade {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* État actif pour les icônes et le texte */
+.icon-bounce.active,
+.content-fade.active {
+  opacity: 1;
+}
+
+/* Styles responsifs pour les services */
+.service-icon {
+  width: 4rem;
+  height: 4rem;
+  transition: all 0.3s ease;
+}
+
+.icon-wrapper {
+  transition: all 0.3s ease;
+}
+
+.service-title .mobile-text,
+.mobile-description {
+  display: none;
+}
+
+.service-title .full-text {
+  display: inline;
+}
+
+/* Version mobile */
+@media (max-width: 640px) {
+  .service-description {
+    display: none;
+  }
+
+  .mobile-description {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .service-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .icon-wrapper svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-title .full-text {
+    display: none;
+  }
+
+  .service-title .mobile-text {
+    display: inline;
+    font-size: 0.875rem;
+  }
+
+  .mobile-description {
+    font-size: 0.7rem;
+  }
+
+  .service-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .icon-wrapper svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .service-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 2px;
+  }
+
+  .icon-wrapper svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}

@@ -1,0 +1,65 @@
+# Fichiers et dossiers à ignorer pour Netlify
+# Ce fichier n'est pas strictement nécessaire mais améliore les performances
+
+# Dépendances
+node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# Environment variables (ne jamais déployer)
+.env
+.env.local
+.env.development
+.env.test
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
+.nyc_output/
+
+# ESLint cache
+.eslintcache
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Git
+.git/
+.gitignore
+
+# Tests
+__tests__/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Documentation source (garder seulement les fichiers compilés)
+src/
+docs/

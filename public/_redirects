@@ -1,0 +1,29 @@
+# Redirections pour Single Page Application (SPA)
+# Toutes les routes doivent pointer vers index.html pour que React Router fonctionne
+
+/*    /index.html   200
+
+# Redirection pour les pages spécifiques (au cas où)
+/home             /index.html   200
+/about            /index.html   200 
+/services         /index.html   200
+/contact          /index.html   200
+/blog             /index.html   200
+
+# Redirection des anciens liens (si nécessaire)
+/old-contact      /contact      301
+/old-services     /services     301
+
+# Redirection forcée HTTPS
+https://matricxconsulting.netlify.app/* https://matricxconsulting.netlify.app/:splat 301!
+
+# API Proxy si vous ajoutez une API plus tard
+# /api/*  https://your-api-backend.com/:splat  200
+
+# Fichiers d'assets - pas de redirection
+/assets/*         /assets/:splat   200
+/images/*         /images/:splat   200
+/manifest.json    /manifest.json   200
+/sw.js            /sw.js          200
+/robots.txt       /robots.txt     200
+/sitemap.xml      /sitemap.xml    200
