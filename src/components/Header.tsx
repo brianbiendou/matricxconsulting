@@ -139,6 +139,8 @@ const Header: React.FC = () => {
               <img 
                 src={logoMatricx} 
                 alt="MatriCx Consulting" 
+                width={160}
+                height={64}
                 className="h-16 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity duration-200"
               />
             </Link>
@@ -224,6 +226,10 @@ const Header: React.FC = () => {
                               <img 
                                 src={leadershipImage}
                                 alt="Leadership Africain" 
+                                width={96}
+                                height={72}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover object-center"
                               />
                             </div>
@@ -254,6 +260,10 @@ const Header: React.FC = () => {
                               <img 
                                 src={innovationImage} 
                                 alt="Innovation Afrique" 
+                                width={96}
+                                height={72}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover object-center"
                               />
                             </div>
@@ -370,6 +380,10 @@ const Header: React.FC = () => {
                               <img 
                                 src={leadershipImage}
                                 alt="Leadership Africain" 
+                                width={96}
+                                height={72}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover object-center"
                               />
                             </div>
@@ -400,6 +414,10 @@ const Header: React.FC = () => {
                               <img 
                                 src={innovationImage} 
                                 alt="Innovation Afrique" 
+                                width={96}
+                                height={72}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover object-center"
                               />
                             </div>
@@ -487,6 +505,7 @@ const Header: React.FC = () => {
               <button
                 onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
                 className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-secondary-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-300 hover:scale-105 font-primary"
+                aria-label="Changer la langue"
               >
                 <Languages size={14} className="text-accent-500" />
                 <span className="text-xs font-semibold text-secondary-600">{currentLanguage === 'fr' ? 'FR' : 'EN'}</span>
@@ -536,6 +555,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileLanguageDropdownOpen(!isMobileLanguageDropdownOpen)}
               className="flex items-center space-x-1 p-2 rounded-lg hover:bg-primary-50 transition-all duration-300 hover:scale-105 text-secondary-600"
+              aria-label="Changer la langue"
             >
               <Languages size={20} className="text-secondary-600" />
               <span className="text-sm font-semibold text-secondary-600">{currentLanguage === 'fr' ? 'FR' : 'EN'}</span>
@@ -578,6 +598,7 @@ const Header: React.FC = () => {
           <button
             onClick={toggleMenu}
             className="lg:hidden p-2 rounded-lg hover:bg-primary-50 transition-all duration-300 hover:scale-105 text-secondary-600"
+            aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           >
             {isMenuOpen ? <X size={22} className="text-secondary-600" /> : <Menu size={22} className="text-secondary-600" />}
           </button>

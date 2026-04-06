@@ -111,6 +111,10 @@ const PartnersCarousel: React.FC = () => {
                     <img
                       src={partner.src}
                       alt={partner.alt}
+                      width={160}
+                      height={80}
+                      loading="lazy"
+                      decoding="async"
                       className="max-h-20 w-auto object-contain transition-all duration-300 drop-shadow-md hover:drop-shadow-xl"
                     />
                   ) : (

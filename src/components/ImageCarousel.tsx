@@ -104,18 +104,19 @@ const ImageCarousel: React.FC = () => {
                   : 'opacity-0 z-0'
               }`}
             >
-              {/* Image Background avec fallback */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-gray-200"
-                style={{
-                  backgroundImage: `url(${image.url})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                {/* Overlay léger pour améliorer la lisibilité du texte */}
-                <div className="absolute inset-0 bg-black/20"></div>
-              </div>
+              {/* Image with proper <img> tag for LCP optimization */}
+              <img
+                src={image.url}
+                alt={image.title || 'MatriCx Consulting'}
+                width={600}
+                height={600}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding={index === 0 ? 'sync' : 'async'}
+                className="absolute inset-0 w-full h-full object-cover object-center bg-gray-200"
+              />
+              {/* Overlay léger pour améliorer la lisibilité du texte */}
+              <div className="absolute inset-0 bg-black/20"></div>
 
               {/* Content Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">

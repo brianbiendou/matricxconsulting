@@ -34,11 +34,12 @@ const CookieConsent: React.FC = () => {
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 md:p-8">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-lg font-bold text-gray-900 font-primary">
-            {currentLanguage === 'fr' ? '🍪 Gestion des cookies' : '🍪 Cookie Settings'}
+            <span aria-hidden="true">🍪 </span>
+            {currentLanguage === 'fr' ? 'Gestion des cookies' : 'Cookie Settings'}
           </h3>
           <button
             onClick={acceptEssential}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-600 hover:text-gray-800 transition-colors p-1"
             aria-label="Fermer"
           >
             <X size={20} />

@@ -138,6 +138,10 @@ const ValuesSection: React.FC = () => {
               <img 
                 src="/valeurs.jpg" 
                 alt="MatriCx Values" 
+                width={600}
+                height={600}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover min-h-[600px]"
               />
             </div>

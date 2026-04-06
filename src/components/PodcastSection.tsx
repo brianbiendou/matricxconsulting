@@ -65,6 +65,10 @@ const PodcastSection: React.FC = () => {
               <img 
                 src={podcastImage} 
                 alt="Podcast MatriCx" 
+                width={600}
+                height={400}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto object-cover"
               />
               {/* Overlay avec icône */}

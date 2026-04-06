@@ -208,6 +208,10 @@ const FeaturedArticlesSection: React.FC = () => {
                   <img
                     src={getArticleImage(article)}
                     alt={getTitle(article)}
+                    width={400}
+                    height={200}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Overlay gradient */}
