@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useTranslation } from '../hooks/useTranslation'
 import { useSanityBlogPosts } from '../hooks/useSanityBlogPosts'
+import { blogArticles } from '../data/blogArticlesData'
 import { Calendar, User, ArrowRight, TrendingUp, Users, Lightbulb, Target, BarChart3, Briefcase, Flame, Clock, Facebook, Linkedin, Twitter } from 'lucide-react'
 
 // Import des images (fallback)
@@ -68,137 +69,33 @@ const Blog: React.FC = () => {
     }
   ]
 
-  // Articles professionnels avec focus africain
-  const articles = [
-    {
-      id: 1,
-      title: currentLanguage === 'fr' 
-        ? 'Leadership Africain dans la Transformation Digitale'
-        : 'African Leadership in Digital Transformation',
-      excerpt: currentLanguage === 'fr'
-        ? 'Comment les leaders africains redéfinissent l\'approche de la transformation digitale en entreprise, créant des solutions innovantes adaptées au contexte local.'
-        : 'How African leaders are redefining the approach to digital transformation in business, creating innovative solutions adapted to the local context.',
-      date: '15 Oct 2025',
-      dateValue: new Date('2025-10-15'),
-      author: 'Dr. Amina Kone',
-      category: 'transformation',
-      readTime: '8 min',
-      image: whatsapp1,
-      views: 4250
-    },
-    {
-      id: 2,
-      title: currentLanguage === 'fr'
-        ? 'Innovation en Afrique : Défis et Opportunités'
-        : 'Innovation in Africa: Challenges and Opportunities',
-      excerpt: currentLanguage === 'fr'
-        ? 'L\'écosystème entrepreneurial africain connaît une croissance remarquable. Découvrez les stratégies gagnantes des leaders innovants.'
-        : 'The African entrepreneurial ecosystem is experiencing remarkable growth. Discover the winning strategies of innovative leaders.',
-      date: '22 Mar 2025',
-      dateValue: new Date('2025-03-22'),
-      author: 'Emmanuel Okonkwo',
-      category: 'innovation',
-      readTime: '6 min',
-      image: designersImage,
-      views: 3890
-    },
-    {
-      id: 3,
-      title: currentLanguage === 'fr'
-        ? 'Management Interculturel : L\'Atout Africain'
-        : 'Intercultural Management: The African Advantage',
-      excerpt: currentLanguage === 'fr'
-        ? 'Les compétences multiculturelles des managers africains représentent un avantage concurrentiel majeur dans l\'économie globalisée.'
-        : 'The multicultural skills of African managers represent a major competitive advantage in the globalized economy.',
-      date: '8 Jul 2025',
-      dateValue: new Date('2025-07-08'),
-      author: 'Fatou Diallo',
-      category: 'leadership',
-      readTime: '7 min',
-      image: personnesBureau,
-      views: 5120
-    },
-    {
-      id: 4,
-      title: currentLanguage === 'fr'
-        ? 'Performance Organisationnelle : Méthodes Agiles Africaines'
-        : 'Organizational Performance: African Agile Methods',
-      excerpt: currentLanguage === 'fr'
-        ? 'Les entreprises africaines développent des approches agiles uniques, combinant traditions locales et méthodologies modernes.'
-        : 'African companies are developing unique agile approaches, combining local traditions and modern methodologies.',
-      date: '14 Jan 2025',
-      dateValue: new Date('2025-01-14'),
-      author: 'Kwame Asante',
-      category: 'performance',
-      readTime: '9 min',
-      image: affiliesImage,
-      views: 2760
-    },
-    {
-      id: 5,
-      title: currentLanguage === 'fr'
-        ? 'Conseil en Afrique : Nouvelles Approches Collaboratives'
-        : 'Consulting in Africa: New Collaborative Approaches',
-      excerpt: currentLanguage === 'fr'
-        ? 'Les cabinets de conseil africains redéfinissent leur métier en privilégiant des approches plus collaboratives et participatives.'
-        : 'African consulting firms are redefining leur business by favoring more collaborative and participatory approaches.',
-      date: '5 Jun 2025',
-      dateValue: new Date('2025-06-05'),
-      author: 'Dr. Sarah Mensah',
-      category: 'consulting',
-      readTime: '10 min',
-      image: whatsapp2,
-      views: 1480
-    },
-    {
-      id: 6,
-      title: currentLanguage === 'fr'
-        ? 'Stratégies d\'Innovation Technologique en Afrique'
-        : 'Technology Innovation Strategies in Africa',
-      excerpt: currentLanguage === 'fr'
-        ? 'Les entreprises africaines adoptent des stratégies d\'innovation uniques pour surmonter les défis technologiques et créer des opportunités.'
-        : 'African companies adopt unique innovation strategies to overcome technological challenges and create opportunities.',
-      date: '18 Sep 2025',
-      dateValue: new Date('2025-09-18'),
-      author: 'Prof. Kofi Mensah',
-      category: 'innovation',
-      readTime: '12 min',
-      image: whatsapp3,
-      views: 4780
-    },
-    {
-      id: 7,
-      title: currentLanguage === 'fr'
-        ? 'Développement des Talents : L\'Approche Africaine'
-        : 'Talent Development: The African Approach',
-      excerpt: currentLanguage === 'fr'
-        ? 'Comment les organisations africaines développent leurs talents en combinant formation moderne et sagesse traditionnelle.'
-        : 'How African organizations develop their talents by combining modern training with traditional wisdom.',
-      date: '11 Feb 2025',
-      dateValue: new Date('2025-02-11'),
-      author: 'Dr. Aisha Traore',
-      category: 'leadership',
-      readTime: '8 min',
-      image: whatsapp4,
-      views: 3320
-    },
-    {
-      id: 8,
-      title: currentLanguage === 'fr'
-        ? 'Transformation Organisationnelle Post-Pandémie'
-        : 'Post-Pandemic Organizational Transformation',
-      excerpt: currentLanguage === 'fr'
-        ? 'Les leçons apprises et les nouvelles pratiques organisationnelles qui émergent dans le contexte africain post-COVID.'
-        : 'Lessons learned and new organizational practices emerging in the African post-COVID context.',
-      date: '29 Apr 2025',
-      dateValue: new Date('2025-04-29'),
-      author: 'Emmanuel Diop',
-      category: 'transformation',
-      readTime: '11 min',
-      image: whatsapp5,
-      views: 2950
-    }
-  ]
+  // Images par article ID
+  const articleImages: Record<number, string> = {
+    1: whatsapp1,
+    2: designersImage,
+    3: personnesBureau,
+    4: affiliesImage,
+    5: whatsapp2,
+    6: whatsapp3,
+    7: whatsapp4,
+    8: whatsapp5
+  }
+
+  // Articles professionnels avec focus africain (générés depuis les données)
+  const articles = blogArticles.map(article => ({
+    id: article.id,
+    title: currentLanguage === 'fr' ? article.title.fr : article.title.en,
+    excerpt: currentLanguage === 'fr' ? article.excerpt.fr : article.excerpt.en,
+    date: article.date,
+    dateValue: article.dateValue,
+    author: article.author,
+    category: article.category,
+    readTime: article.readTime,
+    image: articleImages[article.id] || whatsapp1,
+    views: article.views,
+    slug: article.slug,
+    isSanity: false
+  }))
 
   // Mapper les articles Sanity vers le format existant
   const sanityMappedArticles = sanityPosts.map((post: any, index: number) => {
@@ -592,27 +489,16 @@ const Blog: React.FC = () => {
                     <article key={article.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
                       {/* Image de l'article */}
                       <div className="h-48 relative overflow-hidden">
-                        {article.isSanity && article.slug ? (
-                          <Link to={`/blog/${article.slug}`}>
-                            <img 
-                              src={article.image} 
-                              alt={article.title}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
-                              style={{
-                                objectPosition: 'center 30%'
-                              }}
-                            />
-                          </Link>
-                        ) : (
+                        <Link to={`/blog/${article.slug}`}>
                           <img 
                             src={article.image} 
                             alt={article.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
                             style={{
                               objectPosition: 'center 30%'
                             }}
                           />
-                        )}
+                        </Link>
                         <div className="absolute top-4 left-4">
                           <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
                             {topics.find(t => t.id === article.category)?.name}
@@ -634,36 +520,23 @@ const Blog: React.FC = () => {
                           <span className="text-blue-600">{article.readTime}</span>
                         </div>
 
-                        {article.isSanity && article.slug ? (
-                          <Link to={`/blog/${article.slug}`}>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors cursor-pointer">
-                              {article.title}
-                            </h3>
-                          </Link>
-                        ) : (
-                          <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        <Link to={`/blog/${article.slug}`}>
+                          <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors cursor-pointer">
                             {article.title}
                           </h3>
-                        )}
+                        </Link>
 
                         <p className="text-gray-600 mb-4 line-clamp-3">
                           {article.excerpt}
                         </p>
 
-                        {article.isSanity && article.slug ? (
-                          <Link 
-                            to={`/blog/${article.slug}`}
-                            className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium group"
-                          >
-                            <span>{currentLanguage === 'fr' ? 'Lire l\'article' : 'Read article'}</span>
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                        ) : (
-                          <button className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium group">
-                            <span>{currentLanguage === 'fr' ? 'Lire l\'article' : 'Read article'}</span>
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                          </button>
-                        )}
+                        <Link 
+                          to={`/blog/${article.slug}`}
+                          className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium group"
+                        >
+                          <span>{currentLanguage === 'fr' ? 'Lire l\'article' : 'Read article'}</span>
+                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
                       </div>
                     </article>
                   ))}

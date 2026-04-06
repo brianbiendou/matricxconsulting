@@ -40,5 +40,69 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Articles de Blog -->
+  <url>
+    <loc>https://matricxconsulting.com/blog/leadership-africain-transformation-digitale</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/innovation-afrique-defis-opportunites</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/management-interculturel-atout-africain</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/performance-organisationnelle-methodes-agiles-africaines</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/conseil-afrique-approches-collaboratives</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/strategies-innovation-technologique-afrique</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/developpement-talents-approche-africaine</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/transformation-organisationnelle-post-pandemie</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Pages Légales -->
+  <url>
+    <loc>https://matricxconsulting.com/privacy</loc>
+    <lastmod>2025-04-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/terms</loc>
+    <lastmod>2025-04-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
   
 </urlset>

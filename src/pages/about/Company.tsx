@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MapPin, Mail, Phone } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useSanityTeamMembers } from '../../hooks/useSanityContent';
 
@@ -73,6 +73,59 @@ const Company: React.FC = () => {
                   <span className="text-black group-hover:text-black group-hover:font-bold">{t('companyPage.about.cta')}</span>
                   <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Fondateur & Direction */}
+        <section className="py-20 bg-white">
+          <div className="container-custom">
+            <div className="text-center mb-16">
+              <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block mb-4">
+                <span className="text-yellow-600 font-semibold">
+                  {currentLanguage === 'fr' ? 'Direction' : 'Leadership'}
+                </span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                {currentLanguage === 'fr' ? 'Fondateur & Directeur Général' : 'Founder & CEO'}
+              </h2>
+            </div>
+            
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="grid md:grid-cols-3 gap-0">
+                  <div className="md:col-span-1 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center p-8">
+                    <div className="w-40 h-40 rounded-full bg-white/20 border-4 border-white flex items-center justify-center">
+                      <span className="text-5xl font-bold text-white">DT</span>
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 p-8 space-y-4">
+                    <h3 className="text-2xl font-bold text-gray-900">Didier TIOMELA</h3>
+                    <p className="text-yellow-600 font-semibold text-lg">
+                      {currentLanguage === 'fr' ? 'Fondateur & Directeur Général' : 'Founder & Chief Executive Officer'}
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {currentLanguage === 'fr'
+                        ? 'Fort de plus d\'une décennie d\'expérience en conseil stratégique et en transformation d\'entreprises en Afrique, Didier TIOMELA a fondé MatriCx Consulting avec la vision de créer un cabinet de conseil de référence sur le continent. Sa connaissance approfondie des marchés africains, combinée à une expertise internationale en expérience client, en stratégie digitale et en management interculturel, fait de lui un leader reconnu dans l\'accompagnement des organisations vers l\'excellence opérationnelle.'
+                        : 'With over a decade of experience in strategic consulting and business transformation in Africa, Didier TIOMELA founded MatriCx Consulting with the vision of creating a leading consulting firm on the continent. His deep knowledge of African markets, combined with international expertise in customer experience, digital strategy, and cross-cultural management, makes him a recognized leader in guiding organizations toward operational excellence.'}
+                    </p>
+                    <div className="pt-4 space-y-2 text-sm text-gray-500">
+                      <div className="flex items-center space-x-2">
+                        <MapPin size={16} className="text-yellow-500 flex-shrink-0" />
+                        <span>Makepe BM, BP 12777, Douala, Cameroun</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Mail size={16} className="text-yellow-500 flex-shrink-0" />
+                        <span>contact@matricxconsulting.com</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Phone size={16} className="text-yellow-500 flex-shrink-0" />
+                        <span>+237 677 810 120 | +237 699 947 136</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

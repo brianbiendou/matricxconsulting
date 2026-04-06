@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import NewsletterPopup from './components/NewsletterPopup'
+import CookieConsent from './components/CookieConsent'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -23,12 +24,15 @@ import Experience from './pages/about/Experience'
 import Media from './pages/about/Media'
 import Partners from './pages/about/Partners'
 import Sustainability from './pages/about/Sustainability'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <NewsletterPopup delay={5000} />
+      <CookieConsent />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -50,6 +54,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
         </Routes>
       </div>
     </Router>

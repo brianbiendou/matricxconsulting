@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import Chatbot from './Chatbot'
 import { 
@@ -165,7 +166,13 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-2 text-gray-400 font-secondary">
               <span>{t('footer.copyright')}</span>
             </div>
-            <div className="flex items-center space-x-2 text-gray-400 text-sm font-secondary">
+            <div className="flex items-center space-x-6 text-gray-400 text-sm font-secondary">
+              <Link to="/privacy" className="hover:text-primary-300 transition-colors duration-300">
+                {currentLanguage === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy'}
+              </Link>
+              <Link to="/terms" className="hover:text-primary-300 transition-colors duration-300">
+                {currentLanguage === 'fr' ? 'CGU' : 'Terms of Service'}
+              </Link>
               <span>Made in Cameroon</span>
             </div>
           </div>

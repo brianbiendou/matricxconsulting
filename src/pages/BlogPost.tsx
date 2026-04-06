@@ -4,16 +4,61 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useTranslation } from '../hooks/useTranslation'
 import { useSanityBlogPost } from '../hooks/useSanityBlogPosts'
+import { getArticleBySlug, ContentBlock } from '../data/blogArticlesData'
 import { Calendar, User, ArrowLeft, Clock, Facebook, Linkedin, Twitter } from 'lucide-react'
 import { PortableText } from '@portabletext/react'
 import { urlFor } from '../lib/sanity'
 
+// Composant pour rendre le contenu local (non-Sanity)
+const LocalContentRenderer: React.FC<{ blocks: ContentBlock[] }> = ({ blocks }) => {
+  return (
+    <>
+      {blocks.map((block, index) => {
+        switch (block.type) {
+          case 'paragraph':
+            return <p key={index} className="mb-6 text-gray-700 leading-relaxed text-lg">{block.text}</p>
+          case 'heading2':
+            return <h2 key={index} className="text-2xl font-bold text-gray-900 mb-4 mt-8">{block.text}</h2>
+          case 'heading3':
+            return <h3 key={index} className="text-xl font-semibold text-gray-900 mb-3 mt-6">{block.text}</h3>
+          case 'quote':
+            return (
+              <blockquote key={index} className="border-l-4 border-blue-600 pl-6 my-6 italic text-gray-700 bg-blue-50 py-4 rounded-r-lg">
+                <p>{block.text}</p>
+                {block.author && <cite className="block mt-2 text-sm font-semibold text-gray-900 not-italic">— {block.author}</cite>}
+              </blockquote>
+            )
+          case 'list':
+            return (
+              <ul key={index} className="list-disc list-inside mb-6 space-y-2 text-gray-700">
+                {block.items.map((item, i) => <li key={i} className="ml-4 leading-relaxed">{item}</li>)}
+              </ul>
+            )
+          case 'numbered-list':
+            return (
+              <ol key={index} className="list-decimal list-inside mb-6 space-y-2 text-gray-700">
+                {block.items.map((item, i) => <li key={i} className="ml-4 leading-relaxed">{item}</li>)}
+              </ol>
+            )
+          default:
+            return null
+        }
+      })}
+    </>
+  )
+}
+
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
   const { currentLanguage } = useTranslation()
-  const { post, loading, error } = useSanityBlogPost(slug || '')
+  
+  // Vérifier d'abord dans les articles locaux
+  const localArticle = getArticleBySlug(slug || '')
+  
+  // Si pas d'article local, chercher dans Sanity
+  const { post: sanityPost, loading, error } = useSanityBlogPost(localArticle ? '' : (slug || ''))
 
-  if (loading) {
+  if (!localArticle && loading) {
     return (
       <div className="min-h-screen bg-white">
         <Header />
@@ -25,13 +70,29 @@ const BlogPost: React.FC = () => {
     )
   }
 
-  if (error || !post) {
+  if (!localArticle && (error || !sanityPost)) {
     return <Navigate to="/blog" replace />
   }
 
-  const title = post.title[currentLanguage] || post.title.fr
-  const content = post.content[currentLanguage] || post.content.fr
-  const excerpt = post.excerpt[currentLanguage] || post.excerpt.fr
+  // Données communes pour le rendu
+  const lang = currentLanguage as 'fr' | 'en'
+  
+  const title = localArticle 
+    ? (localArticle.title[lang] || localArticle.title.fr)
+    : (sanityPost!.title[lang] || sanityPost!.title.fr)
+  
+  const excerpt = localArticle
+    ? (localArticle.excerpt[lang] || localArticle.excerpt.fr)
+    : (sanityPost!.excerpt?.[lang] || sanityPost!.excerpt?.fr || '')
+
+  const author = localArticle ? localArticle.author : sanityPost!.author
+  const authorRole = localArticle ? (localArticle.authorRole[lang] || localArticle.authorRole.fr) : undefined
+  const publishedAt = localArticle ? localArticle.dateValue.toISOString() : sanityPost!.publishedAt
+  const readTime = localArticle ? localArticle.readTime : '5 min'
+  const category = localArticle ? localArticle.category : sanityPost!.category
+  const tags = localArticle ? localArticle.tags : (sanityPost!.tags || [])
+  const contentBlocks = localArticle ? (localArticle.content[lang] || localArticle.content.fr) : null
+  const sanityContent = !localArticle && sanityPost ? (sanityPost.content?.[lang] || sanityPost.content?.fr) : null
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -48,15 +109,20 @@ const BlogPost: React.FC = () => {
         })
   }
 
-  const getCategoryName = (category: string) => {
+  const getCategoryName = (cat: string) => {
     const categories: Record<string, string> = {
       'cx': currentLanguage === 'fr' ? 'Expérience Client' : 'Customer Experience',
       'strategie': currentLanguage === 'fr' ? 'Stratégie' : 'Strategy',
       'digital': currentLanguage === 'fr' ? 'Transformation Digitale' : 'Digital Transformation',
       'formation': currentLanguage === 'fr' ? 'Formation' : 'Training',
-      'etudes': currentLanguage === 'fr' ? 'Études de Marché' : 'Market Research'
+      'etudes': currentLanguage === 'fr' ? 'Études de Marché' : 'Market Research',
+      'transformation': currentLanguage === 'fr' ? 'Transformation Digitale' : 'Digital Transformation',
+      'innovation': currentLanguage === 'fr' ? 'Innovation & Stratégie' : 'Innovation & Strategy',
+      'leadership': currentLanguage === 'fr' ? 'Leadership & Management' : 'Leadership & Management',
+      'performance': currentLanguage === 'fr' ? 'Performance Organisationnelle' : 'Organizational Performance',
+      'consulting': currentLanguage === 'fr' ? 'Méthodologie Conseil' : 'Consulting Methodology'
     }
-    return categories[category] || category
+    return categories[cat] || cat
   }
 
   const shareUrl = window.location.href
@@ -172,7 +238,7 @@ const BlogPost: React.FC = () => {
             {/* Catégorie */}
             <div className="mb-4">
               <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                {getCategoryName(post.category)}
+                {getCategoryName(category)}
               </span>
             </div>
 
@@ -190,25 +256,28 @@ const BlogPost: React.FC = () => {
             <div className="flex flex-wrap items-center text-gray-500 text-sm mb-8 gap-6">
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                {formatDate(post.publishedAt)}
+                {formatDate(publishedAt)}
               </div>
-              {post.author && (
+              {author && (
                 <div className="flex items-center">
                   <User className="w-4 h-4 mr-2" />
-                  {post.author}
+                  <div>
+                    <span>{author}</span>
+                    {authorRole && <span className="block text-xs text-gray-400">{authorRole}</span>}
+                  </div>
                 </div>
               )}
               <div className="flex items-center">
                 <Clock className="w-4 h-4 mr-2" />
-                {currentLanguage === 'fr' ? '5 min de lecture' : '5 min read'}
+                {currentLanguage === 'fr' ? `${readTime} de lecture` : `${readTime} read`}
               </div>
             </div>
 
-            {/* Image principale */}
-            {post.mainImage && (
+            {/* Image principale (Sanity uniquement) */}
+            {!localArticle && sanityPost?.mainImage && (
               <div className="mb-12">
                 <img
-                  src={urlFor(post.mainImage).width(1200).height(600).url()}
+                  src={urlFor(sanityPost.mainImage).width(1200).height(600).url()}
                   alt={title}
                   className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                 />
@@ -249,20 +318,24 @@ const BlogPost: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg prose-blue max-w-none">
-              <PortableText 
-                value={content} 
-                components={portableTextComponents}
-              />
+              {contentBlocks ? (
+                <LocalContentRenderer blocks={contentBlocks} />
+              ) : sanityContent ? (
+                <PortableText 
+                  value={sanityContent} 
+                  components={portableTextComponents}
+                />
+              ) : null}
             </div>
 
             {/* Tags */}
-            {post.tags && post.tags.length > 0 && (
+            {tags && tags.length > 0 && (
               <div className="mt-12 pt-8 border-t border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   {currentLanguage === 'fr' ? 'Tags :' : 'Tags:'}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag, index) => (
+                  {tags.map((tag: string, index: number) => (
                     <span
                       key={index}
                       className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
