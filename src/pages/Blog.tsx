@@ -484,7 +484,7 @@ const Blog: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredArticles.map((article) => (
                     <article key={article.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
                       {/* Image de l'article */}
