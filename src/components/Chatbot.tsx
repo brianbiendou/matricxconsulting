@@ -303,6 +303,7 @@ const Chatbot: React.FC = () => {
           isOpen ? 'bg-secondary-600 hover:bg-secondary-700' : 'bg-primary-500 hover:bg-primary-600 animate-pulse'
         }`}
         style={{ position: 'fixed' }}
+        aria-label={isOpen ? 'Fermer le chat' : 'Ouvrir le chat'}
       >
         {isOpen ? (
           <X className="w-6 md:w-8 h-6 md:h-8 text-white mx-auto" />
@@ -354,7 +355,7 @@ const Chatbot: React.FC = () => {
                   </div>
                   <div className={`rounded-2xl px-4 py-3 ${
                     message.isUser 
-                      ? 'bg-primary-500 text-white' 
+                      ? 'bg-primary-500 text-gray-900' 
                       : 'bg-gray-100 text-gray-800'
                   }`}>
                     <div className="text-sm leading-relaxed">

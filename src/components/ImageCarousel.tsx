@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from '../hooks/useTranslation'
-import image1 from '../images/image1.jpg'
 import image2 from '../images/image2.jpg'
 import image3 from '../images/image3.jpg'
 import image4 from '../images/image4.jpg'
@@ -15,7 +14,7 @@ const ImageCarousel: React.FC = () => {
   // Images professionnelles de MatriCx Consulting avec traductions
   const images = [
     {
-      url: image1,
+      url: '/hero-main.jpg', // URL statique dans public/ → découverte dès le HTML via <link rel="preload">
       title: t('carousel.images.0.title'),
       subtitle: t('carousel.images.0.subtitle')
     },
@@ -156,13 +155,15 @@ const ImageCarousel: React.FC = () => {
             <button
               key={`dot-${index}`}
               onClick={() => handleDotClick(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 hover:scale-125 ${
-                currentImageIndex === index
-                  ? 'bg-white w-6 shadow-lg'
-                  : 'bg-white/50 hover:bg-white/70'
-              }`}
+              className="w-11 h-11 flex items-center justify-center"
               aria-label={`Aller à l'image ${index + 1}`}
-            />
+            >
+              <span className={`rounded-full transition-all duration-300 ${
+                currentImageIndex === index
+                  ? 'bg-white w-6 h-2 shadow-lg'
+                  : 'w-2 h-2 bg-white/50 hover:bg-white/70'
+              }`} />
+            </button>
           ))}
         </div>
       </div>

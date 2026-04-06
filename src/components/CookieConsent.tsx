@@ -63,7 +63,7 @@ const CookieConsent: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-3">
           <button
             onClick={acceptAll}
-            className="flex-1 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 font-primary text-sm"
+            className="flex-1 bg-primary-500 hover:bg-primary-600 text-gray-900 font-semibold py-3 px-6 rounded-xl transition-all duration-300 font-primary text-sm"
           >
             {currentLanguage === 'fr' ? 'Accepter tout' : 'Accept All'}
           </button>

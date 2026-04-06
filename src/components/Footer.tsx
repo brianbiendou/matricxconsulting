@@ -138,8 +138,8 @@ const Footer: React.FC = () => {
                 onClick={() => changeLanguage('fr')}
                 className={`px-4 py-2 rounded-lg font-primary font-semibold transition-all duration-300 ${
                   currentLanguage === 'fr' 
-                    ? 'bg-primary-500 text-white shadow-lg' 
-                    : 'text-gray-400 hover:text-white hover:bg-secondary-700 border border-secondary-600'
+                    ? 'bg-primary-500 text-gray-900 shadow-lg' 
+                    : 'text-gray-300 hover:text-white hover:bg-secondary-700 border border-secondary-600'
                 }`}
               >
                 Français
@@ -148,8 +148,8 @@ const Footer: React.FC = () => {
                 onClick={() => changeLanguage('en')}
                 className={`px-4 py-2 rounded-lg font-primary font-semibold transition-all duration-300 ${
                   currentLanguage === 'en' 
-                    ? 'bg-primary-500 text-white shadow-lg' 
-                    : 'text-gray-400 hover:text-white hover:bg-secondary-700 border border-secondary-600'
+                    ? 'bg-primary-500 text-gray-900 shadow-lg' 
+                    : 'text-gray-300 hover:text-white hover:bg-secondary-700 border border-secondary-600'
                 }`}
               >
                 English
